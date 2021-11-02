@@ -7,12 +7,9 @@ if($_SESSION["job"] == 0){
 else{
     echo '<script language="javascript">alert("Ya te has postulado a un trabajo anteriormente");';
     echo "window.location = 'Views/Jobs.php'; </script>";
-<<<<<<< HEAD
-    asjdgkjasgfasd
-=======
     }
->>>>>>> 930fda37b97554b66c759769e4982d363504dbf1
+
 }
-}
+
 
 ?>
