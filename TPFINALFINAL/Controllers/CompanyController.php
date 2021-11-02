@@ -25,7 +25,7 @@
         }
         
         
-        public function Add($id, $nombre, $localidad, $rubro)
+        public function Add($id, $nombre, $localidad, $rubro, $vacantes)
         {
             $flag = 0;
             $list = new companyRepository();
