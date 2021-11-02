@@ -15,7 +15,11 @@ if($_SESSION["email"] == "admin@utn.com")
                          <?php
                               foreach($studentList as $company)
                               { 
+<<<<<<< HEAD
                                   if(strpos($company->getNombre(), $nombre) ){
+=======
+                                  if(str_contains($nombre, $company->getNombre())){
+>>>>>>> 6558dbe4c801e70da43cdc9e4d8bee3066615dcc
                                    ?>
                                         <details class ="btn btn-primary ml-auto d-block">
                                                 <summary>
@@ -25,8 +29,13 @@ if($_SESSION["email"] == "admin@utn.com")
                                              Id de la compañia: <?php echo $company->getId();?><br>
                                              Localidad: <?php echo $company->getLocalidad();?><br>
                                              Rubro: <?php echo $company->getRubro();?><br>
+<<<<<<< HEAD
                                              </p>
                                         </details>
+=======
+                                             Vacantes: <?php echo $company->getVacantes();?>
+                                             </p>
+>>>>>>> 6558dbe4c801e70da43cdc9e4d8bee3066615dcc
                                    <?php
                                   }
                               }
@@ -35,5 +44,9 @@ if($_SESSION["email"] == "admin@utn.com")
                     </tbody>
                </table>
           </div>
+<<<<<<< HEAD
      </section>
+=======
+     </section>sfsdfsd
+>>>>>>> 6558dbe4c801e70da43cdc9e4d8bee3066615dcc
 </main>
