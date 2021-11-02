@@ -4,11 +4,11 @@ USE TpFinalLab4;
 
 CREATE TABLE students
 (
-	studentID INT NOT NULL PRIMARY KEY,L
+	studentID INT NOT NULL PRIMARY KEY,
     careerId INT NOT NULL,
     fileNumber INT NOT NULL,
     email NVARCHAR(100) NOT NULL,
-    active BOOLEAN NOT NULL,
+    active BOOLEAN NOT NULL
     
 )Engine=InnoDB;
 
@@ -26,7 +26,7 @@ CREATE TABLE person
 CREATE TABLE Account
 (
     email NVARCHAR(100) NOT NULL PRIMARY KEY,
-    pass password NOT NULL,
+    pass NVARCHAR(100) NOT NULL,
     job INT
 
 )Engine=InnoDB;
@@ -34,7 +34,7 @@ CREATE TABLE Account
 CREATE TABLE Jobs
 (
         jobPositionId INT NOT NULL PRIMARY KEY,
-        careerId INT NOT NULL
+        careerId INT NOT NULL,
         descript NVARCHAR(100) NOT NULL
 
 )Engine=InnoDB;
@@ -44,7 +44,7 @@ CREATE TABLE Companys
     id INT NOT NULL PRIMARY KEY,
     nombre NVARCHAR(100) NOT NULL,
     localidad NVARCHAR(100) NOT NULL,
-    rubro NVARCHAR(100) NOT NULL,
+    rubro NVARCHAR(100) NOT NULL
         
 )Engine=InnoDB;
 
