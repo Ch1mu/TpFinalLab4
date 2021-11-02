@@ -13,19 +13,13 @@ use DAO\accountsRepositorie as accountDAO;
 
 $companyDAO = new accountDAO();
 $companyList = $companyDAO->GetAll();
-$job;
 
 
-foreach($companyList as $company)
-{
-    if($company->getEmail() == $_SESSION["email"])
-    {
-        $job = $company->getJob();
-    }
-}
-if($job <> null)
-{
+
+
+
 unlink("Data/accounts.json");
+
 foreach($companyList as $company)
 {
     if($company->getEmail() <> $_SESSION["email"])
@@ -40,12 +34,8 @@ foreach($companyList as $company)
             echo "window.location = '../mainUser.php'; </script>";
     }
 }
-}
-else {
     
-    echo '<script language="javascript">alert("No te puedes postular mas de una vez");';
-    echo "window.location = '../mainUser.php'; </script>";
-}
+
 
 
 

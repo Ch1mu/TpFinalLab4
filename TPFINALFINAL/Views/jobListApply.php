@@ -51,8 +51,10 @@ $studentList = $studentDAO->GetAll();
 }
 ?>
 <br>
+
 <form action="<?php echo FRONT_ROOT ?>Job/Apply" method="post" class="bg-light-alpha p-2">
-                    
+                    <h2>Postularse para una Empresa </h2>
+                    <h5>Recorda que solo puedes estar postulado en una empresa a la vez</h5>
                                     <br>
                                     <label for="">ID de Trabajo</label>
                                    
