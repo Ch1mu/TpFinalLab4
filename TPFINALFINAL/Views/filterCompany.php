@@ -35,9 +35,5 @@ if($_SESSION["email"] == "admin@utn.com")
                     </tbody>
                </table>
           </div>
-<<<<<<< HEAD
      </section>
-=======
-     </section>sfsdfsd
->>>>>>> 6558dbe4c801e70da43cdc9e4d8bee3066615dcc
 </main>
