@@ -29,6 +29,12 @@
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">
+                                   <label for="">Vacantes</label>
+                                   <input type="text" name="vacantes" value="" class="form-control">
+                              </div>
+                         </div>
+                         <div class="col-lg-4">
+                              <div class="form-group">
                                    <label for="">Localidad</label>
                                    <input type="text" name="localidad" value="" class="form-control">
                               </div>

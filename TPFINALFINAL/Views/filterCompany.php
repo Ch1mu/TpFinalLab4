@@ -14,8 +14,8 @@ if($_SESSION["email"] == "admin@utn.com")
                     <tbody>
                          <?php
                               foreach($studentList as $company)
-                              { 
-                                  if(str_contains($nombre, $company->getNombre())){
+                              {
+                                  if($company->getNombre() == $nombre){
                                    ?>
                                         <details class ="btn btn-primary ml-auto d-block">
                                                 <summary>
