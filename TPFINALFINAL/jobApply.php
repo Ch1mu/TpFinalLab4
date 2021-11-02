@@ -10,5 +10,4 @@ else{
 }
 }
 
-hola como andas
 ?>
