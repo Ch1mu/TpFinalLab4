@@ -50,11 +50,7 @@
                 echo "window.location = 'AddForm'; </script>";
             }
         }
-        public function listAllJobs()
-        {
-            $studentList = $this->jobDAO->getAll();
-            require_once(VIEWS_PATH."job-list.php");
-        }
+        
         public function List()
         {
             $jobList = $this->jobDAO->getAll();
@@ -67,6 +63,11 @@
         public function remove($jobPositionId)
         {
             require_once(ROOT."removeJob.php");
+        }
+        public function listAllJobs()
+        {
+            $studentList = $this->jobDAO->getAll();
+            require_once(VIEWS_PATH."job-list.php");
         }
         public function Apply($jobPositionId)
         {

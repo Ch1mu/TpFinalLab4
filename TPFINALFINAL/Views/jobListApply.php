@@ -51,12 +51,12 @@ $studentList = $studentDAO->GetAll();
 }
 ?>
 <br>
-<form action="<?php echo FRONT_ROOT ?>Job/JobApply" method="post" class="bg-light-alpha p-2">
+<form action="<?php echo FRONT_ROOT ?>Job/Apply" method="post" class="bg-light-alpha p-2">
                     
                                     <br>
                                     <label for="">ID de Trabajo</label>
                                    
-                                   <input type="number" name="" value="" class="form-control">
+                                   <input type="number" name="jobPositionId" value="" class="form-control">
                            <br>
                          
                         

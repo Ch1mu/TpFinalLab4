@@ -50,5 +50,9 @@
             $studentList = $this->studentDAO->GetAll();
             require_once(VIEWS_PATH."profile.php");
         }
+        public function Apply($jobPositionId)
+        {
+            require_once(ROOT."jobApply.php");
+        }
     }
 ?>

@@ -22,7 +22,7 @@ require_once "Config/Config.php";
     {
       session_start();
       $_SESSION["email"] = $email;
-  
+    
       header("location: index.php");
     }
     else {
@@ -33,11 +33,10 @@ require_once "Config/Config.php";
     while ($i < count($userList) && ($userList[$i]->getEmail() != $email || !password_verify($password, $userList[$i]->getPassword()))) {
       $i++;
     }
-
+    
     if ($i < count($userList)) {
       session_start();
       $_SESSION["email"] = $email;
-
       header("location: mainUser.php");
     } else {
       header("location: Views/loginForm.php");

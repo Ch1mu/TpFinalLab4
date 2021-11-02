@@ -7,11 +7,8 @@ class account{
 private $email;
 private $password;
 private $job;
-public function __construct()
-{
-    $this->job = 0;
-}
- 
+
+
 
 
 /**
