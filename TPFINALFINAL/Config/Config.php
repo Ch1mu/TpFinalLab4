@@ -9,12 +9,12 @@ define("JS_PATH", FRONT_ROOT.VIEWS_PATH . "js/");
 
 //Data base Paths
 
-define("DB_HOST", "localhost");
-define("DB_NAME", "University");
+define("DB_HOST", "mysql:host=localhost");
+define("DB_NAME", "TpFinalLab4");
 define("DB_USER", "root");
 define("DB_PASS", "123456");
 ?>
-?>
+
 
 
 
