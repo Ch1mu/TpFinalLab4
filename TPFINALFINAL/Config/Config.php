@@ -9,5 +9,5 @@ define("JS_PATH", FRONT_ROOT.VIEWS_PATH . "js/");
 define("DB_HOST", "localhost");
 define("DB_NAME", "TpFinalLab4");
 define("DB_USER", "root");
-define("DB_PASS", "");
+define("DB_PASS", "Fran4414");
 ?>

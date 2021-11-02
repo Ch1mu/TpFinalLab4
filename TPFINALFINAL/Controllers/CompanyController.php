@@ -43,7 +43,6 @@
                 $company->setNombre($nombre);
                 $company->setLocalidad($localidad);
                 $company->setRubro($rubro);
-                $company->setVacantes($vacantes);
 
                 $this->companyDAO->Add($company);
 
