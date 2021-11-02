@@ -7,6 +7,8 @@ if($_SESSION["job"] == 0){
 else{
     echo '<script language="javascript">alert("Ya te has postulado a un trabajo anteriormente");';
     echo "window.location = 'Views/Jobs.php'; </script>";
+    echo "ola";
+    }
 }
 }
 
