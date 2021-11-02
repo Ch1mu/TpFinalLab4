@@ -45,7 +45,12 @@ else{
     asjdgkjasgfasd
 =======
 <<<<<<< HEAD
+<<<<<<< HEAD
     asjdgkjasgfasd
+=======
+    }
+>>>>>>> 930fda37b97554b66c759769e4982d363504dbf1
+>>>>>>> parent of 20470de (normal)
 =======
     }
 >>>>>>> 930fda37b97554b66c759769e4982d363504dbf1
