@@ -26,7 +26,7 @@ CREATE TABLE person
 CREATE TABLE Account
 (
     email NVARCHAR(100) NOT NULL PRIMARY KEY,
-    pass password NOT NULL
+    pass password NOT NULL,
     job INT
 
 )Engine=InnoDB;
