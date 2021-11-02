@@ -1,0 +1,37 @@
+[
+    {
+        "id": "2",
+        "nombre": "Coca Cola",
+        "localidad": "EEUU",
+        "rubro": "Bebidas"
+       
+    },
+    {
+        "id": "3 ",
+        "nombre": "McDonalds",
+        "localidad": "Mar del Plata",
+        "rubro": "Comida Rapida"
+        
+    },
+    {
+        "id": "5",
+        "nombre": "Manaos",
+        "localidad": "mar del plata",
+        "rubro": "Bebidas"
+    
+    },
+    {
+        "id": "4",
+        "nombre": "Linux",
+        "localidad": "mar del plata",
+        "rubro": "Computacion"
+        
+    },
+    {
+        "id": "1",
+        "nombre": "Atlus",
+        "localidad": "Japon",
+        "rubro": "Videojuegos"
+        
+    }
+]

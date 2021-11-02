@@ -1,0 +1,38 @@
+@import url('https://i.pinimg.com/originals/7e/b0/71/7eb071d3c6452b61e73954c47b878d09.jpg:400,500,600');
+
+form {
+     max-width: 500px;
+   
+     background: #acacac;
+    
+     text-align: center;
+     
+}
+
+html, body {
+     height: 100%;
+}
+body {
+     font-family: 'Montserrat', sans-serif;
+     background: url(../img/bg.png) no-repeat center center fixed;
+     -webkit-background-size: cover;
+        -moz-background-size: cover;
+          -o-background-size: cover;
+             background-size: cover;
+}
+
+.height-100 {
+     height: 100%;
+}
+
+center{
+     text-align: center;
+}
+.bg-dark-alpha {
+     background-color: rgba(0,0,0,0.2);
+}
+.bg-light-alpha {
+     background-color: rgba(255,255,255,0.2);
+}
+
+
