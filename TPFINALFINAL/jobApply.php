@@ -9,5 +9,5 @@ else{
     echo "window.location = 'Views/Jobs.php'; </script>";
 }
 }
-asdasdasd
+
 ?>
