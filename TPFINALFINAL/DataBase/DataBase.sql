@@ -10,6 +10,13 @@ DROP TABLE IF EXISTS students;
 CREATE TABLE students
 (
 	studentID INT NOT NULL PRIMARY KEY,
+    dni INT NOT NULL PRIMARY KEY,
+	firstName NVARCHAR(100) NOT NULL,
+    lastName NVARCHAR(100) NOT NULL,
+    gender NVARCHAR(100) NOT NULL,
+    birthDate DATE NOT NULL,
+    phoneNumber INT NOT NULL
+
     careerId INT NOT NULL,
     fileNumber INT NOT NULL,
     email NVARCHAR(100) NOT NULL,
@@ -18,16 +25,7 @@ CREATE TABLE students
 )Engine=InnoDB;
 
 DROP TABLE IF EXISTS person;
-CREATE TABLE person
-(
-        dni INT NOT NULL PRIMARY KEY,
-	    firstName NVARCHAR(100) NOT NULL,
-        lastName NVARCHAR(100) NOT NULL,
-        gender NVARCHAR(100) NOT NULL,
-        birthDate DATE NOT NULL,
-        phoneNumber INT NOT NULL
 
-)Engine=InnoDB;
 
 DROP TABLE IF EXISTS account;
 CREATE TABLE account

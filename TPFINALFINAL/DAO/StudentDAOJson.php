@@ -30,7 +30,7 @@
 
             foreach($this->studentList as $student)
             {
-                $valuesArray["studentId"] = $student->getStudentdId();
+                $valuesArray["studentId"] = $student->getStudentId();
                 $valuesArray["careerId"] = $student->getCareerId();
                 $valuesArray["firstName"] = $student->getFirstName();
                 $valuesArray["lastName"] = $student->getLastName();

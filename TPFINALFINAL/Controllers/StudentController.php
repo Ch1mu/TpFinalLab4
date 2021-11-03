@@ -25,17 +25,27 @@
             require_once(VIEWS_PATH."student-list.php");
         }
 
-        public function Add($studentId, $firstName, $lastName)
+        public function Add($studentId, $firstName, $lastName, $careerId, $dni, $gender, $birthDate, $phoneNumber, $fileNumber, $email, $active)
         {
             $student = new Student();
             $student->setStudentId($studentId);
             $student->setfirstName($firstName);
             $student->setLastName($lastName);
+            $student->setCareerId($careerId);
+            $student->setDni($dni);
+            $student->setGender($gender);
+            $student->setBirthDate($birthDate);
+            $student->setPhoneNumber($phoneNumber);
+            $student->setFileNumber($fileNumber);
+            $student->setEmail($email);
+            $student->setActive($active);
 
             $this->studentDAO->Add($student);
+            
 
             $this->ShowAddView();
         }
+
         public function filterForm(){
             require_once(VIEWS_PATH."filterFormStudent.php");
         }
