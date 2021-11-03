@@ -1,72 +1,71 @@
 <?php
-namespace DAO;
+    namespace DAO;
 
-require_once "__DIR__/../Config/Autoload.php";
+use Exception;
+use Models\Job;
 
-use DAO\iRepositorieJob as iRepositories;
-use Models\Job as job;
+class StudentDAO implements IStudentDAO{
 
-class JobRepositorie implements iRepositories
-{
-    private $studentList = array();
+        private $connection;
+        private $tableName = "Jobs";
 
-    
+        public function Add(Job $student){
+            $JOBAPI = new StudentAPI();
 
-    public function Add(job $student)
-    {
+            $studentList = $this->Mapping($studentAPI->GetAll());
 
-        $this->RetrieveData();
+            var_dump($studentList);
+
+            try{
+
+                $query = "INSERT INTO ".$this->tableName." (studentId,careerId,firstName,lastName,dni,fileNumber,gender,birthDate,email,phoneNumber,active,userId) 
+                          VALUES (:studentId,:careerId,:firstName,:lastName,:dni,:fileNumber,:gender,:birthDate,:email,:phoneNumber,:active,:userId)";
+
+                $parameters['studentId'] = $student->getStudentId();
+                $parameters['careerId'] = $student->getCareerId();
+                $parameters['firstName'] = $student->getFirstName();
+                $parameters['lastName'] = $student->getLastName();
+                $parameters['dni'] = $student->getDni();
+                $parameters['fileNumber'] = $student->getFileNumber(); 
+                $parameters['gender'] = $student->getGender();
+                $parameters['birthDate'] = $student->getBirthDate();
+                $parameters['email'] = $student->getEmail();
+                $parameters['phoneNumber'] = $student->getPhoneNumber();
+                $parameters['active'] = $student->getActive();
+                
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query,$parameters);
+
+                return "Alumno ingresado con exito";
+
+            }
+            catch(Exception $ex){
+                throw $ex = "Hubo un error al ingresar el alumno";
+            }
         
-        array_push($this->studentList, $student);
-
-        $this->SaveData();
-    }
-
-    public function GetAll()
-    {
-        $this->RetrieveData();
-
-        return $this->studentList;
-    }
-
-    private function SaveData()
-    {
-        $arrayToEncode = array();
-
-        foreach($this->studentList as $student)
-        {
-            $valuesArray["jobPositionId"] = $student->getJobPositionId();
-            $valuesArray["careerId"] = $student->getCareerId();
-            $valuesArray["description"] = $student->getDescription();
-            
-            array_push($arrayToEncode, $valuesArray);
         }
 
-        $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-        
-        file_put_contents('Data/jobs.json', $jsonContent);
-    }
-
-    private function RetrieveData()
-    {
-        $this->studentList = array();
-
-        if(file_exists('Data/jobs.json'))
+        public function GetAll()
         {
-            $jsonContent = file_get_contents('Data/jobs.json');
+            try {
+                $studentList = array();
 
-            $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
+                $query = "SELECT * FROM ".$this->tableName;
+                $this->connection = Connection::GetInstance();
 
-            foreach($arrayToDecode as $valuesArray)
-            {
-                $student = new Job();
-                $student->setJobPositionId($valuesArray["jobPositionId"]);
-                $student->setCareerId($valuesArray["careerId"]);
-                $student->setDescription($valuesArray["description"]);
-                
+                $result = $this->connection->Execute($query);
+                $studentList = $this->Mapping($result);
 
-                array_push($this->studentList, $student);
+                return $studentList;
+            } catch (Exception $ex) {
+                throw $ex = "No se pudo cargar la lista";
             }
         }
+            
+
     }
-}
+
+
+
+?>

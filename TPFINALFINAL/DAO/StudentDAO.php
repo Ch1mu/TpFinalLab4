@@ -1,84 +1,85 @@
 <?php
     namespace DAO;
 
-    use DAO\IStudentDAO as IStudentDAO;
-    use Models\Student as Student;
+use Exception;
+use Models\Student;
+use DAO\IStudentDAO as IStudentDAO;
+use DAO\Connection as Connection;
 
-    class StudentDAO implements IStudentDAO
-    {
-        private $studentList = array();
+class StudentDAO implements IStudentDAO
+{
 
-        public function Add(Student $student)
-        {
-            $this->RetrieveData();
-            
-            array_push($this->studentList, $student);
+        private $connection;
+        private $tableName = "students";
 
-            $this->SaveData();
+        public function Add(Student $student){
+
+            try{
+
+                $query = "INSERT INTO ".$this->tableName." (studentId,careerId,firstName,lastName,dni,fileNumber,gender,birthDate,email,phoneNumber,active,userId) 
+                          VALUES (:studentId,:careerId,:firstName,:lastName,:dni,:fileNumber,:gender,:birthDate,:email,:phoneNumber,:active";
+
+                $parameters['studentId'] = $student->getStudentId();
+                $parameters['careerId'] = $student->getCareerId();
+                $parameters['firstName'] = $student->getFirstName();
+                $parameters['lastName'] = $student->getLastName();
+                $parameters['dni'] = $student->getDni();
+                $parameters['fileNumber'] = $student->getFileNumber(); 
+                $parameters['gender'] = $student->getGender();
+                $parameters['birthDate'] = $student->getBirthDate();
+                $parameters['email'] = $student->getEmail();
+                $parameters['phoneNumber'] = $student->getPhoneNumber();
+                $parameters['active'] = $student->getActive();
+                
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query,$parameters);
+
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+        
         }
 
         public function GetAll()
         {
-            $this->RetrieveData();
+            try {
+                $studentList = array();
 
-            return $this->studentList;
-        }
+                $query = "SELECT * FROM ".$this->tableName;
+                $this->connection = Connection::GetInstance();
 
-        private function SaveData()
-        {
-            $arrayToEncode = array();
+                $resultSet = $this->connection->Execute($query);
+               foreach ($resultSet as $row) 
+               {
+                $student = new Student();
+                $student->setStudentId($valuesArray["studentId"]);
+                $student->setCareerId($valuesArray["careerId"]);
+                $student->setDni($valuesArray["dni"]);
+                $student->setFirstName($valuesArray["firstName"]);
+                $student->setLastName($valuesArray["lastName"]);
+                $student->setGender($valuesArray["gender"]);
+                $student->setBirthDate($valuesArray["birthDate"]);
+                $student->setPhoneNumber($valuesArray["phoneNumber"]);
+                $student->setFileNumber($valuesArray["fileNumber"]);
+                $student->setEmail($valuesArray["email"]);
+                $student->setActive($valuesArray["active"]);
 
-            foreach($this->studentList as $student)
-            {
-                $valuesArray["studentId"] = $student->getStudentdId();
-                $valuesArray["careerId"] = $student->getCareerId();
-                $valuesArray["firstName"] = $student->getFirstName();
-                $valuesArray["lastName"] = $student->getLastName();
-                $valuesArray["fileNumber"] = $student->getFileNumber();
-                $valuesArray["dni"] = $student->getDni();
-                $valuesArray["gender"] = $student->getGender();
-                $valuesArray["birthDate"] = $student->getBirthDate();
-                $valuesArray["phoneNumber"] = $student->getPhoneNumber();
-                $valuesArray["email"] = $student->getEmail();
-                $valuesArray["active"] = $student->getActive();
-
-                array_push($arrayToEncode, $valuesArray);
+                array_push($this->studentList, $student);
             }
+                return $studentList;
 
-            $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
+            } 
+            catch (Exception $ex) 
+            {
+                throw $ex;
+            }
+        }
             
-            file_put_contents('Data/students.json', $jsonContent);
-        }
 
-        private function RetrieveData()
-        {
-            $this->studentList = array();
+    }
 
-            if(file_exists('Data/students.json'))
-            {
-                $jsonContent = file_get_contents('Data/students.json');
 
-                $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
 
-                foreach($arrayToDecode as $valuesArray)
-                { 
-                    $student = new Student();
-                    $student->setStudentId($valuesArray["studentId"]);
-                    $student->setCareerId($valuesArray["careerId"]);
-                    $student->setDni($valuesArray["dni"]);
-                    $student->setFirstName($valuesArray["firstName"]);
-                    $student->setLastName($valuesArray["lastName"]);
-                    $student->setGender($valuesArray["gender"]);
-                    $student->setBirthDate($valuesArray["birthDate"]);
-                    $student->setPhoneNumber($valuesArray["phoneNumber"]);
-                    $student->setFileNumber($valuesArray["fileNumber"]);
-                    $student->setEmail($valuesArray["email"]);
-                    $student->setActive($valuesArray["active"]);
-
-                    array_push($this->studentList, $student);
-                }
-                }
-            }
-        }
-    
 ?>

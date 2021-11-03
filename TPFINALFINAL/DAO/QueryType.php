@@ -3,5 +3,6 @@ namespace DAO;
 abstract class QueryType
 {
     const Query = 0;
-    cons StoredProcedure = 1;
+    const StoredProcedure = 1;
 }
+?>
