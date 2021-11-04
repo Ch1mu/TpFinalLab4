@@ -19,6 +19,8 @@
                <br>
                <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Job/removeForm">Eliminar Trabajo</a>
                <br>
+               <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Job/viewApplies">Ver Postulaciones</a>
+               <br>
           
 </div>
 </body>

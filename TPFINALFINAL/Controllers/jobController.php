@@ -74,6 +74,11 @@
         {
             require_once(ROOT."jobApply.php");
         }
+        public function ViewApplies()
+        {
+            $jobList = $this->jobDAO->getAll();
+            require_once(VIEWS_PATH."viewApplies.php");
+        }
 
     }
 ?>

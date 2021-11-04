@@ -7,7 +7,7 @@ use Models\Student as Student;
 use Config\Autoload as Autoload;
 Autoload::Start();
 
-$list = new StudentDAO();
+    $list = new StudentDAO();
     $studentList = array();
     $studentList = $list->GetAll();
 

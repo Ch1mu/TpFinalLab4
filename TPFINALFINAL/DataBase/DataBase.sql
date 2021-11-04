@@ -9,7 +9,7 @@ USE TpFinalLab4;
 DROP TABLE IF EXISTS students;
 CREATE TABLE students
 (
-	studentId INT NOT NULL PRIMARY KEY,
+	studentId INT  NOT NULL AUTO_INCREMENT PRIMARY KEY ,
     dni  varchar(100) NOT NULL,
 	firstName varchar(100) NOT NULL,
     lastName varchar(100) NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE students
     activ varchar(100) NOT NULL
     
 );
-select *from students;
+
 
 
 
@@ -38,7 +38,7 @@ CREATE TABLE account
 DROP TABLE IF EXISTS jobs;
 CREATE TABLE jobs
 (
-        jobPositionId INT NOT NULL PRIMARY KEY,
+        jobPositionId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         careerId INT NOT NULL,
         description VARCHAR(100) NOT NULL,
         companyIds INT NOT NULL,
@@ -48,7 +48,7 @@ CREATE TABLE jobs
 DROP TABLE IF EXISTS companys;
 CREATE TABLE companys
 (
-    id INT NOT NULL PRIMARY KEY,
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     nombre NVARCHAR(100) NOT NULL,
     localidad VARCHAR(100) NOT NULL,
     rubro VARCHAR(100) NOT NULL
@@ -57,11 +57,15 @@ CREATE TABLE companys
 
 DROP TABLE IF EXISTS careers;
 CREATE TABLE IF NOT EXISTS careers (
-  careerId int(11) NOT NULL PRIMARY KEY,
+  careerId int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   description varchar(100) COLLATE latin1_spanish_ci NOT NULL,
   active varchar(100) NOT NULL
   
 );
 
-
+select * from careers;
+select * from account;
+select * from companys;
+select * from jobs;
+select * from students;
 
