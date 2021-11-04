@@ -23,7 +23,7 @@
             require_once(VIEWS_PATH."job-add.php");
         }
 
-           public function Add($jobPositionId, $careerId, $description)
+           public function Add($jobPositionId, $careerId, $description, $companyIds)
         {
             $flag = 0;
             $list = new JobRepository();
@@ -37,6 +37,7 @@
             }
             if($flag == 0){
                 $company = new Job();
+                $company->setCompanyIds($companyIds);
                 $company->setJobPositionId($jobPositionId);
                 $company->setCareerId($careerId);
                 $company->setDescription($description);

@@ -15,7 +15,7 @@
                               <br>
                                    <label for="">ID de la empresa</label>
                                    
-                                   <input type="number" name="companyId" value="" class="form-control">
+                                   <input type="number" name="companyIds" value="" class="form-control">
                               </div>
                          </div>                         
                          <div class="col-lg-4">

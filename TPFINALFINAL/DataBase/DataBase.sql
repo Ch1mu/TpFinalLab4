@@ -40,9 +40,9 @@ CREATE TABLE jobs
 (
         jobPositionId INT NOT NULL PRIMARY KEY,
         careerId INT NOT NULL,
-        descript NVARCHAR(100) NOT NULL,
-        companyId INT NOT NULL,
-        constraint fk_companyId foreign key (companyId) references companys(id)
+        description VARCHAR(100) NOT NULL,
+        companyIds INT NOT NULL,
+        constraint fk_companyId foreign key (companyIds) references companys(id)
 );
 
 DROP TABLE IF EXISTS companys;

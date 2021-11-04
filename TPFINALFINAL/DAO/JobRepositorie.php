@@ -1,47 +1,38 @@
 <?php
     namespace DAO;
 
-use Exception;
-use Models\Job;
-
-class StudentDAO implements IStudentDAO{
+    use Exception;
+    use Models\Job as Job;
+    use DAO\iRepositorieJob as iRepositorieJob;
+    use DAO\Connection as Connection;
+class JobRepositorie implements iRepositorieJob{
 
         private $connection;
-        private $tableName = "Jobs";
+        private $tableName = "jobs";
 
         public function Add(Job $student){
-            $JOBAPI = new StudentAPI();
-
-            $studentList = $this->Mapping($studentAPI->GetAll());
-
-            var_dump($studentList);
+        
+            
 
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (studentId,careerId,firstName,lastName,dni,fileNumber,gender,birthDate,email,phoneNumber,active,userId) 
-                          VALUES (:studentId,:careerId,:firstName,:lastName,:dni,:fileNumber,:gender,:birthDate,:email,:phoneNumber,:active,:userId)";
+                $query = "INSERT INTO ".$this->tableName." (jobPositionId, careerId, description, companyIds) 
+                          VALUES (:jobPositionId, :careerId, :description, :companyIds);";
 
-                $parameters['studentId'] = $student->getStudentId();
+                $parameters['jobPositionId'] = $student->getJobPositionId();
                 $parameters['careerId'] = $student->getCareerId();
-                $parameters['firstName'] = $student->getFirstName();
-                $parameters['lastName'] = $student->getLastName();
-                $parameters['dni'] = $student->getDni();
-                $parameters['fileNumber'] = $student->getFileNumber(); 
-                $parameters['gender'] = $student->getGender();
-                $parameters['birthDate'] = $student->getBirthDate();
-                $parameters['email'] = $student->getEmail();
-                $parameters['phoneNumber'] = $student->getPhoneNumber();
-                $parameters['active'] = $student->getActive();
-                
+                $parameters['description'] = $student->getDescription();
+                $parameters['companyIds'] = $student->getCompanyIds();
+               
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->ExecuteNonQuery($query,$parameters);
 
-                return "Alumno ingresado con exito";
+
 
             }
             catch(Exception $ex){
-                throw $ex = "Hubo un error al ingresar el alumno";
+                throw $ex;
             }
         
         }
@@ -51,15 +42,26 @@ class StudentDAO implements IStudentDAO{
             try {
                 $studentList = array();
 
-                $query = "SELECT * FROM ".$this->tableName;
+                $query = "SELECT * FROM ".$this->tableName.";";
                 $this->connection = Connection::GetInstance();
 
-                $result = $this->connection->Execute($query);
-                $studentList = $this->Mapping($result);
+                $resultSet = $this->connection->Execute($query);
+               foreach ($resultSet as $valuesArray) 
+               {
+                $student = new Job();
+                $student->setCompanyIds($valuesArray["companyIds"]);
+                $student->setCareerId($valuesArray["careerId"]);
+                $student->setJobPositionId($valuesArray["jobPositionId"]);
+                $student->setDescription($valuesArray["description"]);
 
+                array_push($studentList, $student);
+            }
                 return $studentList;
-            } catch (Exception $ex) {
-                throw $ex = "No se pudo cargar la lista";
+
+            } 
+            catch (Exception $ex) 
+            {
+                throw $ex;
             }
         }
             

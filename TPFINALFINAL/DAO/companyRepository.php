@@ -1,85 +1,74 @@
 <?php
-namespace DAO;
+    namespace DAO;
 
-use DAO\iRepositoriesCompany as iRepositoriesCompany;
-use Models\Company as company;
+use Exception;
+use Models\Company as Company;
+use DAO\iRepositoriesCompany as icompanyDAO;
+use DAO\Connection as Connection;
 
-class companyRepository implements iRepositoriesCompany
+class companyRepository implements icompanyDAO
 {
-    private $studentList = array();
 
-    public function __construct()
-    {
-        $this->fileName = dirname(__DIR__)."/Data/company.json";
-    }
-    
-    
-    
-    public function Add(company $student)
-    {
+        private $connection;
+        private $tableName = "companys";
 
-        $this->RetrieveData();
+        public function Add(Company $student){
+
+           
+            try{
+
+                $query = "INSERT INTO ".$this->tableName." (id, nombre, localidad, rubro) 
+                          VALUES (:id, :nombre, :localidad, :rubro);";
+
+                $parameters['id'] = $student->getId();
+                $parameters['nombre'] = $student->getNombre();
+                $parameters['localidad'] = $student->getLocalidad();
+                $parameters['rubro'] = $student->getRubro();
+                
+                
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query, $parameters);
+
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
         
-        array_push($this->studentList, $student);
-
-        $this->SaveData();
-    }
-
-    public function GetAll()
-    {
-        $this->RetrieveData();
-
-        return $this->studentList;
-    }
-
-    private function SaveData()
-    {
-        $arrayToEncode = array();
-
-        foreach($this->studentList as $student)
-        {
-            $valuesArray["id"] = $student->getId();
-            $valuesArray["nombre"] = $student->getNombre();
-            $valuesArray["localidad"] = $student-> getLocalidad();
-            $valuesArray["rubro"] = $student->getRubro();
-            
-            array_push($arrayToEncode, $valuesArray);
         }
 
-        $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-        
-        file_put_contents('Data/company.json', $jsonContent);
-    }
-
-
-
-    private function RetrieveData()
-    {
-        $this->studentList = array();
-
-        if(file_exists('Data/company.json'))
+        public function GetAll()
         {
-            $jsonContent = file_get_contents('Data/company.json');
+            try {
+                $studentList = array();
 
-            $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
+                $query = "SELECT * FROM ".$this->tableName.";";
+                $this->connection = Connection::GetInstance();
 
-            foreach($arrayToDecode as $valuesArray)
-            {
-                $student = new company();
+                $resultSet = $this->connection->Execute($query);
+               foreach ($resultSet as $valuesArray) 
+               {
+                $student = new Company();
                 $student->setId($valuesArray["id"]);
                 $student->setNombre($valuesArray["nombre"]);
                 $student->setLocalidad($valuesArray["localidad"]);
                 $student->setRubro($valuesArray["rubro"]);
-            
                 
 
-                array_push($this->studentList, $student);
+                array_push($studentList, $student);
+            }
+                return $studentList;
+
+            } 
+            catch (Exception $ex) 
+            {
+                throw $ex;
             }
         }
-    }
-    
-    
-    
-        
+            
 
-}
+    }
+
+
+
+?>

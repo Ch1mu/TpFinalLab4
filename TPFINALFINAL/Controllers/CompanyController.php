@@ -1,5 +1,6 @@
 <?php
     namespace Controllers;
+
     use DAO\companyRepository as companyRepository;
     use Models\Company as Company;
   
