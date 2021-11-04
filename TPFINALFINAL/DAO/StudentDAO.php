@@ -2,7 +2,7 @@
     namespace DAO;
 
 use Exception;
-use Models\Student;
+use Models\Student as Student;
 use DAO\IStudentDAO as IStudentDAO;
 use DAO\Connection as Connection;
 
@@ -38,7 +38,9 @@ class StudentDAO implements IStudentDAO
 
             }
             catch(Exception $ex){
-                throw $ex;
+                
+                echo '<script language="javascript">alert("Ya hay un estudiante con ese Legajo!");';
+                echo "window.location = 'showAddView'; </script>";
             }
         
         }

@@ -18,14 +18,7 @@ require_once "Config/Config.php";
     echo "Email: $email<br>";
     echo "Password: $password<br>";
 
-    if($email == "admin@utn.com" && $password == "admin")
-    {
-      session_start();
-      $_SESSION["email"] = $email;
     
-      header("location: index.php");
-    }
-    else {
      
     
     $i = 0;
@@ -33,14 +26,23 @@ require_once "Config/Config.php";
     while ($i < count($userList) && ($userList[$i]->getEmail() != $email || !password_verify($password, $userList[$i]->getPassword()))) {
       $i++;
     }
+
     
     if ($i < count($userList)) {
+      if($email == "admin@utn.com" && $password == "admin")
+    {
+      session_start();
+      $_SESSION["email"] = $email;
+      header("location: index.php");
+    }
+    else {
       session_start();
       $_SESSION["email"] = $email;
       header("location: mainUser.php");
-    } else {
-      header("location: Views/loginForm.php");
+    } 
     }
+    else {
+      header("location: Views/loginForm.php");
   }
 }
 

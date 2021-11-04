@@ -1,70 +1,71 @@
 <?php
-namespace DAO;
+    namespace DAO;
 
-require_once "__DIR__/../Config/Autoload.php";
+use Exception;
+use Models\account as Account;
+use DAO\iRepositorieAccount as IStudentDAO;
+use DAO\Connection as Connection;
 
-use DAO\iRepositorieAccount as iRepositories;
-use Models\account as account;
-
-class accountsRepositorie implements iRepositories
+class accountsRepositorie implements IStudentDAO
 {
-    private $studentList = array();
 
-    
+        private $connection;
+        private $tableName = "account";
 
-    public function Add(account $student)
-    {
+        public function Add(Account $student){
 
-        $this->RetrieveData();
+           
+            try{
+
+                $query = "INSERT INTO ".$this->tableName." (email, pass, job) 
+                          VALUES (:email, :pass, :job);";
+
+                $parameters['email'] = $student->getEmail();
+                $parameters['pass'] = $student->getPassword();
+                $parameters['job'] = $student->getJob();
+                
+                
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query, $parameters);
+
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
         
-        array_push($this->studentList, $student);
-
-        $this->SaveData();
-    }
-
-    public function GetAll()
-    {
-        $this->RetrieveData();
-
-        return $this->studentList;
-    }
-
-    private function SaveData()
-    {
-        $arrayToEncode = array();
-
-        foreach($this->studentList as $student)
-        {
-            $valuesArray["email"] = $student->getEmail();
-            $valuesArray["password"] = $student->getPassword();
-            $valuesArray["job"] = $student->getJob();
-            array_push($arrayToEncode, $valuesArray);
         }
 
-        $jsonContent = json_encode($arrayToEncode, JSON_PRETTY_PRINT);
-        
-        file_put_contents('Data/accounts.json', $jsonContent);
-    }
-
-    private function RetrieveData()
-    {
-        $this->studentList = array();
-
-        if(file_exists('Data/accounts.json'))
+        public function GetAll()
         {
-            $jsonContent = file_get_contents('Data/accounts.json');
+            try {
+                $studentList = array();
 
-            $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
+                $query = "SELECT * FROM ".$this->tableName.";";
+                $this->connection = Connection::GetInstance();
 
-            foreach($arrayToDecode as $valuesArray)
-            {
-                $student = new account();
+                $resultSet = $this->connection->Execute($query);
+               foreach ($resultSet as $valuesArray) 
+               {
+                $student = new Account();
                 $student->setEmail($valuesArray["email"]);
-                $student->setPassword($valuesArray["password"]);
+                $student->setPassword($valuesArray["pass"]);
+                $student->setJob($valuesArray["job"]);
                 
+                array_push($studentList, $student);
+            }
+                return $studentList;
 
-                array_push($this->studentList, $student);
+            } 
+            catch (Exception $ex) 
+            {
+                throw $ex;
             }
         }
+            
+
     }
-}
+
+
+
+?>

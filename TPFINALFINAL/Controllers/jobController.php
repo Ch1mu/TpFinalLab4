@@ -72,6 +72,7 @@
         }
         public function Apply($jobPositionId)
         {
+            $tableName = "account";
             require_once(ROOT."jobApply.php");
         }
         public function ViewApplies()
