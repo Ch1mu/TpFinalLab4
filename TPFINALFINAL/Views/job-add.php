@@ -9,7 +9,15 @@
                <h2 class="mb-4">Agregar Trabajos</h2>
 
                <form action="<?php echo FRONT_ROOT ?>Job/Add" method="post" class="bg-light-alpha p-5">
-                    <div class="row">                         
+                    <div class="row">
+                    <div class="col-lg-4">
+                              <div class="form-group">
+                              <br>
+                                   <label for="">ID de la empresa</label>
+                                   
+                                   <input type="number" name="companyId" value="" class="form-control">
+                              </div>
+                         </div>                         
                          <div class="col-lg-4">
                               <div class="form-group">
                               <br>

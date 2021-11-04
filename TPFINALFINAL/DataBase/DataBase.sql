@@ -22,7 +22,7 @@ CREATE TABLE students
     activ varchar(100) NOT NULL
     
 );
-
+select *from students;
 
 
 
@@ -33,16 +33,17 @@ CREATE TABLE account
     pass NVARCHAR(100) NOT NULL,
     job INT
 
-)Engine=InnoDB;
+);
 
 DROP TABLE IF EXISTS jobs;
 CREATE TABLE jobs
 (
         jobPositionId INT NOT NULL PRIMARY KEY,
         careerId INT NOT NULL,
-        descript NVARCHAR(100) NOT NULL
-
-)Engine=InnoDB;
+        descript NVARCHAR(100) NOT NULL,
+        companyId INT NOT NULL,
+        constraint fk_companyId foreign key (companyId) references companys(id)
+);
 
 DROP TABLE IF EXISTS companys;
 CREATE TABLE companys
@@ -52,7 +53,7 @@ CREATE TABLE companys
     localidad VARCHAR(100) NOT NULL,
     rubro VARCHAR(100) NOT NULL
         
-)Engine=InnoDB;
+);
 
 DROP TABLE IF EXISTS careers;
 CREATE TABLE IF NOT EXISTS careers (
@@ -63,5 +64,4 @@ CREATE TABLE IF NOT EXISTS careers (
 );
 
 
-INSERT INTO students values(1, 2, "franco", "luzardi", "44145205", "15/04/2002", "hombre","421" ,"15/04/2002", "frannluza@gmail.com", "223242424", "true");
 

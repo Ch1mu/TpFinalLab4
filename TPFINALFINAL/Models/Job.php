@@ -3,6 +3,7 @@
  
     class Job 
     {   
+            private $companyId
         private $careerId;
         private $jobPositionId;
         private $description;
@@ -72,4 +73,24 @@
 
                 return $this;
         }
+
+            /**
+             * Get the value of companyId
+             */ 
+            public function getCompanyId()
+            {
+                        return $this->companyId;
+            }
+
+            /**
+             * Set the value of companyId
+             *
+             * @return  self
+             */ 
+            public function setCompanyId($companyId)
+            {
+                        $this->companyId = $companyId;
+
+                        return $this;
+            }
     }

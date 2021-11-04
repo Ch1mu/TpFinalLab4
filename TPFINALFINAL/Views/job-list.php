@@ -24,6 +24,7 @@ if($_SESSION["email"] == "admin@utn.com")
                                                      <?php echo $job->getDescription()?>
                                                   </summary>
                                              <p class = "table bg-light-alpha">
+                                             Id de la Compañia: <?php echo $job->getCompanyId();?><br>
                                              Id del trabajo: <?php echo $job->getJobPositionId();?><br>
                                              Id de carrera universitaria: <?php echo $job->getCareerId();?><br>
                                              </p>
