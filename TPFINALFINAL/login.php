@@ -18,7 +18,7 @@ require_once "Config/Config.php";
     echo "Email: $email<br>";
     echo "Password: $password<br>";
 
-    if($email == "admin@utn.com" /*&& $password == "admin"*/)
+    if($email == "admin@utn.com" && $password == "admin")
     {
       session_start();
       $_SESSION["email"] = $email;

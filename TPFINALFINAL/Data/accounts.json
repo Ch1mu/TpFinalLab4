@@ -7,6 +7,11 @@
     {
         "email": "aseemmonds2@upenn.edu",
         "password": "$2y$10$iMeHKnTRwyh.gt3AjjjJEu1bLw6jKmvoDtC2YWH1LUuweUPhtcG5a",
-        "job": "4"
+        "job": null
+    },
+    {
+        "email": "frannluza@gmail.com",
+        "password": "$2y$10$iY1SbTsiEa1dI6EchTTU5.yqnHxrM418VNXM3nTu3s1KrlBSKpdt.",
+        "job": null
     }
 ]

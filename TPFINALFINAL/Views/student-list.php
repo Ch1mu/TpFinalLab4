@@ -9,13 +9,8 @@
                
                <a class="btn btn-dark ml-auto d-block"  href="<?php echo FRONT_ROOT ?>Student/filterForm">Filtrar Alumnos</a>
                
-               <table class="table bg-light-alpha">
-                    <thead>
-                         <th>Legajo</th>
-                         <th>Apellido</th>
-                         <th>Nombre</th>
-                    </thead>
-                    <tbody>
+                    
+                    
                          <?php
                               foreach($studentList as $student)
                               {
@@ -34,6 +29,14 @@
                                                    </summary class = "">
                                                 <p class = "table bg-light-alpha">
                                                      Id del Estudiante: <?php echo $student->getStudentId();?><br>
+                                                     Id de la carrera: <?php echo $student->getCareerId();?><br>
+                                                     Dni: <?php echo $student->getDni();?><br>
+                                                     Genero: <?php echo $student->getGender();?><br>
+                                                     Fecha de Nacimiento: <?php echo $student->getBirthDate();?><br>
+                                                     Telefono: <?php echo $student->getPhoneNumber();?><br>
+                                                       Numero De archivo: <?php echo $student->getFileNumber();?><br>
+                                                     Email: <?php echo $student->getEmail();?><br>
+                                                     Estado: <?php echo $student->getActive();?><br>
                                                   
                                                   </p>
                                             </details>
@@ -41,9 +44,6 @@
                                    <?php
                               }
                          ?>
-                         </tr>
-                    </tbody>
-               </table>
           </div>
      </section>
 </main>

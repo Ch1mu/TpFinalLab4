@@ -2611,5 +2611,18 @@
         "phoneNumber": null,
         "email": null,
         "active": null
+    },
+    {
+        "studentId": "1",
+        "careerId": "1",
+        "firstName": "franco",
+        "lastName": "cabezon",
+        "fileNumber": "213123",
+        "dni": "5297952",
+        "gender": "helicoptero",
+        "birthDate": "2021-11-09",
+        "phoneNumber": "213123",
+        "email": "admin@utn.com",
+        "active": "Buenos Aires"
     }
 ]

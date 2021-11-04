@@ -10,7 +10,7 @@
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Legajo</label>
-                                   <input type="text" name="studentId" value="" class="form-control">
+                                   <input type="number" name="studentId" value="" class="form-control">
                               </div>
                          </div>
                          <div class="col-lg-4">

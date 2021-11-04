@@ -14,10 +14,11 @@ class StudentDAO implements IStudentDAO
 
         public function Add(Student $student){
 
+           
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (studentId,careerId,firstName,lastName,dni,fileNumber,gender,birthDate,email,phoneNumber,active,userId) 
-                          VALUES (:studentId,:careerId,:firstName,:lastName,:dni,:fileNumber,:gender,:birthDate,:email,:phoneNumber,:active";
+                $query = "INSERT INTO ".$this->tableName." (studentId, careerId, firstName, lastName, dni, fileNumber, gender, birthDate,email, phoneNumber, activ) 
+                          VALUES (:studentId, :careerId, :firstName, :lastName, :dni, :fileNumber, :gender, :birthDate, :email, :phoneNumber, :active);";
 
                 $parameters['studentId'] = $student->getStudentId();
                 $parameters['careerId'] = $student->getCareerId();
@@ -33,7 +34,7 @@ class StudentDAO implements IStudentDAO
                 
                 $this->connection = Connection::GetInstance();
 
-                $this->connection->ExecuteNonQuery($query,$parameters);
+                $this->connection->ExecuteNonQuery($query, $parameters);
 
             }
             catch(Exception $ex){
@@ -47,11 +48,11 @@ class StudentDAO implements IStudentDAO
             try {
                 $studentList = array();
 
-                $query = "SELECT * FROM ".$this->tableName;
+                $query = "SELECT * FROM ".$this->tableName.";";
                 $this->connection = Connection::GetInstance();
 
                 $resultSet = $this->connection->Execute($query);
-               foreach ($resultSet as $row) 
+               foreach ($resultSet as $valuesArray) 
                {
                 $student = new Student();
                 $student->setStudentId($valuesArray["studentId"]);
@@ -64,9 +65,9 @@ class StudentDAO implements IStudentDAO
                 $student->setPhoneNumber($valuesArray["phoneNumber"]);
                 $student->setFileNumber($valuesArray["fileNumber"]);
                 $student->setEmail($valuesArray["email"]);
-                $student->setActive($valuesArray["active"]);
+                $student->setActive($valuesArray["activ"]);
 
-                array_push($this->studentList, $student);
+                array_push($studentList, $student);
             }
                 return $studentList;
 
