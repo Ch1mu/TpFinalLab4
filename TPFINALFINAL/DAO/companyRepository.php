@@ -65,6 +65,28 @@ class companyRepository implements icompanyDAO
                 throw $ex;
             }
         }
+        public function Modify($id, $nombre, $localidad, $rubro){
+            try{
+
+                $query = "UPDATE ".$this->tableName. " SET id = :id  nombre = :nombre localidad = :localidad rubro = :rubro WHERE id = :id";
+                $parameters['id'] = $id;
+                $parameters['nombre'] = $nombre;
+                $parameters['localidad'] = $localidad;
+                $parameters['rubro'] = $rubro;
+                   
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query,$parameters);
+
+
+
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+            
+
+        }
             
 
     }

@@ -63,6 +63,8 @@ CREATE TABLE IF NOT EXISTS careers (
   
 );
 
+
+insert into students values (0,null,null,null,null,null,null,null,null,"admin@utn.com",null);
 select * from careers;
 select * from account;
 select * from companys;

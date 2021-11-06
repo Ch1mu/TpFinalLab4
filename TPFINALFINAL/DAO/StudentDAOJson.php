@@ -4,7 +4,7 @@
     use DAO\IStudentDAO as IStudentDAO;
     use Models\Student as Student;
 
-    class StudentDAO implements IStudentDAO
+    class StudentDAOJson implements IStudentDAO
     {
         private $studentList = array();
 

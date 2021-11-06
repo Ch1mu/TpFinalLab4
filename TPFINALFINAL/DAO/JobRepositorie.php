@@ -64,9 +64,12 @@ class JobRepositorie implements iRepositorieJob{
                 throw $ex;
             }
         }
+        
+        
+        }
             
 
-    }
+    
 
 
 

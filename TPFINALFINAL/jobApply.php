@@ -16,34 +16,19 @@ $companyList = $companyDAO->GetAll();
 
 
 
-        
-unlink("Data/accounts.json");
 
 foreach($companyList as $company)
 {
-    if($company->getEmail() <> $_SESSION["email"])
+    if($company->getEmail() == $_SESSION["email"])
     {
-        $companyDAO->add($company);
+        $companyDAO->Modify($jobPositionId);
+        echo '<script language="javascript">alert("te has postulado Exitosamente");';
+        echo "window.location = '../mainUser.php'; </script>";
     }
-    else 
-    {
-            $company->setJob($jobPositionId);
-            $companyDAO->add($company);  
-            echo '<script language="javascript">alert("te has postulado Exitosamente");';
-            echo "window.location = '../mainUser.php'; </script>";
-    }
-if($_SESSION["job"] == 0){
-    $_SESSION["job"] = $jobID;
-}
-else{
-    echo '<script language="javascript">alert("Ya te has postulado a un trabajo anteriormente");';
-    echo "window.location = 'Views/Jobs.php'; </script>";
-}
+
+
 }
     
-
-
-
 
 
 

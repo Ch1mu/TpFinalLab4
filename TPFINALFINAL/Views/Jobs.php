@@ -1,5 +1,6 @@
 <?php
     require_once('nav.php');
+   
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +22,7 @@
                <br>
                <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Job/viewApplies">Ver Postulaciones</a>
                <br>
-          
+         
 </div>
 </body>
 </html>
