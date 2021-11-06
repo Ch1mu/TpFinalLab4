@@ -23,7 +23,16 @@ CREATE TABLE students
     
 );
 
+DROP TABLE IF EXISTS JobOffers;
+CREATE TABLE JobOffers
+(
+    Nombre NVARCHAR(100) NOT NULL PRIMARY KEY,
+    Apellido NVARCHAR(100) NOT NULL,
+    jobId INT,
+    CompId INT,
+    constraint fk_jobId foreign key (jobId) references jobs(jobPositionId) ON DELETE  CASCADE ON UPDATE  CASCADE
 
+);
 
 
 DROP TABLE IF EXISTS account;
@@ -31,7 +40,7 @@ CREATE TABLE account
 (
     email NVARCHAR(100) NOT NULL PRIMARY KEY,
     pass NVARCHAR(100) NOT NULL,
-    job INT
+    job INT 
 
 );
 
@@ -42,7 +51,7 @@ CREATE TABLE jobs
         careerId INT NOT NULL,
         description VARCHAR(100) NOT NULL,
         companyIds INT NOT NULL,
-        constraint fk_companyId foreign key (companyIds) references companys(id)
+        constraint fk_companyId foreign key (companyIds) references companys(id) ON DELETE  CASCADE ON UPDATE  CASCADE
 );
 
 DROP TABLE IF EXISTS companys;

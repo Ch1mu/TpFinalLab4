@@ -89,16 +89,13 @@
             require_once(VIEWS_PATH."editCompany.php");
         }
 
-        public function editCompany2($id, $nombre, $localidad, $rubro, $vacantes){
-            $studentList = $this->companyDAO->GetAll();
-            foreach($studentList as $company){
+        public function editCompany2($id, $nombre, $localidad, $rubro){
+        
+            $this->companyDAO->Modify($id, $nombre, $localidad, $rubro);
 
-                if($company->getId() == $id){
-                    $this->Remove($id);
-                    $this->Add($id, $nombre, $localidad, $rubro, $vacantes);
                     require_once(VIEWS_PATH."Companys.php");
-                }
-            }
+                
+            
         }
 
 

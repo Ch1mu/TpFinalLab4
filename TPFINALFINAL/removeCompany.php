@@ -16,22 +16,9 @@ use DAO\companyRepository as CompanyDAO;
     
 
 $companyDAO = new CompanyDAO();
-$companyList = $companyDAO->GetAll();
-$companyNewList = array();
 
 
-
-unlink("Data/company.json");
-
-foreach($companyList as $company)
-{
-    if($company->getId() <> $id)
-    {
-        $companyDAO->add($company);
-    }
-}
-
-
+$companyDAO->Delete($id);
 
 require_once(VIEWS_PATH."Companys.php");
 

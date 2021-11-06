@@ -21,7 +21,7 @@ foreach($companyList as $company)
 {
     if($company->getEmail() == $_SESSION["email"])
     {
-        $companyDAO->Modify($jobPositionId);
+        $companyDAO->ModifyApply($jobPositionId);
         echo '<script language="javascript">alert("te has postulado Exitosamente");';
         echo "window.location = '../mainUser.php'; </script>";
     }
