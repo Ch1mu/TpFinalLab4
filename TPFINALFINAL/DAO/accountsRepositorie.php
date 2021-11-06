@@ -62,26 +62,7 @@ class accountsRepositorie implements IStudentDAO
                 throw $ex;
             }
         }
-        public function Modify($job){
-            try{
-
-                $query = "UPDATE ".$this->tableName. " SET job = :job WHERE email = :email";
-                $parameters['job'] = $job;
-                $parameters['email'] = $_SESSION["email"];
-                   
-                $this->connection = Connection::GetInstance();
-
-                $this->connection->ExecuteNonQuery($query,$parameters);
-
-
-
-            }
-            catch(Exception $ex){
-                throw $ex;
-            }
-            
-
-        }
+       
 
 
     }

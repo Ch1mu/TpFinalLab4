@@ -3,13 +3,12 @@
 
     use Exception;
     use Models\jobOffer as Job;
-    
-    use DAO\iRepositorieJob as iRepositorieJob;
+    use DAO\iRepositorieJobOffer as iRepositorieJob;
     use DAO\Connection as Connection;
-class JobRepositorie implements iRepositorieJob{
+class JobOfferRepository implements iRepositorieJob{
 
         private $connection;
-        private $tableName = "jobs";
+        private $tableName = "JobOffers";
 
         public function Add(Job $student){
         
@@ -17,13 +16,14 @@ class JobRepositorie implements iRepositorieJob{
 
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (jobPositionId, careerId, description, companyIds) 
-                          VALUES (:jobPositionId, :careerId, :description, :companyIds);";
+                $query = "INSERT INTO ".$this->tableName." (offerId, nombre, apellido, jobId, compId) 
+                          VALUES (:offerId, :nombre, :apellido, :jobId, compId);";
 
-                $parameters['jobPositionId'] = $student->getJobPositionId();
-                $parameters['careerId'] = $student->getCareerId();
-                $parameters['description'] = $student->getDescription();
-                $parameters['companyIds'] = $student->getCompanyIds();
+                $parameters['offerId'] = $student->getOfferId();
+                $parameters['nombre'] = $student->getNombre();
+                $parameters['apellido'] = $student->getApellido();
+                $parameters['jobId'] = $student->getJobId();
+                $parameters['compId'] = $student->getCompId();
                
                 $this->connection = Connection::GetInstance();
 
@@ -50,10 +50,11 @@ class JobRepositorie implements iRepositorieJob{
                foreach ($resultSet as $valuesArray) 
                {
                 $student = new Job();
-                $student->setCompanyIds($valuesArray["companyIds"]);
-                $student->setCareerId($valuesArray["careerId"]);
-                $student->setJobPositionId($valuesArray["jobPositionId"]);
-                $student->setDescription($valuesArray["description"]);
+                $student->setOfferId($valuesArray["offerId"]);
+                $student->setNombre($valuesArray["nombre"]);
+                $student->setApellido($valuesArray["jobId"]);
+                $student->setJobId($valuesArray["compId"]);
+                $student->setCompId($valuesArray["apellido"]);
 
                 array_push($studentList, $student);
             }
@@ -65,6 +66,9 @@ class JobRepositorie implements iRepositorieJob{
                 throw $ex;
             }
         }
+        
+            
+
         
         
         }

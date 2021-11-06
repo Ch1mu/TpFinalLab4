@@ -2,6 +2,7 @@
     namespace Controllers;
 
     use DAO\JobRepositorie as JobRepository;
+    use DAO\JobOfferRepositorie as JobOfferRepository;
     use Models\Job as Job;
   
     class jobController
@@ -12,6 +13,7 @@
         public function __construct()
         {
             $this->jobDAO = new JobRepository();
+            $this->jobOfferDAO = 
         }
 
         public function Jobs()
@@ -72,7 +74,7 @@
         }
         public function Apply($jobPositionId)
         {
-            $tableName = "jobOffers";
+            
             require_once(ROOT."jobApply.php");
         }
         public function ViewApplies()

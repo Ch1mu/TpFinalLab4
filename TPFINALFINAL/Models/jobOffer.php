@@ -3,6 +3,7 @@ namespace Models;
 
 class jobOffer()
 {
+private $offerId;
 private $nombre;
 private $apellido;
 private $jobId;
@@ -84,6 +85,26 @@ return $this->compId;
 public function setCompId($compId)
 {
 $this->compId = $compId;
+
+return $this;
+}
+
+/**
+ * Get the value of offerId
+ */ 
+public function getOfferId()
+{
+return $this->offerId;
+}
+
+/**
+ * Set the value of offerId
+ *
+ * @return  self
+ */ 
+public function setOfferId($offerId)
+{
+$this->offerId = $offerId;
 
 return $this;
 }

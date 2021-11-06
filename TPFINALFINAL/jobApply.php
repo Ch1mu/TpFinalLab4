@@ -3,31 +3,22 @@
 require_once "Config/Autoload.php";
 require_once "Config/Config.php";
 
-use DAO\accountsRepositorie as accountDAO;
+use DAO\JobOfferRepository as accountDAO;
+use Models\jobOffer as jobOffer;
   use Config\Autoload as Autoload;
 
   Autoload::start();
 
   
     
-
+$student = new jobOffer();
 $companyDAO = new accountDAO();
 $companyList = $companyDAO->GetAll();
 
+$companyDAO->Add()
 
 
 
-foreach($companyList as $company)
-{
-    if($company->getEmail() == $_SESSION["email"])
-    {
-        $companyDAO->ModifyApply($jobPositionId);
-        echo '<script language="javascript">alert("te has postulado Exitosamente");';
-        echo "window.location = '../mainUser.php'; </script>";
-    }
-
-
-}
     
 
 
