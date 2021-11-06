@@ -68,9 +68,9 @@ class companyRepository implements icompanyDAO
         public function Modify($id, $nombre, $localidad, $rubro){
             try{
 
-                $query = "UPDATE ".$this->tableName. " SET id = :id,  nombre = :nombre, localidad = :localidad, rubro = :rubro WHERE id = :id";
+                $query = "UPDATE ".$this->tableName. " SET   nombre = :nombre, localidad = :localidad, rubro = :rubro WHERE id = :id";
                
-                $parameters['id'] = $id;
+                
                 $parameters['nombre'] = $nombre;
                 $parameters['localidad'] = $localidad;
                 $parameters['rubro'] = $rubro;

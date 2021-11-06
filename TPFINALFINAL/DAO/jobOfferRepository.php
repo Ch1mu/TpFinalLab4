@@ -16,14 +16,14 @@ class JobOfferRepository implements iRepositorieJob{
 
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (offerId, nombre, apellido, jobId, compId) 
-                          VALUES (:offerId, :nombre, :apellido, :jobId, compId);";
+                $query = "INSERT INTO ".$this->tableName." (Nombre, Apellido, jobId, CompId) 
+                          VALUES (:Nombre, :Apellido, :jobId, :CompId);";
 
-                $parameters['offerId'] = $student->getOfferId();
-                $parameters['nombre'] = $student->getNombre();
-                $parameters['apellido'] = $student->getApellido();
+ 
+                $parameters['Nombre'] = $student->getNombre();
+                $parameters['Apellido'] = $student->getApellido();
                 $parameters['jobId'] = $student->getJobId();
-                $parameters['compId'] = $student->getCompId();
+                $parameters['CompId'] = $student->getCompId();
                
                 $this->connection = Connection::GetInstance();
 
@@ -51,10 +51,10 @@ class JobOfferRepository implements iRepositorieJob{
                {
                 $student = new Job();
                 $student->setOfferId($valuesArray["offerId"]);
-                $student->setNombre($valuesArray["nombre"]);
-                $student->setApellido($valuesArray["jobId"]);
-                $student->setJobId($valuesArray["compId"]);
-                $student->setCompId($valuesArray["apellido"]);
+                $student->setNombre($valuesArray["Nombre"]);
+                $student->setJobId($valuesArray["jobId"]);
+                $student->setCompId($valuesArray["CompId"]);
+                $student->setApellido($valuesArray["Apellido"]);
 
                 array_push($studentList, $student);
             }

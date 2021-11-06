@@ -26,21 +26,16 @@
         }
         
         
-        public function Add($id, $nombre, $localidad, $rubro)
+        public function Add($nombre, $localidad, $rubro)
         {
-            $flag = 0;
             $list = new companyRepository();
             $studentList = array();
             $studentList = $list->GetAll();
 
-            foreach($studentList as $value){
-                if($value->getId() == $id){
-                    $flag = 1;
-                }
-            }
-            if($flag == 0){
+
+            
+            
                 $company = new Company();
-                $company->setId($id);
                 $company->setNombre($nombre);
                 $company->setLocalidad($localidad);
                 $company->setRubro($rubro);
@@ -48,11 +43,8 @@
                 $this->companyDAO->Add($company);
 
                 $this->Companys();
-            }
-            else{
-                echo '<script language="javascript">alert("Ya hay una empresa con ese ID");';
-                echo "window.location = 'AddCompany'; </script>";
-            }
+            
+            
         }
         
         public function deleteForm()

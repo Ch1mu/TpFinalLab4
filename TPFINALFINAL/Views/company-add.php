@@ -9,12 +9,7 @@
                <h2 class="mb-4">Agregar Empresas</h2>
                <form action="<?php echo FRONT_ROOT ?>Company/Add" method="post" class="bg-light-alpha p-5">
                     <div class="row">                         
-                         <div class="col-lg-4">
-                              <div class="form-group">
-                                   <label for="">ID de Empresa</label>
-                                   <input type="text" name="id" value="" class="form-control">
-                              </div>
-                         </div>
+                         
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Nombre</label>

@@ -9,7 +9,7 @@ USE TpFinalLab4;
 DROP TABLE IF EXISTS students;
 CREATE TABLE students
 (
-	studentId INT  NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+	studentId INT  AUTO_INCREMENT PRIMARY KEY ,
     dni  varchar(100) NOT NULL,
 	firstName varchar(100) NOT NULL,
     lastName varchar(100) NOT NULL,
@@ -26,8 +26,9 @@ CREATE TABLE students
 DROP TABLE IF EXISTS JobOffers;
 CREATE TABLE JobOffers
 (
-    Nombre NVARCHAR(100) NOT NULL PRIMARY KEY,
-    Apellido NVARCHAR(100) NOT NULL,
+	offerId INT AUTO_INCREMENT PRIMARY KEY,
+    Nombre VARCHAR(100) NOT NULL,
+    Apellido VARCHAR(100) NOT NULL,
     jobId INT,
     CompId INT,
     constraint fk_jobId foreign key (jobId) references jobs(jobPositionId) ON DELETE  CASCADE ON UPDATE  CASCADE
@@ -47,18 +48,18 @@ CREATE TABLE account
 DROP TABLE IF EXISTS jobs;
 CREATE TABLE jobs
 (
-        jobPositionId INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        jobPositionId INT AUTO_INCREMENT PRIMARY KEY,
         careerId INT NOT NULL,
         description VARCHAR(100) NOT NULL,
         companyIds INT NOT NULL,
-        constraint fk_companyId foreign key (companyIds) references companys(id) ON DELETE  CASCADE ON UPDATE  CASCADE
+        constraint fk_companyId foreign key (companyIds) references companys(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS companys;
 CREATE TABLE companys
 (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    nombre NVARCHAR(100) NOT NULL,
+    id INT  AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
     localidad VARCHAR(100) NOT NULL,
     rubro VARCHAR(100) NOT NULL
         
@@ -66,17 +67,18 @@ CREATE TABLE companys
 
 DROP TABLE IF EXISTS careers;
 CREATE TABLE IF NOT EXISTS careers (
-  careerId int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  description varchar(100) COLLATE latin1_spanish_ci NOT NULL,
+  careerId int  AUTO_INCREMENT PRIMARY KEY,
+  description varchar(100),
   active varchar(100) NOT NULL
   
 );
 
 
-insert into students values (0,null,null,null,null,null,null,null,null,"admin@utn.com",null);
+insert into students values (0,0,0,0,0,0,0,0,0,"admin@utn.com",0);
 select * from careers;
 select * from account;
 select * from companys;
 select * from jobs;
 select * from students;
+select * from JobOffers;
 

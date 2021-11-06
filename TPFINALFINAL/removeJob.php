@@ -16,20 +16,10 @@ use DAO\JobRepositorie as JobDAO;
     
 
 $companyDAO = new JobDAO();
-$companyList = $companyDAO->GetAll();
-$companyNewList = array();
 
 
+$companyDAO->Delete($id);
 
-unlink("Data/jobs.json");
-
-foreach($companyList as $company)
-{
-    if($company->getJobPositionId() <> $id)
-    {
-        $companyDAO->add($company);
-    }
-}
 
 
 

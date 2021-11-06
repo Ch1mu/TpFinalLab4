@@ -17,10 +17,9 @@ class StudentDAO implements IStudentDAO
            
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (studentId, careerId, firstName, lastName, dni, fileNumber, gender, birthDate,email, phoneNumber, activ) 
-                          VALUES (:studentId, :careerId, :firstName, :lastName, :dni, :fileNumber, :gender, :birthDate, :email, :phoneNumber, :active);";
+                $query = "INSERT INTO ".$this->tableName." (careerId, firstName, lastName, dni, fileNumber, gender, birthDate,email, phoneNumber, activ) 
+                          VALUES (:careerId, :firstName, :lastName, :dni, :fileNumber, :gender, :birthDate, :email, :phoneNumber, :active);";
 
-                $parameters['studentId'] = $student->getStudentId();
                 $parameters['careerId'] = $student->getCareerId();
                 $parameters['firstName'] = $student->getFirstName();
                 $parameters['lastName'] = $student->getLastName();

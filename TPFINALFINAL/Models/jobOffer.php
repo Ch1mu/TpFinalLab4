@@ -1,7 +1,7 @@
 <?php
 namespace Models;
 
-class jobOffer()
+class jobOffer
 {
 private $offerId;
 private $nombre;

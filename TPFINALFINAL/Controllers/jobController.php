@@ -2,7 +2,7 @@
     namespace Controllers;
 
     use DAO\JobRepositorie as JobRepository;
-    use DAO\JobOfferRepositorie as JobOfferRepository;
+    use DAO\JobOfferRepository as JobOfferRepository;
     use Models\Job as Job;
   
     class jobController
@@ -13,7 +13,7 @@
         public function __construct()
         {
             $this->jobDAO = new JobRepository();
-            $this->jobOfferDAO = 
+            $this->jobOfferDAO = new JobOfferRepository();
         }
 
         public function Jobs()
@@ -25,19 +25,16 @@
             require_once(VIEWS_PATH."job-add.php");
         }
 
-           public function Add($jobPositionId, $careerId, $description, $companyIds)
+           public function Add($careerId, $description, $companyIds)
         {
-            $flag = 0;
+            
             $list = new JobRepository();
             $studentList = array();
             $studentList = $list->GetAll();
 
-            foreach($studentList as $value){
-                if($value->getJobPositionId() == $jobPositionId){
-                    $flag = 1;
-                }
-            }
-            if($flag == 0){
+            
+            
+           
                 $company = new Job();
                 $company->setCompanyIds($companyIds);
                 $company->setJobPositionId($jobPositionId);
@@ -47,11 +44,8 @@
                 $this->jobDAO->Add($company);
 
                 $this->jobs();
-            }
-            else{
-                echo '<script language="javascript">alert("Ya hay un Trabajo con ese ID");';
-                echo "window.location = 'AddForm'; </script>";
-            }
+            
+
         }
         
         public function List()
@@ -74,8 +68,8 @@
         }
         public function Apply($jobPositionId)
         {
-            
             require_once(ROOT."jobApply.php");
+
         }
         public function ViewApplies()
         {

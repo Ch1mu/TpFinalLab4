@@ -17,10 +17,10 @@ class JobRepositorie implements iRepositorieJob{
 
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (jobPositionId, careerId, description, companyIds) 
-                          VALUES (:jobPositionId, :careerId, :description, :companyIds);";
+                $query = "INSERT INTO ".$this->tableName." (careerId, description, companyIds) 
+                          VALUES (:careerId, :description, :companyIds);";
 
-                $parameters['jobPositionId'] = $student->getJobPositionId();
+
                 $parameters['careerId'] = $student->getCareerId();
                 $parameters['description'] = $student->getDescription();
                 $parameters['companyIds'] = $student->getCompanyIds();
@@ -65,6 +65,26 @@ class JobRepositorie implements iRepositorieJob{
                 throw $ex;
             }
         }
+        public function Delete($id){
+            try{
+
+                $query = "DELETE FROM ".$this->tableName. " WHERE jobPositionId = :jobPositionId";
+               
+                $parameters['jobPositionId'] = $id;
+                
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query,$parameters);
+
+
+
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+        
+
+    }
         
         
         }

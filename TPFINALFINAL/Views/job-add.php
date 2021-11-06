@@ -26,12 +26,7 @@
                                    <input type="number" name="careerId" value="" class="form-control">
                               </div>
                          </div>
-                         <div class="col-lg-4">
-                              <div class="form-group">
-                                   <label for="">ID de la posicion</label>
-                                   <input type="number" name="jobPositionId" value="" class="form-control">
-                              </div>
-                         </div>
+                         
                          <div class="col-lg-4">
                               <div class="form-group">
                                    <label for="">Nombre del puesto</label>

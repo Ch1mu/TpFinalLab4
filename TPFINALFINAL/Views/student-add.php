@@ -7,11 +7,6 @@
                     <h2 class="mb-4">Agregar alumno</h2>
                     <form action="<?php echo FRONT_ROOT ?>Student/Add" method="post" class="bg-light-alpha p-5">
                     <div class="row">                         
-                         <div class="col-lg-4">
-                              <div class="form-group">
-                                   <label for="">Legajo</label>
-                                   <input type="number" name="studentId" value="" class="form-control">
-                              </div>
                          </div>
                          <div class="col-lg-4">
                               <div class="form-group">

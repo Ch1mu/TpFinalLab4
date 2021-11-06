@@ -25,10 +25,9 @@
             require_once(VIEWS_PATH."student-list.php");
         }
 
-        public function Add($studentId, $firstName, $lastName, $careerId, $dni, $gender, $birthDate, $phoneNumber, $fileNumber, $email, $active)
+        public function Add($firstName, $lastName, $careerId, $dni, $gender, $birthDate, $phoneNumber, $fileNumber, $email, $active)
         {
             $student = new Student();
-            $student->setStudentId($studentId);
             $student->setfirstName($firstName);
             $student->setLastName($lastName);
             $student->setCareerId($careerId);
