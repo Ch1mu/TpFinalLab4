@@ -6,19 +6,41 @@ require_once "Config/Config.php";
 use DAO\JobOfferRepository as jobOfferDAO;
 use DAO\StudentDAO as StudentDAO;
 use DAO\JobRepositorie as jobDAO;
-
 use Models\jobOffer as jobOffer;
   use Config\Autoload as Autoload;
-$flag = 0;
   Autoload::start();
+
+$flag = 0;
+$flag1 = 0;
+ 
+
+
   if($_POST)
   {
+
   $studentDAO = new StudentDAO();
   $jobDAO = new jobDAO();
+  $jobOfferDAO = new jobOfferDAO();
   $jobList = array();
   $studentL = array();
-  $jobList = $jobDAO->getAll();
-  $studentL = $studentDAO->getAll();
+  $jobOfferList = array();
+  $jobOfferList = $jobOfferDAO->GetAll();
+  $jobList = $jobDAO->GetAll();
+  $studentL = $studentDAO->GetAll();
+
+  
+ foreach ($jobOfferList as $offer) 
+ {
+  if($_SESSION["email"] == $offer->getEmail())
+  {
+    $flag1 =1;
+    
+  }
+
+ }
+
+ if($flag1 == "0")
+ {
 
     foreach($studentL as $stud)
     {
@@ -63,6 +85,13 @@ else {
     }
 }
   }
+  else {
+    {
+      echo '<script language="javascript">alert("Usted ya se ha postulado anteriormente");';
+      echo "window.location = 'List'; </script>";
+    }
+  }
+}
     
 
 

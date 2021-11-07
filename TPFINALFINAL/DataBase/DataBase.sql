@@ -28,6 +28,7 @@ CREATE TABLE JobOffers
 (
 	offerId INT AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) NOT NULL,
     Apellido VARCHAR(100) NOT NULL,
     jobId INT,
     CompId INT,

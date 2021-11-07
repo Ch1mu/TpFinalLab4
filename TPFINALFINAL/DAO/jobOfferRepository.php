@@ -16,10 +16,10 @@ class JobOfferRepository implements iRepositorieJob{
 
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (Nombre, Apellido, jobId, CompId) 
-                          VALUES (:Nombre, :Apellido, :jobId, :CompId);";
+                $query = "INSERT INTO ".$this->tableName." (Email, Nombre, Apellido, jobId, CompId) 
+                          VALUES (:Email, :Nombre, :Apellido, :jobId, :CompId);";
 
- 
+                $parameters['Email'] = $_SESSION["email"];
                 $parameters['Nombre'] = $student->getNombre();
                 $parameters['Apellido'] = $student->getApellido();
                 $parameters['jobId'] = $student->getJobId();
@@ -50,6 +50,7 @@ class JobOfferRepository implements iRepositorieJob{
                foreach ($resultSet as $valuesArray) 
                {
                 $student = new Job();
+                $student->setEmail($valuesArray["Email"]);
                 $student->setOfferId($valuesArray["offerId"]);
                 $student->setNombre($valuesArray["Nombre"]);
                 $student->setJobId($valuesArray["jobId"]);
