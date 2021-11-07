@@ -4,6 +4,8 @@
     use DAO\JobRepositorie as JobRepository;
     use DAO\JobOfferRepository as JobOfferRepository;
     use Models\Job as Job;
+    use Models\JobOffer as JobOffer;
+    
   
     class jobController
     {
@@ -27,21 +29,20 @@
 
            public function Add($careerId, $description, $companyIds)
         {
-            
-            $list = new JobRepository();
-            $studentList = array();
-            $studentList = $list->GetAll();
-
-            
-            
-           
+                 $list = new JobRepository();
+                $studentList = array();
+                $studentList = $list->GetAll(); 
                 $company = new Job();
                 $company->setCompanyIds($companyIds);
-                $company->setJobPositionId($jobPositionId);
+                
                 $company->setCareerId($careerId);
                 $company->setDescription($description);
 
                 $this->jobDAO->Add($company);
+                
+           
+
+                
 
                 $this->jobs();
             

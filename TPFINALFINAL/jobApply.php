@@ -9,7 +9,7 @@ use DAO\JobRepositorie as jobDAO;
 
 use Models\jobOffer as jobOffer;
   use Config\Autoload as Autoload;
-
+$flag = 0;
   Autoload::start();
   if($_POST)
   {
@@ -33,16 +33,19 @@ use Models\jobOffer as jobOffer;
         if($jobPositionId == $stud->getJobPositionId())
             {
                 $compId = $stud->getCompanyIds();
+                $flag = 1;
             }
     }
 
+
+if($flag == 1)
+{
 
 
   
     $student = new jobOffer();
     $companyDAO = new jobOfferDAO();
     $companyList = $companyDAO->GetAll();
-    $student->setOfferId("0");
     $student->setNombre($nombre);
     $student->setApellido($apellido);
     $student->setJobId($_POST["jobPositionId"]);
@@ -52,6 +55,13 @@ use Models\jobOffer as jobOffer;
 
     echo '<script language="javascript">alert("Usted ha aplicado correctamente al trabajo!");';
       echo "window.location = 'List'; </script>";
+}
+else {
+    {
+        echo '<script language="javascript">alert("No existe un trabajo con esa ID");';
+      echo "window.location = 'List'; </script>";
+    }
+}
   }
     
 
