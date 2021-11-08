@@ -20,14 +20,17 @@
    <title>Inicio De Sesion</title>
    <link href="../Views/css/bootstrap.min.css" rel="stylesheet">
  </head>
- <body background: >
+ <body >
  
-   <h2 >Inicio De Sesion</h2>
-   <div>
- <form action="../login.php"  method="post">
+   <br><br><br><br><br><br><br><br><br><br><br><br><br>
+ <center>
+ 
+   <h2 >Inicio De Sesion</h2><br>
+  
+ <form action="../login.php"  method="post" class="bg-light-alpha p-2">
          
-         <input type="email" name="email" id="email" value = "" placeholder="Email" required ><br>
-         <input type="password" name="password" id="password" value = "" placeholder="Password" required ><br>
+         <input type="email" name="email" id="email" value = "" placeholder="Email" required ><br><br>
+         <input type="password" name="password" id="password" value = "" placeholder="Password" required ><br><br>
          
          <button type="submit">Iniciar sesión</button>
          <br>
@@ -35,6 +38,7 @@
          <a href= "signupForm.php">Crear usuario</a>
        </form>
 </div>
+</center>
 
 
  </body>

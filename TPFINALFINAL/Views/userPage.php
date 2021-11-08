@@ -1,4 +1,6 @@
-<?php require_once "navUser.php"; ?>
+<?php require_once "navUser.php"; 
+ 	require_once "logged.php";
+	 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +11,11 @@
 </head>
 <body>
     <br>
+	<center>
+	<br>
 	<h1>Bienvenido a la interfaz de usuario</h1>
+	<br><br>
+	<img src="<?php echo FRONT_ROOT ?>img/facultad.jpg" width = "800px" >
+	</center>
 </body>
 </html>

@@ -1,5 +1,7 @@
 <?php
     require_once('nav.php');
+    require_once "logged.php";
+    require_once "isAdmin.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,4 +1,7 @@
-<?php require_once "nav.php"; ?>
+<?php require_once "nav.php"; 
+ 	require_once "logged.php";
+	 require_once "isAdmin.php";
+	 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,6 +12,11 @@
 </head>
 <body>
     <br>
+	<center>
+	<br>
 	<h1>Bienvenido a la interfaz de Administrador</h1>
+	<br><br>
+	<img src="<?php echo FRONT_ROOT ?>img/facultad.jpg" width = "800px" >
+	</center>
 </body>
 </html>

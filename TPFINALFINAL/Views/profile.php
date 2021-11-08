@@ -1,6 +1,8 @@
 <?php
 require_once("navUser.php");
 require_once("__DIR__/../Config/Autoload.php");
+require_once "logged.php";
+
 
 use DAO\StudentDAO as StudentDAO;
 use Models\Student as Student;

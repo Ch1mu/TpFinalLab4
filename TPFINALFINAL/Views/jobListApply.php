@@ -1,9 +1,12 @@
 <?php
+ 	require_once "logged.php";
+
     require_once("navUser.php");
     require_once("DIR/../Config/Autoload.php");
 
     use Models\Student as Student;
     use DAO\StudentDAO as StudentDAO;
+    use DAO\companyRepository as companyDAO;
     use Config\Autoload as Autoload;
     Autoload::Start();
 ?>
@@ -23,7 +26,10 @@
 
 
 $studentDAO = new StudentDAO();
+$companyDAO = new companyDAO();
+$companyL = array();
 $studentList = array();
+$companyL = $companyDAO->GetAll();
 $studentList = $studentDAO->GetAll();
 
   foreach($studentList as $student)
@@ -42,9 +48,21 @@ $studentList = $studentDAO->GetAll();
                         </summary>
                    <p class = "table bg-light-alpha">                       
                    Id del trabajo: <?php echo $job->getJobPositionId();?><br>
+                   <?php 
+                   foreach($companyL as $company)
+                   {
+                        if($company->getId() == $job->getCompanyIds())
+                        {
+                             $nombre = $company->getNombre();
+                        }
+                   }
+
+                   ?>
+                   Empresa: <?php echo $nombre ?>
                    </p>
                    
               </details>
+              
          <?php
         }
     }
@@ -68,4 +86,5 @@ $studentList = $studentDAO->GetAll();
 
 </div>
      </section>
+     
 </main>

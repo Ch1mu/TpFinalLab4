@@ -1,5 +1,7 @@
 <?php
     require_once(VIEWS_PATH.'nav.php');
+    require_once "logged.php";
+    require_once "isAdmin.php";
     
 
     foreach($studentList as $company){

@@ -4,6 +4,8 @@ if($_SESSION["email"] == "admin@utn.com")
     else {
         require_once(VIEWS_PATH."navUser.php");
     }
+    require_once "logged.php";
+
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">

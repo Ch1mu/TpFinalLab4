@@ -1,5 +1,7 @@
 <?php
     require_once('nav.php');
+    require_once "logged.php";
+    require_once "isAdmin.php";
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">
