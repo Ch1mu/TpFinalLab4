@@ -3,6 +3,7 @@
 
     use DAO\JobRepositorie as JobRepository;
     use DAO\JobOfferRepository as JobOfferRepository;
+    use DAO\companyRepository as companyDAO;
     use Models\Job as Job;
     use Models\JobOffer as JobOffer;
     
@@ -32,6 +33,22 @@
                  $list = new JobRepository();
                 $studentList = array();
                 $studentList = $list->GetAll(); 
+                $companyDAO = new companyDAO();
+                $companyL = array();
+                $companyL = $companyDAO->GetAll();
+                $flag = 0;
+                foreach($companyL as $company)
+                {
+                    if($company->getId() == $companyIds)
+                    {
+                        $flag = 1;
+                    }
+                }
+                if($flag == 1)
+                {
+
+                
+
                 $company = new Job();
                 $company->setCompanyIds($companyIds);
                 
@@ -39,12 +56,17 @@
                 $company->setDescription($description);
 
                 $this->jobDAO->Add($company);
-                
+                $this->jobs();
+                }
+                else {
+                    echo '<script language="javascript">alert("No existe una empresa con este ID!");';
+                    echo "window.location = 'Jobs'; </script>";
+                }
            
 
                 
 
-                $this->jobs();
+                
             
 
         }
