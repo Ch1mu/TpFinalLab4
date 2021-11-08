@@ -39,7 +39,7 @@
                 $flag = 0;
                 foreach($companyL as $company)
                 {
-                    if($company->getId() == $companyIds)
+                    if($company->getId() == $companyIds && $company->getActive() == 1)
                     {
                         $flag = 1;
                     }

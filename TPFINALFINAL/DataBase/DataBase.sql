@@ -63,6 +63,7 @@ CREATE TABLE companys
     nombre VARCHAR(100) NOT NULL,
     localidad VARCHAR(100) NOT NULL,
     rubro VARCHAR(100) NOT NULL
+    active int
         
 );
 

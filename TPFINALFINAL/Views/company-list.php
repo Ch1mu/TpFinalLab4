@@ -22,7 +22,9 @@ if($_SESSION["email"] == "admin@utn.com")
                          <?php
                               foreach($studentList as $company)
                               {
-                                   ?>
+                                   if($company->getActive() == 1)
+                                   {   
+                                        ?>
                                         <details class ="btn btn-primary ml-auto d-block">
                                                 <summary>
                                                      <?php echo $company->getNombre()?>
@@ -31,11 +33,13 @@ if($_SESSION["email"] == "admin@utn.com")
                                              Id de la compañia: <?php echo $company->getId();?><br>
                                              Localidad: <?php echo $company->getLocalidad();?><br>
                                              Rubro: <?php echo $company->getRubro();?><br>
+                         
                                              </p>
-                                        </details>
-                                   <?php
+                                        </details<?php
+                                   }
                               }
                          ?>
+                         
                          </tr>
                     </tbody>
                </table>

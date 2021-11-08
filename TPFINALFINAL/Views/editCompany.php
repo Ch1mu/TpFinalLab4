@@ -38,6 +38,12 @@
                                         <input type="text" name="localidad" value="<?php echo $company->getLocalidad()?>" class="form-control">
                                     </div>
                                 </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
+                                        <label for="">Estado</label>
+                                        <input type="text" name="active" value="<?php echo $company->getActive()?>" class="form-control">
+                                    </div>
+                                </div>
                             </div>
                             <button type="submit" class="btn btn-dark ml-auto d-block">Editar</button>
                     </form>

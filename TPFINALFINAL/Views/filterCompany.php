@@ -17,7 +17,7 @@ if($_SESSION["email"] == "admin@utn.com")
                          <?php
                               foreach($studentList as $company)
                               { 
-                                  if(strpos($company->getNombre(), $nombre) ){
+                                  if(strstr($company->getNombre(), $nombre) ){
                                    ?>
                                         <details class ="btn btn-primary ml-auto d-block">
                                                 <summary>

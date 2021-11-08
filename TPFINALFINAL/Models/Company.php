@@ -7,7 +7,7 @@
         private $nombre;
         private $localidad;
         private $rubro;
-        
+        private $active;
         
       
 
@@ -92,5 +92,25 @@
         }
 
         
+
+        /**
+         * Get the value of activo
+         */ 
+        public function getActive()
+        {
+                return $this->activo;
+        }
+
+        /**
+         * Set the value of activo
+         *
+         * @return  self
+         */ 
+        public function setActive($activo)
+        {
+                $this->activo = $activo;
+
+                return $this;
+        }
     }
 ?>

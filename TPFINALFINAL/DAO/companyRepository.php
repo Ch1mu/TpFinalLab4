@@ -17,9 +17,9 @@ class companyRepository implements icompanyDAO
            
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (id, nombre, localidad, rubro) 
-                          VALUES (:id, :nombre, :localidad, :rubro);";
-
+                $query = "INSERT INTO ".$this->tableName." (id, nombre, localidad, rubro, active) 
+                          VALUES (:id, :nombre, :localidad, :rubro, :active);";
+                $parameters['active'] = 1;
                 $parameters['id'] = $student->getId();
                 $parameters['nombre'] = $student->getNombre();
                 $parameters['localidad'] = $student->getLocalidad();
@@ -49,6 +49,7 @@ class companyRepository implements icompanyDAO
                foreach ($resultSet as $valuesArray) 
                {
                 $student = new Company();
+                $student->setActive($valuesArray["active"]);
                 $student->setId($valuesArray["id"]);
                 $student->setNombre($valuesArray["nombre"]);
                 $student->setLocalidad($valuesArray["localidad"]);
@@ -65,12 +66,12 @@ class companyRepository implements icompanyDAO
                 throw $ex;
             }
         }
-        public function Modify($id, $nombre, $localidad, $rubro){
+        public function Modify($id, $nombre, $localidad, $rubro, $active){
             try{
 
-                $query = "UPDATE ".$this->tableName. " SET   nombre = :nombre, localidad = :localidad, rubro = :rubro WHERE id = :id";
+                $query = "UPDATE ".$this->tableName. " SET   nombre = :nombre, localidad = :localidad, rubro = :rubro active = :active WHERE id = :id";
                
-                
+                $parameters['active'] = $active;
                 $parameters['nombre'] = $nombre;
                 $parameters['localidad'] = $localidad;
                 $parameters['rubro'] = $rubro;
@@ -90,14 +91,15 @@ class companyRepository implements icompanyDAO
             public function Delete($id){
                 try{
     
-                    $query = "DELETE FROM ".$this->tableName. " WHERE id = :id";
+                    $query = "UPDATE ".$this->tableName. " SET active = :active WHERE id = :id";
                    
+                    $parameters['active'] = 0;
                     $parameters['id'] = $id;
                     
                     $this->connection = Connection::GetInstance();
     
                     $this->connection->ExecuteNonQuery($query,$parameters);
-    
+                    
     
     
                 }
