@@ -5,8 +5,10 @@ require_once "logged.php";
 
 
 use DAO\StudentDAO as StudentDAO;
+use DAO\jobOfferRepository as jobOfferRepository;
 use Models\Student as Student;
 use Config\Autoload as Autoload;
+
 Autoload::Start();
 
     $list = new StudentDAO();
@@ -50,6 +52,23 @@ Autoload::Start();
         }
     }
         ?>
+    
+    <br>
+<details class = "btn btn-primary ml-auto d-block">
+    <?php
+        $offerList = new jobOfferRepository();
+        $applyList = array();
+        $applyList = $offerList->GetAll();
+     ?> 
+        <summary>Postulaciones de trabajo activas</summary>
+        <p class = "table bg-light-alpha">
+        <?php foreach($applyList as $apply){
+            if($apply->getEmail() == $student->getEmail()){ ?> 
+                Id del trabajo: <?php echo $apply->getJobId(); ?> <br>
+                Id de la empresa: <?php echo $apply->getCompId(); ?> <br>
+            }
+        }
+    }
     </details>
     
     
