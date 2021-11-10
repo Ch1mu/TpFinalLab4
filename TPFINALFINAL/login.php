@@ -33,16 +33,16 @@ require_once "Config/Config.php";
     {
       session_start();
       $_SESSION["email"] = $email;
-      header("location: index.php");
+      header("location: Home/Index");
     }
     else {
       session_start();
       $_SESSION["email"] = $email;
-      header("location: mainUser.php");
+      header("location: Home/mainUser");
     } 
     }
     else {
-      header("location: Views/loginForm.php");
+      header("location: Home/loginForm");
   }
 }
 

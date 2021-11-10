@@ -11,9 +11,10 @@
         {
             require_once(VIEWS_PATH."userPage.php");
         }
-        public function singupForm()
+        public function signupForm()
         {
             require_once(VIEWS_PATH."singupForm.php");
-        }        
+        } 
+             
     }
 ?>
