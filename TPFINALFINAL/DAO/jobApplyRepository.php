@@ -3,12 +3,12 @@
 
     use Exception;
     use Models\jobOffer as Job;
-    use DAO\iRepositorieJobOffer as iRepositorieJob;
+    use DAO\iRepositorieJobApply as iRepositorieJob;
     use DAO\Connection as Connection;
-class JobOfferRepository implements iRepositorieJob{
+class JobApplyRepository implements iRepositorieJob{
 
         private $connection;
-        private $tableName = "JobOffers";
+        private $tableName = "JobApplies";
 
         public function Add(Job $student){
         
@@ -40,6 +40,7 @@ class JobOfferRepository implements iRepositorieJob{
 
         public function GetAll()
         {
+            
             try {
                 $studentList = array();
 

@@ -42,7 +42,7 @@ require_once "Config/Config.php";
     } 
     }
     else {
-      header("location: Home/loginForm");
+      header("location: Views/loginForm.php");
   }
 }
 

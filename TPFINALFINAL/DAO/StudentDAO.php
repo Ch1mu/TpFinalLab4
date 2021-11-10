@@ -11,7 +11,22 @@ class StudentDAO implements IStudentDAO
 
         private $connection;
         private $tableName = "students";
+        private $studentList;
+        private $ch;
+        private $url;
+        private $header;
 
+        public function __construct(){
+
+            $this->ch = curl_init();
+            $this->url = "https://utn-students-api.herokuapp.com/api/Student";
+            $this->header = array("x-api-key: 4f3bceed-50ba-4461-a910-518598664c08");
+           
+            curl_setopt($this->ch,CURLOPT_URL,$this->url);
+            curl_setopt($this->ch,CURLOPT_RETURNTRANSFER,true);
+            curl_setopt($this->ch,CURLOPT_HTTPHEADER,$this->header);
+
+        }
         public function Add(Student $student){
 
            
@@ -46,42 +61,46 @@ class StudentDAO implements IStudentDAO
 
         public function GetAll()
         {
-            try {
-                $studentList = array();
-
-                $query = "SELECT * FROM ".$this->tableName.";";
-                $this->connection = Connection::GetInstance();
-
-                $resultSet = $this->connection->Execute($query);
-               foreach ($resultSet as $valuesArray) 
-               {
-                $student = new Student();
-                $student->setStudentId($valuesArray["studentId"]);
-                $student->setCareerId($valuesArray["careerId"]);
-                $student->setDni($valuesArray["dni"]);
-                $student->setFirstName($valuesArray["firstName"]);
-                $student->setLastName($valuesArray["lastName"]);
-                $student->setGender($valuesArray["gender"]);
-                $student->setBirthDate($valuesArray["birthDate"]);
-                $student->setPhoneNumber($valuesArray["phoneNumber"]);
-                $student->setFileNumber($valuesArray["fileNumber"]);
-                $student->setEmail($valuesArray["email"]);
-                $student->setActive($valuesArray["activ"]);
-
-                array_push($studentList, $student);
-            }
-                return $studentList;
-
-            } 
-            catch (Exception $ex) 
-            {
-                throw $ex;
-            }
+    
+             $this->RetrieveData();
+                return $this->studentList;
         }
+
+        private function RetrieveData()
+        {
+            $resp = curl_exec($this->ch); 
+            $this->studentList = array();
+            $arrayToDecode = json_decode($resp, true);
+       
+    
+            if($resp !=null)
+            {
+            
+
+                $arrayToDecode = json_decode($resp, true);
+
+                foreach($arrayToDecode as $valuesArray)
+                { 
+                    $student = new Student();
+                    $student->setStudentId($valuesArray["studentId"]);
+                    $student->setCareerId($valuesArray["careerId"]);
+                    $student->setDni($valuesArray["dni"]);
+                    $student->setFirstName($valuesArray["firstName"]);
+                    $student->setLastName($valuesArray["lastName"]);
+                    $student->setGender($valuesArray["gender"]);
+                    $student->setBirthDate($valuesArray["birthDate"]);
+                    $student->setPhoneNumber($valuesArray["phoneNumber"]);
+                    $student->setFileNumber($valuesArray["fileNumber"]);
+                    $student->setEmail($valuesArray["email"]);
+                    $student->setActive($valuesArray["active"]);
+                    array_push($this->studentList, $student);
+                }
+                
+            }
             
 
     }
 
 
-
+}
 ?>

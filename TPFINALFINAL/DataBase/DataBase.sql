@@ -23,8 +23,8 @@ CREATE TABLE students
     
 );
 
-DROP TABLE IF EXISTS JobOffers;
-CREATE TABLE JobOffers
+DROP TABLE IF EXISTS JobApplies;
+CREATE TABLE JobApplies
 (
 	offerId INT AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(100) NOT NULL,
@@ -41,8 +41,7 @@ DROP TABLE IF EXISTS account;
 CREATE TABLE account
 (
     email NVARCHAR(100) NOT NULL PRIMARY KEY,
-    pass NVARCHAR(100) NOT NULL,
-    job INT 
+    pass NVARCHAR(100) NOT NULL
 
 );
 
@@ -62,7 +61,7 @@ CREATE TABLE companys
     id INT  AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     localidad VARCHAR(100) NOT NULL,
-    rubro VARCHAR(100) NOT NULL
+    rubro VARCHAR(100) NOT NULL,
     active int
         
 );
@@ -83,4 +82,3 @@ select * from companys;
 select * from jobs;
 select * from students;
 select * from JobOffers;
-

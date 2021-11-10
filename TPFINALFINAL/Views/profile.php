@@ -5,8 +5,10 @@ require_once "logged.php";
 
 
 use DAO\StudentDAO as StudentDAO;
+use DAO\careerDAO as CareerDAO;
 use DAO\jobOfferRepository as jobOfferRepository;
 use Models\Student as Student;
+use Models\Career as Career;
 use Config\Autoload as Autoload;
 
 Autoload::Start();
@@ -14,11 +16,22 @@ Autoload::Start();
     $list = new StudentDAO();
     $studentList = array();
     $studentList = $list->GetAll();
+    $careerDAO = new CareerDAO();
+    $careerList = array();
+    $careerList = $careerDAO->GetAll();
+    $careerName;
 
     foreach($studentList as $student){
     if($student->getEmail() == $_SESSION["email"]){
-    ?>
-
+    ?><?php
+      foreach($careerList as $career)
+    {
+        if($career->getCareerId() == $student->getCareerId())
+        {
+            $careerName = $career->getDescription();
+        }
+    }
+?>
     <br><br><br><br><br>
     <details class = "btn btn-primary ml-auto d-block">
         <summary>Datos Personales</summary>
@@ -39,6 +52,7 @@ Autoload::Start();
         <p class = "table bg-light-alpha">
         Id del estudiante: <?php echo $student->getStudentId();?><br>
         Id de la carrera: <?php echo $student->getCareerId();?><br>
+        Nombre de la carrera: <?php echo $careerName;?><br>
         Numero de Archivo: <?php echo $student->getFileNumber();?>
         <?php 
         if($student->getActive() == true){
@@ -52,7 +66,9 @@ Autoload::Start();
         }
     }
         ?>
-    
+    </details>
+
+
     <br>
 <details class = "btn btn-primary ml-auto d-block">
     <?php
@@ -62,13 +78,19 @@ Autoload::Start();
      ?> 
         <summary>Postulaciones de trabajo activas</summary>
         <p class = "table bg-light-alpha">
-        <?php foreach($applyList as $apply){
-            if($apply->getEmail() == $student->getEmail()){ ?> 
+        <?php foreach($applyList as $apply)
+        {
+            
+        
+            if($apply->getEmail() == $_SESSION["email"]){ ?> 
                 Id del trabajo: <?php echo $apply->getJobId(); ?> <br>
                 Id de la empresa: <?php echo $apply->getCompId(); ?> <br>
-            }
+            <?php
+            
         }
     }
+    
+    ?>
     </details>
     
     

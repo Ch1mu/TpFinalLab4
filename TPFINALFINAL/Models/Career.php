@@ -1,10 +1,11 @@
-
 <?php
     namespace Models;
+
     class Career{
         private $careerId;
         private $description;
         private $active;
+
 	function getActive() { 
  		return $this->active; 
 	} 

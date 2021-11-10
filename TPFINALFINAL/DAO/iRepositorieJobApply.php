@@ -3,7 +3,7 @@
 
     use Models\jobOffer as Job;
 
-    interface iRepositorieJobOffer
+    interface iRepositorieJobApply
     {
         function Add(Job $job);
         function GetAll();

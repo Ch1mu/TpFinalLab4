@@ -4,8 +4,17 @@ if($_SESSION["email"] == "admin@utn.com")
     else {
         require_once("navUser.php");
     }
+
+
     require_once "logged.php";
 
+    use DAO\careerDAO as careerDAO;
+    use Models\Career as Career;
+
+    $careerDAO  = new careerDAO();
+    $list = array();
+    $list = $careerDAO->GetAll();
+    $careerName;
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">
@@ -18,17 +27,23 @@ if($_SESSION["email"] == "admin@utn.com")
                     </thead>
                     <tbody>
                          <?php
+                         
                               foreach($studentList as $job)
                               {
+                                   foreach($list as $career)
+                                   {
+                                        if($career->getCareerId() == $job->getCareerId())
+                                        $careerName = $career->getDescription();
+                                   }
                                    ?>
                                         <details class ="btn btn-primary ml-auto d-block">
                                                 <summary>
                                                      <?php echo $job->getDescription()?>
                                                   </summary>
                                              <p class = "table bg-light-alpha">
-                                             Id de la Compañia: <?php echo $job->getCompanyIds();?><br>
                                              Id del trabajo: <?php echo $job->getJobPositionId();?><br>
                                              Id de carrera universitaria: <?php echo $job->getCareerId();?><br>
+                                             Nombre de la Careera universitaria:  <?php echo $careerName;?><br>
                                              </p>
                                         </details>
                                    <?php
@@ -40,3 +55,4 @@ if($_SESSION["email"] == "admin@utn.com")
           </div>
      </section>
 </main>
+

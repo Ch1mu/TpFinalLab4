@@ -16,9 +16,10 @@
 
 <div class="container">
                 <br><br><br>
-                <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Job/AddForm">Agregar Trabajo</a>
-                <br>
+                
                 <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Job/listAllJobs">Listar Todos los Trabajos</a>
+               <br>
+               <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Job/addOfferForm">Añadir oferta laboral</a>
                <br>
                <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Job/removeForm">Eliminar Trabajo</a>
                <br>

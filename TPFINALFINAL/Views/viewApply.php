@@ -10,12 +10,12 @@
 
     Autoload::start();
 
-    use DAO\JobOfferRepository as JobOfferRepository;
+    use DAO\JobApplyRepository as JobApplyRepository;
     use Models\jobOffer as jobOffer;
 
-    $jobOffer = new JobOfferRepository();
-    $JobOfferList = array();
-    $JobOfferList = $jobOffer->GetAll();
+    $jobApply = new JobApplyRepository();
+    $JobApplyList = array();
+    $JobApplyList = $jobApply->GetAll();
 ?>
 
 <main class="py-5">
@@ -37,14 +37,14 @@
 
                            
                            <?php 
-                           foreach($JobOfferList as $JobOffers){
+                           foreach($JobApplyList as $JobApplies){
                                ?>
                                <tbody>
                                <tr>
-                                   <th><?php echo $JobOffers->getOfferId(); ?></th>
-                                   <th><?php echo $JobOffers->getNombre()."&nbsp". $JobOffers->getApellido();?></th>
-                                   <th><?php echo $JobOffers->getJobId(); ?></th>
-                                   <th><?php echo $JobOffers->getCompId(); ?></th>
+                                   <th><?php echo $JobApplies->getOfferId(); ?></th>
+                                   <th><?php echo $JobApplies->getNombre()."&nbsp". $JobOffers->getApellido();?></th>
+                                   <th><?php echo $JobApplies->getJobId(); ?></th>
+                                   <th><?php echo $JobApplies->getCompId(); ?></th>
                                 </tr>
                                     <?php    
                                         }

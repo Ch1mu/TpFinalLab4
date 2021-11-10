@@ -16,8 +16,6 @@
 <div class="container">
         
         <br><br><br>
-         <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Student/ShowAddView">Agregar Alumnos</a>
-          <br>
           <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Student/ShowListView">Listar Alumnos</a>
           <br>
           <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Student/filterForm">Filtrar Alumnos</a>

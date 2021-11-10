@@ -49,16 +49,8 @@ $studentList = $studentDAO->GetAll();
                    <p class = "table bg-light-alpha">                       
                    Id del trabajo: <?php echo $job->getJobPositionId();?><br>
                    <?php 
-                   foreach($companyL as $company)
-                   {
-                        if($company->getId() == $job->getCompanyIds())
-                        {
-                             $nombre = $company->getNombre();
-                        }
-                   }
-
+                 
                    ?>
-                   Empresa: <?php echo $nombre ?>
                    </p>
                    
               </details>

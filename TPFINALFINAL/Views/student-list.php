@@ -17,7 +17,9 @@
                               foreach($studentList as $student)
                               {
                                    ?>
-                                       
+                                       <?php if($student->getActive() == 1)
+                                       {
+                                            ?>
                                         <details class = "btn btn-primary ml-auto d-block">
                                                 <summary class = "">
                                                      <?php 
@@ -44,6 +46,7 @@
                                             </details>
                                         
                                    <?php
+                                       }
                               }
                          ?>
           </div>

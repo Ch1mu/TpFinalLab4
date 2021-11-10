@@ -1,11 +1,9 @@
 <?php
     namespace DAO;
 
-    use Models\Job as Job;
 
-    interface iRepositorieJob
+    interface iRepositorieCareer
     {
-        
         function GetAll();
     }
 ?>
