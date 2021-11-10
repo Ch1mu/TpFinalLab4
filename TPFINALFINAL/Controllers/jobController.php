@@ -97,7 +97,7 @@
         public function ViewApplies()
         {
             $jobList = $this->jobDAO->getAll();
-            require_once(VIEWS_PATH."viewApplies.php");
+            require_once(VIEWS_PATH."viewApply.php");
         }
 
     }
