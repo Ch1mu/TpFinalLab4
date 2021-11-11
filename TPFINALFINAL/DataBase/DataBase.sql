@@ -32,9 +32,8 @@ CREATE TABLE JobApplies
     Email VARCHAR(100) NOT NULL,
     Apellido VARCHAR(100) NOT NULL,
     jobId INT,
-    CompId INT,
-    constraint fk_jobId foreign key (jobId) references jobs(jobPositionId) ON DELETE  CASCADE ON UPDATE  CASCADE
-
+    CompId INT
+   
 );
 
 
