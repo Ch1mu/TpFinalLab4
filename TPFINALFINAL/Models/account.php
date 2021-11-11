@@ -7,6 +7,7 @@ class account{
 private $email;
 private $password;
 private $job;
+private $role;
 
 
 
@@ -70,8 +71,15 @@ $this->job = $job;
 
 return $this;
 }
+
+function getRole() { 
+ 	return $this->role; 
+} 
+
+function setRole($role) {  
+	$this->role = $role; 
+} 
+
 }
-
-
-
+	
 ?>
