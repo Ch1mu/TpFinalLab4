@@ -39,6 +39,7 @@ $studentList = $studentDAO->GetAll();
  
     foreach($jobList as $job)
     {
+         
         if($job->getCareerId() == $student->getCareerId())
         {
          ?>
@@ -48,6 +49,10 @@ $studentList = $studentDAO->GetAll();
                         </summary>
                    <p class = "table bg-light-alpha">                       
                    Id del trabajo: <?php echo $job->getJobPositionId();?><br>
+                   <form action="Job/Apply" method="post" class="bg-light-alpha p-2 ">
+                        <?php $id = $job->getJobPositionId(); ?>
+                        <button type="submit" class="btn btn-dark ml-auto d-block">Postularse</button>
+                   </form>
                    <?php 
                  
                    ?>
@@ -69,7 +74,7 @@ $studentList = $studentDAO->GetAll();
                                     <br>
                                     <label for="">ID de Trabajo</label>
                                    
-                                   <input type="number" name="jobPositionId" value="" class="form-control">
+                                   <input type="number" name="id" value="" class="form-control">
                            <br>
                          
                         
@@ -80,3 +85,4 @@ $studentList = $studentDAO->GetAll();
      </section>
      
 </main>
+

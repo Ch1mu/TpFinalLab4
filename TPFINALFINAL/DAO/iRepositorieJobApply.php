@@ -1,7 +1,7 @@
 <?php
     namespace DAO;
 
-    use Models\jobOffer as Job;
+    use Models\jobApply as Job;
 
     interface iRepositorieJobApply
     {

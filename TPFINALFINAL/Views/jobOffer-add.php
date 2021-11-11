@@ -16,7 +16,7 @@
                     <div class="col-lg-">
                               <div class="form-group">
                               <br>
-                                   <label for="">ID de la empresa</label>
+                                   <label for="">Nombre de la empresa</label>
                                    
                                    <select name="nombre" id="nombre">
                                         <?php

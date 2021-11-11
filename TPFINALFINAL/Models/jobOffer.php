@@ -4,7 +4,9 @@
     class JobOffer 
     {   
         
-        
+        private $offerID;
+        private $careerId;
+        private $jobPositionId;
         private $description;
         private $companyID;
         
@@ -51,6 +53,66 @@
         public function setCompanyID($companyID)
         {
                 $this->companyID = $companyID;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of jobPositionId
+         */ 
+        public function getJobPositionId()
+        {
+                return $this->jobPositionId;
+        }
+
+        /**
+         * Set the value of jobPositionId
+         *
+         * @return  self
+         */ 
+        public function setJobPositionId($jobPositionId)
+        {
+                $this->jobPositionId = $jobPositionId;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of careerId
+         */ 
+        public function getCareerId()
+        {
+                return $this->careerId;
+        }
+
+        /**
+         * Set the value of careerId
+         *
+         * @return  self
+         */ 
+        public function setCareerId($careerId)
+        {
+                $this->careerId = $careerId;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of offerID
+         */ 
+        public function getOfferID()
+        {
+                return $this->offerID;
+        }
+
+        /**
+         * Set the value of offerID
+         *
+         * @return  self
+         */ 
+        public function setOfferID($offerID)
+        {
+                $this->offerID = $offerID;
 
                 return $this;
         }

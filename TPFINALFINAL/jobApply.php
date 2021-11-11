@@ -3,15 +3,16 @@
 require_once "Config/Autoload.php";
 require_once "Config/Config.php";
 
-use DAO\JobOfferRepository as jobOfferDAO;
+use DAO\jobOfferDAO as jobOfferDAO;
+use DAO\JobApplyRepository as jobApplyDAO;
 use DAO\StudentDAO as StudentDAO;
-use DAO\JobRepositorie as jobDAO;
 use Models\jobOffer as jobOffer;
+use Models\jobApply as jobApply;
   use Config\Autoload as Autoload;
+
   Autoload::start();
 
-$flag = 0;
-$flag1 = 0;
+
  
 
 
@@ -19,86 +20,50 @@ $flag1 = 0;
   {
 
   $studentDAO = new StudentDAO();
-  $jobDAO = new jobDAO();
   $jobOfferDAO = new jobOfferDAO();
   $jobList = array();
   $studentL = array();
   $jobOfferList = array();
   $jobOfferList = $jobOfferDAO->GetAll();
-  $jobList = $jobDAO->GetAll();
   $studentL = $studentDAO->GetAll();
+  $flag = 0;
+  $flag1 = 0;
 
-  
- foreach ($jobOfferList as $offer) 
- {
-  if($_SESSION["email"] == $offer->getEmail())
+
+
+  foreach($studentL as $stud)
   {
-    $flag1 =1;
-    
+      if($_SESSION["email"] == $stud->getEmail())
+          {
+              $nombre = $stud->getFirstName();
+              $apellido = $stud->getLastName();
+              $flag = 1;
+          }
   }
-
- }
-
- if($flag1 == "0")
- {
-
-    foreach($studentL as $stud)
-    {
-        if($_SESSION["email"] == $stud->getEmail())
-            {
-                $nombre = $stud->getFirstName();
-                $apellido = $stud->getLastName();
-            }
-    }
-    foreach($jobList as $stud)
-    {
-        if($jobPositionId == $stud->getJobPositionId())
-            {
-                $compId = $stud->getCompanyIds();
-                $flag = 1;
-            }
-    }
-
-
-if($flag == 1)
+foreach($jobOfferList as $jobOffer)
 {
 
+if($jobOffer->getJobPositionId() == $id)
+{
+  $companyID = $jobOffer->getCompanyID();
+  $description = $jobOffer->getDescription();
+  $flag1 = 1;
+}
+}
+if($flag == 1 && $flag1 == 1)
+{
+    $jobApplyDAO = new jobApplyDAO();
+    $jobApply = new jobApply();
+    $jobApply->setNombre($description);
+    $jobApply->setNombre($nombre);
+    $jobApply->setApellido($apellido);
+    $jobApply->setJobId($id);
+    $jobApply->setCompId($companyID);
 
-  
-    $student = new jobOffer();
-    $companyDAO = new jobOfferDAO();
-    $companyList = $companyDAO->GetAll();
-    $student->setNombre($nombre);
-    $student->setApellido($apellido);
-    $student->setJobId($_POST["jobPositionId"]);
-    $student->setCompId($compId);
-
-    $companyDAO->Add($student);
+    $jobApplyDAO->Add($jobApply);
 
     echo '<script language="javascript">alert("Usted ha aplicado correctamente al trabajo!");';
       echo "window.location = 'List'; </script>";
 }
-else {
-    {
-        echo '<script language="javascript">alert("No existe un trabajo con esa ID");';
-      echo "window.location = 'List'; </script>";
-    }
-}
   }
-  else {
-    {
-      echo '<script language="javascript">alert("Usted ya se ha postulado anteriormente");';
-      echo "window.location = 'List'; </script>";
-    }
-  }
-}
-    
-
-
-
-
-    
-
-
-
 ?>
