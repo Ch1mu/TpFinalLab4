@@ -23,6 +23,7 @@ CREATE TABLE students
     
 );
 
+
 DROP TABLE IF EXISTS JobApplies;
 CREATE TABLE JobApplies
 (
@@ -45,14 +46,15 @@ CREATE TABLE account
 
 );
 
-DROP TABLE IF EXISTS jobs;
-CREATE TABLE jobs
+DROP TABLE IF EXISTS jobOffers;
+CREATE TABLE jobOffers
 (
-        jobPositionId INT AUTO_INCREMENT PRIMARY KEY,
+		offerID INT AUTO_INCREMENT PRIMARY KEY,
+        jobPositionId INT NOT NULL,
         careerId INT NOT NULL,
         description VARCHAR(100) NOT NULL,
-        companyIds INT NOT NULL,
-        constraint fk_companyId foreign key (companyIds) references companys(id) ON DELETE CASCADE ON UPDATE CASCADE
+        companyID int NOT NULL,
+        constraint fk_companyID foreign key (companyID) references companys(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS companys;
@@ -79,6 +81,7 @@ insert into students values (0,0,0,0,0,0,0,0,0,"admin@utn.com",0);
 select * from careers;
 select * from account;
 select * from companys;
-select * from jobs;
+select * from job;
 select * from students;
+select * from JobApplies;
 select * from JobOffers;

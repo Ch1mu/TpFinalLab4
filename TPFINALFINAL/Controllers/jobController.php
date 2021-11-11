@@ -3,7 +3,7 @@
 
     use DAO\JobRepositorie as JobRepository;
     use DAO\JobApplyRepository as JobApplyRepository;
-    use DAO\JobOfferDAO as JobOfferDAO;
+    use DAO\jobOfferDAO as JobOfferDAO;
     use DAO\companyRepository as companyDAO;
     use Models\Job as Job;
     use Models\JobOffer as JobOffer;
@@ -23,9 +23,10 @@
         public function __construct()
         {
             $this->jobDAO = new JobRepository();
+            $this->jobOfferDAO = new JobOfferDAO();
             $this->jobApplyDAO = new JobApplyRepository();
             $this->companyDAO = new companyDAO();
-            $this->jobOfferDAO = new JobOfferDAO();
+            
         }
 
         public function Jobs()
@@ -40,15 +41,36 @@
     }
     public function addOffer($description, $nombre)
     {
+        $companyList = $this->companyDAO->GetAll();
+        $list = $this->jobDAO->GetAll();
+        foreach($companyList as $company)
+        {
+            if($company->getNombre() == $nombre)
+            {
+                $id = $company->getId();
+            }
+           
+        }
+        foreach($list as $job)
+        {
+            if($job->getDescription() == $description)
+            {
+                $jobPositionId = $job->getJobPositionId();
+                $careerId = $job->getCareerId();
+            }
+        }
         $jobOffer = new JobOffer();
+        $jobOffer->setJobPositionId($jobPositionId);
+        $jobOffer->setCareerId($careerId);
         $jobOffer->setDescription($description);
-        $jobOffer->setCompanyID($nombre);
-        $jobOfferDAO->Add()
+        $jobOffer->setCompanyID($id);
+        $this->jobOfferDAO->Add($jobOffer);
+        header("location: Jobs");
     }
     
         public function List()
         {
-            $jobList = $this->jobDAO->getAll();
+            $jobList = $this->jobOfferDAO->getAll();
             require_once(VIEWS_PATH."jobListApply.php");
         }
        
@@ -58,7 +80,7 @@
             $studentList = $this->jobDAO->GetAll();
             require_once(VIEWS_PATH."job-list.php");
         }
-        public function Apply($jobPositionId)
+        public function Apply($id)
         {
             require_once(ROOT."jobApply.php");
 

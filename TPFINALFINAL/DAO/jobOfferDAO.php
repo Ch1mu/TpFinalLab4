@@ -22,8 +22,9 @@ class jobOfferDAO implements icompanyDAO
              
                
                 $parameters['companyID'] = $student->getCompanyID();
-             
+                $parameters['jobPositionId'] = $student->getJobPositionId();
                 $parameters['description'] = $student->getDescription();
+                $parameters['careerId'] = $student->getCareerId();
                 
                 
                 $this->connection = Connection::GetInstance();

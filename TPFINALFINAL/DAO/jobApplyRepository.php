@@ -2,7 +2,7 @@
     namespace DAO;
 
     use Exception;
-    use Models\jobOffer as Job;
+    use Models\jobApply as Job;
     use DAO\iRepositorieJobApply as iRepositorieJob;
     use DAO\Connection as Connection;
 class JobApplyRepository implements iRepositorieJob{
