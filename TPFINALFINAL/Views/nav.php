@@ -16,6 +16,10 @@
           <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>Job/Jobs">Trabajos</a>
           </li>
+
+          <li class="nav-item">
+               <a class="nav-link" href="<?php echo FRONT_ROOT ?>account/addForm">Agregar Usuarios</a>
+          </li>
           
           <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>logout/logOut">Cerrar Sesion</a>

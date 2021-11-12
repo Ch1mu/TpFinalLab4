@@ -52,34 +52,29 @@ $this->email = $email;
 return $this;
 }
 
+
+
+
+
 /**
- * Get the value of job
+ * Get the value of role
  */ 
-public function getJob()
+public function getRole()
 {
-return $this->job;
+return $this->role;
 }
 
 /**
- * Set the value of job
+ * Set the value of role
  *
  * @return  self
  */ 
-public function setJob($job)
+public function setRole($role)
 {
-$this->job = $job;
+$this->role = $role;
 
 return $this;
 }
-
-function getRole() { 
- 	return $this->role; 
-} 
-
-function setRole($role) {  
-	$this->role = $role; 
-} 
-
 }
 	
 ?>

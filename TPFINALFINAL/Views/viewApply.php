@@ -1,7 +1,7 @@
 <?php
  	require_once "logged.php";
 
-    require_once "nav.php";
+     require_once "navSession.php";
     require_once "Config/Autoload.php";
     require_once "Config/Config.php";
     

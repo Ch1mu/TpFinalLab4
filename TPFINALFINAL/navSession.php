@@ -14,7 +14,7 @@ foreach($accountList as $account){
             require_once(VIEWS_PATH."nav.php");
         }
         else if($account->getRole() == "Student"){
-            require_once(VIEWS_PATH."");
+            require_once(VIEWS_PATH."navUser.php");
         }
         else if($account->getRole() == "Company"){
             require_once(VIEWS_PATH."navCompany.php");
