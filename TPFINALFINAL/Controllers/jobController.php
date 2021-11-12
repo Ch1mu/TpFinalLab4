@@ -148,5 +148,14 @@
         }
         
 
+        public function viewAppliesCompany()
+        {
+            $comp = new CompanyDAO();
+            $compList = array();
+            $compList = $comp->GetAll();
+            $jobList = $this->jobDAO->getAll();
+            require_once(VIEWS_PATH."viewAppliesCompany.php");
+        }
+
     }
 ?>
