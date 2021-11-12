@@ -83,6 +83,7 @@
         public function Apply($id)
         {
             require_once(ROOT."jobApply.php");
+            Header("location: List");
 
         }
         public function ViewApplies()
@@ -95,6 +96,17 @@
             $this->jobApplyDAO->deleteApply($id);
             Header("location: ../Student/Profile");
         }
+        public function viewRemoveOffers()
+        {
+            $jobList = $this->jobOfferDAO->getAll();
+            require_once (VIEWS_PATH. "viewOffers.php");
+        }
+        public function deleteOffer($id)
+        {
+            $this->jobOfferDAO->deleteOffer($id);
+           header("location: viewRemoveOffers");
+        }
+        
 
         public function addOfferFormCompany(){
             $comp = new CompanyDAO();

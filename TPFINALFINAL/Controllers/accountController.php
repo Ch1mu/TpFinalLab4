@@ -10,6 +10,7 @@
         public function Add($email, $password, $role)
         {
             require_once(ROOT."adduserAdmin.php");
+            $this->addForm();
         }
              
     }

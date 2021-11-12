@@ -1,6 +1,11 @@
 <?php
     require_once('nav.php');
     require_once "logged.php";
+    use DAO\companyRepository as companyDAO;
+
+    $compDAO = new companyDAO();
+    $compL = array();
+    $compL = $compDAO->GetAll();
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">
@@ -21,11 +26,12 @@
     <br><br>
     <label for="">Tipo de Usuario</label>
     <select name="role" id="" placeholder= "tipo de cuenta">
-         <option value="Admin">Admin</option>
+     <option value="Admin">Admin</option>
     <option value="Student">Alumno</option>
     <option value="Company">Compañia</option>
     </select>
-                              </div>
+    <br><br>
+                 </div>
                          </div>
                     </div>
                     <button type="submit" class="btn btn-dark ml-auto d-block">Agregar</button>

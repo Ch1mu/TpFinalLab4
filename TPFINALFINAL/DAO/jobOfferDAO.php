@@ -51,6 +51,7 @@ class jobOfferDAO implements icompanyDAO
                {
                 $student = new JobOffer();
                 
+                $student->setOfferID($valuesArray["offerID"]);
                 $student->setJobPositionId($valuesArray["jobPositionId"]);
                 $student->setCareerId($valuesArray["careerId"]);
                 $student->setCompanyID($valuesArray["companyID"]);
@@ -67,7 +68,27 @@ class jobOfferDAO implements icompanyDAO
                 throw $ex;
             }
         }
+        public function deleteOffer($id){
+            try{
+
+                $query = "DELETE FROM ".$this->tableName. " WHERE offerId = :offerId";
+               
+                
+                $parameters['offerId'] = $id;
+                
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query,$parameters);
+                
+
+
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
         
+
+    }
            
             
 
