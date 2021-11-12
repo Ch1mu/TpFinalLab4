@@ -153,7 +153,7 @@
             $comp = new CompanyDAO();
             $compList = array();
             $compList = $comp->GetAll();
-            $jobList = $this->jobDAO->getAll();
+            $jobL = $this->jobDAO->getAll();
             require_once(VIEWS_PATH."viewAppliesCompany.php");
         }
 
