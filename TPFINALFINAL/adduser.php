@@ -26,7 +26,7 @@
   
   foreach($accountsRepositoryall as $account)
   {
-    if($_POST["email"] == $account->getEmail())
+    if($_POST["email"] == $account->getEmail() )
     {
       $flag = 1;
     }
@@ -37,7 +37,7 @@
     
     foreach($StudentList as $student)
     {
-      if($_POST["email"] == $student->getEmail())
+      if($_POST["email"] == $student->getEmail() && $student->getActive() == 1)
       {
           $flag2 = 1;
       }
@@ -49,7 +49,7 @@
       echo "window.location = 'Views/loginForm.php'; </script>";
       }
       else {
-          echo '<script language="javascript">alert("Ese email no esta registrado en esta institucion");';
+          echo '<script language="javascript">alert("Este email no esta registrado en esta institucion");';
           echo "window.location = 'Views/signupForm.php'; </script>";
       }
 
