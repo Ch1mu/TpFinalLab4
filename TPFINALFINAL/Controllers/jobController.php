@@ -108,5 +108,12 @@
         }
         
 
+        public function addOfferFormCompany(){
+            $comp = new CompanyDAO();
+            $compList = array();
+            $compList = $comp->GetAll();
+            require_once(VIEWS_PATH."addOfferFormCompany.php");
+        }
+
     }
 ?>
