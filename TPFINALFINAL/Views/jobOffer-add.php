@@ -21,9 +21,13 @@
                                    <select name="nombre" id="nombre">
                                         <?php
                                         foreach($companyList as $company)
+                                        {
+                                        if($company->getActive() == 1)
                                         {?>
-                                        <option value="<?php echo $company->getNombre()?>"><?php echo $company->getNombre()?></option>
-                                        <?php
+                                             <option value="<?php echo $company->getNombre()?>"><?php echo $company->getNombre()?></option>
+                                             <?php }
+                                        
+                                        
                                         }
                                         ?>
                                              

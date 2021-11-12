@@ -17,14 +17,11 @@
                 <br><br><br>
                 <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Company/addCompany">Agregar Empresas</a>
                 <br>
-                <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Company/ListCompany">Listar Empresas</a>
+                <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Company/ListAdmin">Gestionar Empresas</a>
                <br>
-               <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Company/deleteForm">Eliminar Empresas</a>
+               <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Company/activateForm">Reactivar Empresas</a>
                <br>
-               <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Company/filterForm">Filtrar Empresas</a>
-               <br>
-               <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Company/editForm">Editar Empresas</a>
-               <br>
+              
           
 </div>
 </body>

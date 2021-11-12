@@ -8,6 +8,7 @@
         private $localidad;
         private $rubro;
         private $active;
+        private $email;
         
       
 
@@ -111,6 +112,26 @@
                 $this->activo = $activo;
 
                 return $this;
+        }
+
+        /**
+         * Set the value of email
+         *
+         * @return  self
+         */ 
+        public function setEmail($email)
+        {
+                $this->email = $email;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of email
+         */ 
+        public function getEmail()
+        {
+                return $this->email;
         }
     }
 ?>

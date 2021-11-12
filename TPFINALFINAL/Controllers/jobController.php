@@ -39,6 +39,7 @@
         $list = $this->jobDAO->GetAll();
         require_once(VIEWS_PATH."jobOffer-add.php");
     }
+
     public function addOffer($description, $nombre)
     {
         $companyList = $this->companyDAO->GetAll();
@@ -66,7 +67,38 @@
         $jobOffer->setCompanyID($id);
         $this->jobOfferDAO->Add($jobOffer);
         header("location: Jobs");
-    }
+     }
+     
+     
+        public function addOfferCompany($description, $nombre)
+        {
+            $companyList = $this->companyDAO->GetAll();
+            $list = $this->jobDAO->GetAll();
+            foreach($companyList as $company)
+            {
+                if($company->getNombre() == $nombre)
+                {
+                    $id = $company->getId();
+                }
+               
+            }
+            foreach($list as $job)
+            {
+                if($job->getDescription() == $description)
+                {
+                    $jobPositionId = $job->getJobPositionId();
+                    $careerId = $job->getCareerId();
+                }
+            }
+            $jobOffer = new JobOffer();
+            $jobOffer->setJobPositionId($jobPositionId);
+            $jobOffer->setCareerId($careerId);
+            $jobOffer->setDescription($description);
+            $jobOffer->setCompanyID($id);
+            $this->jobOfferDAO->Add($jobOffer);
+            header("location: ../Home/mainCompany");;
+        }
+     
     
         public function List()
         {
@@ -109,11 +141,12 @@
         
 
         public function addOfferFormCompany(){
-            $comp = new CompanyDAO();
-            $compList = array();
-            $compList = $comp->GetAll();
+           
+            $companyList = $this->companyDAO->GetAll();
+            $list = $this->jobDAO->GetAll();
             require_once(VIEWS_PATH."addOfferFormCompany.php");
         }
+        
 
     }
 ?>

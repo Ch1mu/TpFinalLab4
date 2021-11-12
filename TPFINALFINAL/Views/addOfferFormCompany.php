@@ -2,13 +2,16 @@
     require_once('navCompany.php');
     require_once "logged.php";
 
-    $companyID;
+   
 
-    foreach($compList as $company){
+    foreach($companyList as $company){
         if($company->getEmail() == $_SESSION["email"]){
-            $companyID = $company->getId();
+            $companyID = $company->getNombre();
+            
+            
         }
     }
+  
     
 ?>
 <main class="py-5">
@@ -18,11 +21,10 @@
                
                <h2 class="mb-4">Agregar Oferta Laboral</h2>
 
-               <form action="<?php echo FRONT_ROOT ?>Job/addOffer" method="post" class="bg-light-alpha p-5">
+               <form action="<?php echo FRONT_ROOT ?>job/addOfferCompany" method="post" class="bg-light-alpha p-5">
                     <div class="row">
-                    <div class="col-lg-">
-                              <div class="form-group">
-                        <input type="text" name="id" id="id" value="<?php echo $companyID?>" readonly hidden>                        
+                    
+                                          
                          <div class="col-lg-">
                               <div class="form-group">
                               <br>
@@ -31,13 +33,16 @@
                                         <?php
                                         foreach($list as $job)
                                         {?>
-                                        <option value="<?php echo $job->getDescription()?>"><?php echo $job->getDescription()?></option>
+                                        
+                                        <option name= "description" value="<?php echo $job->getDescription();?>"><?php echo $job->getDescription();?></option>
                                         <?php
+                                        
                                         }
                                         ?>
                                              
                                    
                                    </select>
+                                   <input type="text" name= "nombre" value="<?php echo $companyID?>" hidden>
                                    
                                   
                               </div>

@@ -29,7 +29,7 @@ Autoload::Start();
         $compList = $compDAO->GetAll();
      ?> 
      <br>
-    <center><h1>Ver/Eliminar Ofertas Laborales</h1></center>
+    <center><h1>Gestionar Ofertas Laborales</h1></center>
    <div class="container">
 
    <br><br>
@@ -64,14 +64,14 @@ Autoload::Start();
              
             <summary><?php echo $jobName; ?></summary>
                 <br>
-
+                <p class =  "table bg-light-alpha">
                 Empresa: <?php echo $compName; ?> <br>
-
-                <form action="<?php echo FRONT_ROOT ?>Job/deleteOffer" method="post" class="btn btn-dark ml-auto d-1">
+                </p>
+                <form action="<?php echo FRONT_ROOT ?>Job/deleteOffer" method="post" class="btn btn-primary ml-auto d-1">
 
                   <input type="number"  name = "id" value= "<?php echo $offer->getOfferId();?>" readonly hidden>
 
-                  <button type="submit" class="btn btn-dark ml-auto d-block">Eliminar</button> 
+                  <button type="submit" class="">Eliminar</button> 
 
                 </details>
            

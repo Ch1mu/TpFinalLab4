@@ -14,7 +14,11 @@
         public function signupForm()
         {
             require_once(VIEWS_PATH."singupForm.php");
-        } 
+        }
+        public function mainCompany($message = "")
+        {
+            require_once(VIEWS_PATH."companyPage.php");
+        }
              
     }
 ?>

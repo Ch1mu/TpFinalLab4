@@ -24,9 +24,14 @@
             $studentList = $this->companyDAO->GetAll();
             require_once(VIEWS_PATH."company-list.php");
         }
+        public function ListAdmin()
+        {
+            $studentList = $this->companyDAO->GetAll();
+            require_once(VIEWS_PATH."company-listAdmin.php");
+        }
         
         
-        public function Add($nombre, $localidad, $rubro)
+        public function Add($nombre, $localidad, $rubro, $email)
         {
             $list = new companyRepository();
             $studentList = array();
@@ -36,6 +41,7 @@
             
             
                 $company = new Company();
+                $company->setEmail($email);
                 $company->setNombre($nombre);
                 $company->setLocalidad($localidad);
                 $company->setRubro($rubro);
@@ -55,7 +61,9 @@
         public function Remove($id)
         {
             
-            require_once(ROOT."removeCompany.php");
+        $this->companyDAO->Delete($id);
+
+        header("location: ListAdmin");
             
         }
 
@@ -71,23 +79,29 @@
         {
             require_once(VIEWS_PATH."Companys.php");
         }
-        public function editForm(){
-            $studentList = $this->companyDAO->GetAll();
-            require_once(VIEWS_PATH."editForm.php");
-        }
-
+        
         public function editCompany($id){
             $studentList = $this->companyDAO->GetAll();
             require_once(VIEWS_PATH."editCompany.php");
         }
 
-        public function editCompany2($id, $nombre, $localidad, $rubro){
+        public function editCompany2($id, $nombre, $localidad, $rubro, $active, $email){
         
-            $this->companyDAO->Modify($id, $nombre, $localidad, $rubro);
+            $this->companyDAO->Modify($id, $nombre, $localidad, $rubro, $active, $email);
 
                     require_once(VIEWS_PATH."Companys.php");
                 
             
+        }
+        public function activateForm()
+        {
+            require_once(VIEWS_PATH."activateForm.php");
+        }
+
+        public function activate($id)
+        {
+            $this->companyDAO->Activate($id);
+            header("location: ListAdmin");
         }
 
 

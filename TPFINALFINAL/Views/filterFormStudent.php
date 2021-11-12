@@ -14,7 +14,7 @@
                                    <label for="">Legajo</label>
                                    <input type="text" name="studentId" value="" class="form-control">
                               </div>
-                    <button type="submit" class="btn btn-dark ml-auto d-block">Filtrar por Nombre</button>
+                    <button type="submit" class="btn btn-dark ml-auto d-block">Filtrar por Legajo</button>
                </form>
           </div>
      </section>

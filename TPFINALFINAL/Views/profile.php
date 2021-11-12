@@ -109,15 +109,20 @@ Autoload::Start();
             ?>
 
              <details class = "btn btn-primary ml-auto d-block">
+                 
             <summary><?php echo $jobName; ?></summary>
         <?php
             if($apply->getEmail() == $_SESSION["email"]){ ?> 
                 <br>
-                Empresa: <?php echo $compName; ?> <br>
-                <form action="<?php echo FRONT_ROOT ?>Job/deleteApply" method="post" class="btn btn-dark ml-auto d-1">
+                
+                <p class = "table bg-light-alpha">
+                Empresa: <?php echo $compName; ?> 
+                </p>
+                <form action="<?php echo FRONT_ROOT ?>Job/deleteApply" method="post" class="btn btn-primary ml-auto d-1">
                   <input type="number"  name = "id" value= "<?php echo $apply->getOfferId();?>" readonly hidden>
-                  <button type="submit" class="btn btn-dark ml-auto d-block">Eliminar Postulacion</button> 
-
+                  <button type="submit">Eliminar Postulacion</button> 
+            
+            
                 </details>
             <?php
             

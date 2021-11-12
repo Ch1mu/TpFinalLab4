@@ -30,6 +30,12 @@
                                    <input type="text" name="localidad" value="" class="form-control">
                               </div>
                          </div>
+                         <div class="col-lg-4">
+                              <div class="form-group">
+                                   <label for="">Email</label>
+                                   <input type="email" name="email" value="" class="form-control">
+                              </div>
+                         </div>
                     </div>
                     <button type="submit" class="btn btn-dark ml-auto d-block">Agregar</button>
                </form>

@@ -40,6 +40,12 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
+                                        <label for="">Email</label>
+                                        <input type="text" name="email" value="<?php echo $company->getEmail()?>" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
                                         <label for="">Estado</label>
                                         <input type="text" name="active" value="<?php echo $company->getActive()?>" class="form-control">
                                     </div>

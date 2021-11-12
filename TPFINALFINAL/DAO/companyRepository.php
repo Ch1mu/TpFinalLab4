@@ -17,9 +17,11 @@ class companyRepository implements icompanyDAO
            
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (id, nombre, localidad, rubro, active) 
-                          VALUES (:id, :nombre, :localidad, :rubro, :active);";
+                $query = "INSERT INTO ".$this->tableName." (id, nombre, localidad, rubro, active, email) 
+                          VALUES (:id, :nombre, :localidad, :rubro, :active, :email);";
+
                 $parameters['active'] = 1;
+                $parameters['email'] = $student->getEmail();
                 $parameters['id'] = $student->getId();
                 $parameters['nombre'] = $student->getNombre();
                 $parameters['localidad'] = $student->getLocalidad();
@@ -49,6 +51,7 @@ class companyRepository implements icompanyDAO
                foreach ($resultSet as $valuesArray) 
                {
                 $student = new Company();
+                $student->setEmail($valuesArray["email"]);
                 $student->setActive($valuesArray["active"]);
                 $student->setId($valuesArray["id"]);
                 $student->setNombre($valuesArray["nombre"]);
@@ -66,15 +69,18 @@ class companyRepository implements icompanyDAO
                 throw $ex;
             }
         }
-        public function Modify($id, $nombre, $localidad, $rubro, $active){
+        public function Modify($id, $nombre, $localidad, $rubro, $active, $email){
             try{
 
-                $query = "UPDATE ".$this->tableName. " SET   nombre = :nombre, localidad = :localidad, rubro = :rubro active = :active WHERE id = :id";
-               
+                $query = "UPDATE ".$this->tableName. " SET nombre = :nombre, localidad = :localidad, rubro = :rubro, active = :active, email = :email WHERE id = :id";
+
+                
+               $parameters['id'] = $id;
                 $parameters['active'] = $active;
                 $parameters['nombre'] = $nombre;
                 $parameters['localidad'] = $localidad;
                 $parameters['rubro'] = $rubro;
+                $parameters['email'] = $email;
                    
                 $this->connection = Connection::GetInstance();
 
