@@ -43,10 +43,11 @@ use Models\jobApply as jobApply;
 foreach($jobOfferList as $jobOffer)
 {
 
-if($jobOffer->getJobPositionId() == $id)
+if($jobOffer->getOfferId() == $id)
 {
   $companyID = $jobOffer->getCompanyID();
   $description = $jobOffer->getDescription();
+  $jobid = $jobOffer->getJobPositionId();
   $flag1 = 1;
 }
 }
@@ -57,7 +58,7 @@ if($flag == 1 && $flag1 == 1)
     $jobApply->setNombre($description);
     $jobApply->setNombre($nombre);
     $jobApply->setApellido($apellido);
-    $jobApply->setJobId($id);
+    $jobApply->setJobId($jobid);
     $jobApply->setCompId($companyID);
 
     $jobApplyDAO->Add($jobApply);

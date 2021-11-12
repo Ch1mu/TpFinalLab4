@@ -21,7 +21,7 @@
                <br>
                <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Job/addOfferForm">Añadir oferta laboral</a>
                <br>
-               <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Job/removeForm">Eliminar Trabajo</a>
+               <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Job/viewRemoveOffers">Eliminar Ofertas Laborales</a>
                <br>
                <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Job/viewApplies">Ver Postulaciones</a>
                <br>

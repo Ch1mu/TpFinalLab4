@@ -109,6 +109,27 @@ class companyRepository implements icompanyDAO
             
 
         }
+        public function Activate($id){
+            try{
+
+                $query = "UPDATE ".$this->tableName. " SET active = :active WHERE id = :id";
+               
+                $parameters['active'] = 1;
+                $parameters['id'] = $id;
+                
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query,$parameters);
+                
+
+
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+        
+
+    }
             
 
     }
