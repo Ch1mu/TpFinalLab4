@@ -4,7 +4,7 @@
      </span>
      <ul class="navbar-nav ml-auto">
      <li class="nav-item">
-               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Home/Index"> Inicio</a>
+               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Home/mainCompany"> Inicio</a>
             <li>
                 <a class="nav-link" href="<?php echo FRONT_ROOT ?>Job/addOfferFormCompany">Añadir Oferta Laboral</a>
             </li>
