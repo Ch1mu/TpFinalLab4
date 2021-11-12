@@ -90,6 +90,11 @@
             $jobList = $this->jobDAO->getAll();
             require_once(VIEWS_PATH."viewApply.php");
         }
+        public function deleteApply($id)
+        {
+            $this->jobApplyDAO->deleteApply($id);
+            Header("location: ../Student/Profile");
+        }
 
     }
 ?>

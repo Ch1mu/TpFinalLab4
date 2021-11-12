@@ -69,6 +69,27 @@ class JobApplyRepository implements iRepositorieJob{
             }
         }
         
+        public function deleteApply($id){
+            try{
+
+                $query = "DELETE FROM ".$this->tableName. " WHERE offerId = :offerId";
+               
+                
+                $parameters['offerId'] = $id;
+                
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query,$parameters);
+                
+
+
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+        
+
+    }
             
 
         

@@ -32,6 +32,7 @@ $studentList = array();
 $companyL = $companyDAO->GetAll();
 $studentList = $studentDAO->GetAll();
 
+
   foreach($studentList as $student)
   {
   if($student->getEmail() == $_SESSION["email"])
@@ -42,6 +43,13 @@ $studentList = $studentDAO->GetAll();
          
         if($job->getCareerId() == $student->getCareerId())
         {
+          foreach($companyL as $company)
+          {
+               if($job->getCompanyID() == $company->getId())
+               {
+                    $companyID = $company->getNombre();
+               }
+          }
          ?>
               <details class ="btn btn-primary ml-auto d-block">
                       <summary>
@@ -49,13 +57,11 @@ $studentList = $studentDAO->GetAll();
                         </summary>
                    <p class = "table bg-light-alpha">                       
                    Id del trabajo: <?php echo $job->getJobPositionId();?><br>
-                   <form action="Job/Apply" method="post" class="bg-light-alpha p-2 ">
-                        <?php $id = $job->getJobPositionId(); ?>
-                        <button type="submit" class="btn btn-dark ml-auto d-block">Postularse</button>
-                   </form>
-                   <?php 
-                 
-                   ?>
+                   Compañia: <?php echo $companyID; ?><br>
+                   <form action="<?php echo FRONT_ROOT ?>Job/Apply" method="post" class="btn btn-dark ml-auto d-1">
+                  <input type="number"  name = "id" value= "<?php echo $job->getJobPositionId();?>" readonly hidden>
+                  <button type="submit" class="btn btn-dark ml-auto d-block">Aplicar</button>   
+                    </form>
                    </p>
                    
               </details>
@@ -68,18 +74,7 @@ $studentList = $studentDAO->GetAll();
 ?>
 <br>
 
-<form action="<?php echo FRONT_ROOT ?>Job/Apply" method="post" class="bg-light-alpha p-2 ">
-                    <h2>Postularse para una Empresa </h2>
-                    <h5>Recorda que solo puedes estar postulado en una empresa a la vez</h5>
-                                    <br>
-                                    <label for="">ID de Trabajo</label>
-                                   
-                                   <input type="number" name="id" value="" class="form-control">
-                           <br>
-                         
-                        
-                         <button type="submit" class="btn btn-dark ml-auto d-block">Agregar</button>     
-</form>
+
 
 </div>
      </section>

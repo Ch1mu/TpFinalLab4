@@ -26,7 +26,7 @@
   
   foreach($accountsRepositoryall as $account)
   {
-    if($_POST["email"] == $account->getEmail() )
+    if($_POST["email"] == $account->getEmail())
     {
       $flag = 1;
     }
@@ -35,29 +35,17 @@
   if($flag == 0)
   {
     
-    foreach($StudentList as $student)
-    {
-      if($_POST["email"] == $student->getEmail() && $student->getActive() == 1)
-      {
-          $flag2 = 1;
-      }
-    }
-      if($flag2 == 1)
-      {
+    
         $userRepository->Add($user);
         echo '<script language="javascript">alert("Cuenta Creada Correctamente!");';
-      echo "window.location = 'Views/loginForm.php'; </script>";
-      }
-      else {
-          echo '<script language="javascript">alert("Este email no esta registrado en esta institucion");';
-          echo "window.location = 'Views/signupForm.php'; </script>";
-      }
+      echo "window.location = 'addForm; </script>";
+      
 
   }
   else {
 
    echo '<script language="javascript">alert("Ya hay una cuenta creada con este email");';
-    echo "window.location = 'Views/signupForm.php'; </script>";
+    echo "window.location = 'addForm'; </script>";
   }
  
 

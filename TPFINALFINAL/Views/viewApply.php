@@ -1,7 +1,7 @@
 <?php
  	require_once "logged.php";
 
-    require_once "nav.php";
+     require_once "navSession.php";
     require_once "Config/Autoload.php";
     require_once "Config/Config.php";
     
@@ -11,7 +11,7 @@
     Autoload::start();
 
     use DAO\JobApplyRepository as JobApplyRepository;
-    use Models\jobOffer as jobOffer;
+    use Models\jobApply as jobApply;
 
     $jobApply = new JobApplyRepository();
     $JobApplyList = array();
@@ -42,7 +42,7 @@
                                <tbody>
                                <tr>
                                    <th><?php echo $JobApplies->getOfferId(); ?></th>
-                                   <th><?php echo $JobApplies->getNombre()."&nbsp". $JobOffers->getApellido();?></th>
+                                   <th><?php echo $JobApplies->getNombre()."&nbsp". $JobApplies->getApellido();?></th>
                                    <th><?php echo $JobApplies->getJobId(); ?></th>
                                    <th><?php echo $JobApplies->getCompId(); ?></th>
                                 </tr>

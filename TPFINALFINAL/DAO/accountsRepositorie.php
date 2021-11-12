@@ -17,12 +17,12 @@ class accountsRepositorie implements IStudentDAO
            
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (email, pass, job) 
-                          VALUES (:email, :pass, :job);";
+                $query = "INSERT INTO ".$this->tableName." (email, pass, role) 
+                          VALUES (:email, :pass, :role);";
 
                 $parameters['email'] = $student->getEmail();
                 $parameters['pass'] = $student->getPassword();
-                $parameters['job'] = $student->getJob();
+                $parameters['role'] = $student->getRole();
                 
                 
                 $this->connection = Connection::GetInstance();
@@ -50,7 +50,7 @@ class accountsRepositorie implements IStudentDAO
                 $student = new Account();
                 $student->setEmail($valuesArray["email"]);
                 $student->setPassword($valuesArray["pass"]);
-                $student->setJob($valuesArray["job"]);
+                $student->setRole($valuesArray["role"]);
                 
                 array_push($studentList, $student);
             }

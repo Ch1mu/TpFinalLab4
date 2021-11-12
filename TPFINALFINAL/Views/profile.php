@@ -6,7 +6,9 @@ require_once "logged.php";
 
 use DAO\StudentDAO as StudentDAO;
 use DAO\careerDAO as CareerDAO;
-use DAO\jobOfferRepository as jobOfferRepository;
+use DAO\jobApplyRepository as jobOfferRepository;
+use DAO\JobRepositorie as jobDAO;
+use DAO\companyRepository as companyRepository;
 use Models\Student as Student;
 use Models\Career as Career;
 use Config\Autoload as Autoload;
@@ -32,6 +34,7 @@ Autoload::Start();
         }
     }
 ?>
+<div class="container">
     <br><br><br><br><br>
     <details class = "btn btn-primary ml-auto d-block">
         <summary>Datos Personales</summary>
@@ -75,24 +78,56 @@ Autoload::Start();
         $offerList = new jobOfferRepository();
         $applyList = array();
         $applyList = $offerList->GetAll();
+        $jobDAO = new jobDAO();
+        $jobList = array();
+        $jobList = $jobDAO->GetAll();
+        $compDAO = new companyRepository();
+        $compList = array();
+        $compList = $compDAO->GetAll();
      ?> 
         <summary>Postulaciones de trabajo activas</summary>
         <p class = "table bg-light-alpha">
+            
         <?php foreach($applyList as $apply)
         {
-            
-        
+            foreach($jobList as $job)
+            {
+                if($job->getJobPositionId() == $apply->getJobId())
+                {
+                    $jobName = $job->getDescription();
+                }
+
+            }
+            foreach($compList as $comp)
+            {
+                if($comp->getId() == $apply->getCompId())
+                {
+                    $compName = $comp->getNombre();
+                }
+
+            }
+            ?>
+
+             <details class = "btn btn-primary ml-auto d-block">
+            <summary><?php echo $jobName; ?></summary>
+        <?php
             if($apply->getEmail() == $_SESSION["email"]){ ?> 
-                Id del trabajo: <?php echo $apply->getJobId(); ?> <br>
-                Id de la empresa: <?php echo $apply->getCompId(); ?> <br>
+                <br>
+                Empresa: <?php echo $compName; ?> <br>
+                <form action="<?php echo FRONT_ROOT ?>Job/deleteApply" method="post" class="btn btn-dark ml-auto d-1">
+                  <input type="number"  name = "id" value= "<?php echo $apply->getOfferId();?>" readonly hidden>
+                  <button type="submit" class="btn btn-dark ml-auto d-block">Aplicar</button> 
+
+                </details>
             <?php
             
         }
     }
-    
+   
     ?>
-    </details>
     
+    </details>
+    </div>
     
 
 

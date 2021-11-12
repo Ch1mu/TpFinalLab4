@@ -18,6 +18,12 @@
     
     <input type="password" name="password" id="password" placeholder="Password" required>
     <br><br>
+    <label for="">Tipo de Usuario</label>
+    <select name="role" id="" placeholder= "tipo de cuenta">
+    <option value="Student">Alumno</option>
+    <option value="Company">Compañia</option>
+    </select>
+    <br><br>
     <button type="submit">Crear usuario</button>
     <br>
     <a href="loginForm.php">Volver a la venta de Login</a>
