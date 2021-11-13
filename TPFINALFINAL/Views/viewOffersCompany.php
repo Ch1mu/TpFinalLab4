@@ -44,9 +44,10 @@ foreach($compList as $company){
 }
         foreach($offerL as $offer)
         {
-            if($offer->getCompanyID() == $companyID){
+            if($offer->getCompanyID() == $companyID)
+            {
 
-            
+            $limit = $offer->getVacancies();
 
             foreach($jobList as $job)
             {
@@ -74,7 +75,7 @@ foreach($compList as $company){
                 <br>
                 <p class =  "table bg-light-alpha">
                 Empresa: <?php echo $compName; ?> <br>
-                Limite de Postulantes: <?php echo $limit;  ?>
+                Limite de Postulantes: <?php echo $limit;  ?><br>
                 </p>
                 <form action="<?php echo FRONT_ROOT ?>Job/deleteOfferCompany" method="post" class="btn btn-primary ml-auto d-1">
 

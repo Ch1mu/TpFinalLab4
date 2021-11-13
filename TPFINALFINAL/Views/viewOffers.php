@@ -39,7 +39,7 @@ Autoload::Start();
 
         foreach($offerL as $offer)
         {
-            
+            $limit = $offer->getVacancies();
 
             foreach($jobList as $job)
             {
@@ -66,6 +66,7 @@ Autoload::Start();
                 <br>
                 <p class =  "table bg-light-alpha">
                 Empresa: <?php echo $compName; ?> <br>
+                Limite Postulantes: <?php echo $limit; ?> <br>
                 </p>
                 <form action="<?php echo FRONT_ROOT ?>Job/deleteOffer" method="post" class="btn btn-primary ml-auto d-1">
 

@@ -3,12 +3,13 @@ namespace Models;
 
 class jobApply
 {
-private $offerId;
+private $ApplyId;
 private $email;
 private $nombre;
 private $apellido;
 private $jobId;
 private $compId;
+private $offerId;
 
 /**
  * Get the value of nombre
@@ -126,6 +127,26 @@ return $this->email;
 public function setEmail($email)
 {
 $this->email = $email;
+
+return $this;
+}
+
+/**
+ * Get the value of ApplyId
+ */ 
+public function getApplyId()
+{
+return $this->ApplyId;
+}
+
+/**
+ * Set the value of ApplyId
+ *
+ * @return  self
+ */ 
+public function setApplyId($ApplyId)
+{
+$this->ApplyId = $ApplyId;
 
 return $this;
 }

@@ -4,12 +4,14 @@
     class JobOffer 
     {   
         
-        private $offerID;
+        
         private $careerId;
         private $jobPositionId;
         private $description;
         private $companyID;
         private $vacancies;
+        private $offerId;
+        private $active;
 
 
 
@@ -97,25 +99,7 @@
                 return $this;
         }
 
-        /**
-         * Get the value of offerID
-         */ 
-        public function getOfferID()
-        {
-                return $this->offerID;
-        }
-
-        /**
-         * Set the value of offerID
-         *
-         * @return  self
-         */ 
-        public function setOfferID($offerID)
-        {
-                $this->offerID = $offerID;
-
-                return $this;
-        }
+        
 
         /**
          * Get the value of vacancies
@@ -133,6 +117,66 @@
         public function setVacancies($vacancies)
         {
                 $this->vacancies = $vacancies;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of offerId
+         */ 
+        public function getOfferId()
+        {
+                return $this->offerId;
+        }
+
+        /**
+         * Set the value of offerId
+         *
+         * @return  self
+         */ 
+        public function setOfferId($offerId)
+        {
+                $this->offerId = $offerId;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of applyId
+         */ 
+        public function getApplyId()
+        {
+                return $this->applyId;
+        }
+
+        /**
+         * Set the value of applyId
+         *
+         * @return  self
+         */ 
+        public function setApplyId($applyId)
+        {
+                $this->applyId = $applyId;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of active
+         */ 
+        public function getActive()
+        {
+                return $this->active;
+        }
+
+        /**
+         * Set the value of active
+         *
+         * @return  self
+         */ 
+        public function setActive($active)
+        {
+                $this->active = $active;
 
                 return $this;
         }

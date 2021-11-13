@@ -66,6 +66,7 @@
         $jobOffer->setCareerId($careerId);
         $jobOffer->setDescription($description);
         $jobOffer->setCompanyID($id);
+        
         $this->jobOfferDAO->Add($jobOffer);
         header("location: Jobs");
      }

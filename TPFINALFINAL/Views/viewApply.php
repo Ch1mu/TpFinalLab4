@@ -63,7 +63,7 @@
                                ?>
                                <tbody>
                                <tr>
-                                   <th><?php echo $JobApplies->getOfferId(); ?></th>
+                                   <th><?php echo $JobApplies->getApplyId(); ?></th>
                                    <th><?php echo $JobApplies->getNombre()."&nbsp". $JobApplies->getApellido();?></th>
                                    <th><?php echo $position; ?></th>
                                    <th><?php echo $nombre; ?></th>

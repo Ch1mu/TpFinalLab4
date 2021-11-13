@@ -17,15 +17,15 @@ class jobOfferDAO implements icompanyDAO
            
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (jobPositionId, companyID, careerId, description, vacancies) 
-                          VALUES (:jobPositionId, :companyID, :careerId, :description, :vacancies);";
+                $query = "INSERT INTO ".$this->tableName." (jobPositionId, companyID, careerId, vacancies, description, active) 
+                          VALUES (:jobPositionId, :companyID, :careerId, :vacancies, :description, :active);";
              
-               
-                $parameters['companyID'] = $student->getCompanyID();
                 $parameters['vacancies'] = $student->getVacancies();
+                $parameters['companyID'] = $student->getCompanyID();
                 $parameters['jobPositionId'] = $student->getJobPositionId();
                 $parameters['description'] = $student->getDescription();
                 $parameters['careerId'] = $student->getCareerId();
+                $parameters['active'] = 1;
                 
                 
                 $this->connection = Connection::GetInstance();
@@ -58,6 +58,7 @@ class jobOfferDAO implements icompanyDAO
                 $student->setCareerId($valuesArray["careerId"]);
                 $student->setCompanyID($valuesArray["companyID"]);
                 $student->setDescription($valuesArray["description"]);
+                $student->setActive($valuesArray["active"]);
                 
 
                 array_push($studentList, $student);
@@ -88,9 +89,30 @@ class jobOfferDAO implements icompanyDAO
             catch(Exception $ex){
                 throw $ex;
             }
-        
+        }
+            public function setInactive($id){
+                try{
+    
+                    $query = "UPDATE ". $this->tableName. " SET active = :active WHERE offerId = :offerId";
+                   
+                    $parameters["active"] = 0;
+                    $parameters['offerId'] = $id;
+                    
+                    $this->connection = Connection::GetInstance();
+    
+                    $this->connection->ExecuteNonQuery($query,$parameters);
+                    
+    
+    
+                }
+                catch(Exception $ex){
+                    throw $ex;
+                }
+            
+    
+        }
 
-    }
+    
            
             
 

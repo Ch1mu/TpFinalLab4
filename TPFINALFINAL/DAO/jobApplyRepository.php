@@ -2,6 +2,7 @@
     namespace DAO;
 
     use Exception;
+    use DAO\jobOfferDAO as OfferDAO;
     use Models\jobApply as Job;
     use DAO\iRepositorieJobApply as iRepositorieJob;
     use DAO\Connection as Connection;
@@ -9,17 +10,27 @@ class JobApplyRepository implements iRepositorieJob{
 
         private $connection;
         private $tableName = "JobApplies";
+        private $offerList;
+        private $offerDAO;
+        
 
+        public function __construct()
+        {
+            $offerDAO = new OfferDAO();
+             $offerList = array();
+            $offerList = $offerDAO->GetAll();
+        }
         public function Add(Job $student){
         
             
 
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (Email, Nombre, Apellido, jobId, CompId) 
-                          VALUES (:Email, :Nombre, :Apellido, :jobId, :CompId);";
+                $query = "INSERT INTO ".$this->tableName." (Email, Nombre, Apellido, jobId, CompId, OfferId) 
+                          VALUES (:Email, :Nombre, :Apellido, :jobId, :CompId, :OfferId);";
 
                 $parameters['Email'] = $_SESSION["email"];
+                $parameters['OfferId'] = $student->getOfferId();
                 $parameters['Nombre'] = $student->getNombre();
                 $parameters['Apellido'] = $student->getApellido();
                 $parameters['jobId'] = $student->getJobId();
@@ -51,8 +62,11 @@ class JobApplyRepository implements iRepositorieJob{
                foreach ($resultSet as $valuesArray) 
                {
                 $student = new Job();
+
+                
                 $student->setEmail($valuesArray["Email"]);
-                $student->setOfferId($valuesArray["offerId"]);
+                $student->setOfferId($valuesArray["OfferId"]);
+                $student->setApplyId($valuesArray["ApplyId"]);
                 $student->setNombre($valuesArray["Nombre"]);
                 $student->setJobId($valuesArray["jobId"]);
                 $student->setCompId($valuesArray["CompId"]);
@@ -72,16 +86,19 @@ class JobApplyRepository implements iRepositorieJob{
         public function deleteApply($id){
             try{
 
-                $query = "DELETE FROM ".$this->tableName. " WHERE offerId = :offerId";
+                $query = "DELETE FROM ".$this->tableName. " WHERE ApplyId = :ApplyId";
                
                 
-                $parameters['offerId'] = $id;
+                $parameters['ApplyId'] = $id;
                 
                 $this->connection = Connection::GetInstance();
 
                 $this->connection->ExecuteNonQuery($query,$parameters);
                 
-
+                foreach($offerList as $offer)
+                {
+                    if($offer)
+                }
 
             }
             catch(Exception $ex){

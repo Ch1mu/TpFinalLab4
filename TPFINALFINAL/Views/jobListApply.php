@@ -43,15 +43,17 @@ $studentList = $studentDAO->GetAll();
          
         if($job->getCareerId() == $student->getCareerId())
         {
+             $jobActive = $job->getActive();
+             
           foreach($companyL as $company)
           {
                if($job->getCompanyID() == $company->getId())
                {
                     $companyID = $company->getNombre();
-                    $active = $company->getActive();
+                    $Companyactive = $company->getActive();
                }
           }
-          if($active == 1)
+          if($Companyactive == 1 && $jobActive == 1)
           {
 
           

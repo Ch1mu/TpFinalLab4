@@ -25,15 +25,17 @@ CREATE TABLE students
 
 
 DROP TABLE IF EXISTS JobApplies;
+
 CREATE TABLE JobApplies
 (
-	offerId INT AUTO_INCREMENT PRIMARY KEY,
+	ApplyId INT AUTO_INCREMENT PRIMARY KEY,
     Nombre VARCHAR(100) NOT NULL,
     Email VARCHAR(100) NOT NULL,
     Apellido VARCHAR(100) NOT NULL,
     jobId INT,
-    CompId INT
-   
+    CompId INT,
+    OfferId INT,
+   constraint fk_OfferID foreign key (OfferID) references jobOffers(offerID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -55,6 +57,7 @@ CREATE TABLE jobOffers
         description VARCHAR(100) NOT NULL,
         companyID int NOT NULL,
         vacancies int,
+        active int, 
         constraint fk_companyID foreign key (companyID) references companys(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -80,7 +83,8 @@ CREATE TABLE IF NOT EXISTS careers (
 
 
 insert into account values ("admin@utn.com", "admin", "Admin");
-UPDATE account SET role = "Admin" where email = "admin@utn.com"; 
+UPDATE account SET role = "Admin" where email = "admin@utn.com";
+ 
 select * from careers;
 select * from account;
 select * from companys;
