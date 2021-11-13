@@ -138,13 +138,52 @@
         public function deleteOffer($id)
         {
             $this->jobOfferDAO->deleteOffer($id);
-           header("location: viewRemoveOffers");
+            $jobApplyDAO = new jobApplyRepository();
+            $listApplies = array();
+            $listApplies = $jobApplyDAO->getAll();
+
+
+            foreach($jobOfferDAO as $job){
+               if($job->getCompanyID() == $id){
+                   $desc = $job->getDescription();
+               }
+               foreach($listApplies as $applies){
+                   if($applies->getCompId() == $id){
+                        $email = "lusoto456@gmail.com";
+                        $subject = "Oferta Finalizada";
+                        $message = "La oferta laboral para $desc a la que te postulaste ha finalizado, gracias por participar!";
+                        require_once("sendMessage.php");
+                   }
+               }
+            }
+                
+            header("location: viewRemoveOffers");
         }
 
         public function deleteOfferCompany($id)
         {
             $this->jobOfferDAO->deleteOffer($id);
-           header("location: OffersCompany");
+            
+            $jobApplyDAO = new jobApplyRepository();
+            $listApplies = array();
+            $listApplies = $jobApplyDAO->getAll();
+
+
+            foreach($jobOfferDAO as $job){
+               if($job->getCompanyID() == $id){
+                   $desc = $job->getDescription();
+               }
+               foreach($listApplies as $applies){
+                   if($applies->getCompId() == $id){
+                        $email = "lusoto456@gmail.com";
+                        $subject = "Oferta Finalizada";
+                        $message = "La oferta laboral para $desc a la que te postulaste ha finalizado, gracias por participar!";
+                        require_once("sendMessage.php");
+                   }
+               }
+            }
+             
+            header("location: OffersCompany");
         }
         
 
