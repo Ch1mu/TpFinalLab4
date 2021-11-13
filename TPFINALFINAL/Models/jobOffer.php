@@ -9,7 +9,7 @@
         private $jobPositionId;
         private $description;
         private $companyID;
-        
+        private $vacancies;
 
 
 
@@ -113,6 +113,26 @@
         public function setOfferID($offerID)
         {
                 $this->offerID = $offerID;
+
+                return $this;
+        }
+
+        /**
+         * Get the value of vacancies
+         */ 
+        public function getVacancies()
+        {
+                return $this->vacancies;
+        }
+
+        /**
+         * Set the value of vacancies
+         *
+         * @return  self
+         */ 
+        public function setVacancies($vacancies)
+        {
+                $this->vacancies = $vacancies;
 
                 return $this;
         }

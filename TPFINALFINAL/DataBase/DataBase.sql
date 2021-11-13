@@ -54,6 +54,7 @@ CREATE TABLE jobOffers
         careerId INT NOT NULL,
         description VARCHAR(100) NOT NULL,
         companyID int NOT NULL,
+        vacancies int,
         constraint fk_companyID foreign key (companyID) references companys(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 

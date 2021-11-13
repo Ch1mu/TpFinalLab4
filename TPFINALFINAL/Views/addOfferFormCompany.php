@@ -38,10 +38,14 @@
                                         <?php
                                         
                                         }
+                                        
                                         ?>
-                                             
-                                   
+                                        
                                    </select>
+                                   <br>
+                                   <label for="">Limite Aplicaciones</label>
+                                   <input type="number" name= "vacancies" value="" class="form-control">
+
                                    <input type="text" name= "nombre" value="<?php echo $companyID?>" hidden>
                                    
                                   

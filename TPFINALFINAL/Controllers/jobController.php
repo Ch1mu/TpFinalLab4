@@ -40,7 +40,7 @@
         require_once(VIEWS_PATH."jobOffer-add.php");
     }
 
-    public function addOffer($description, $nombre)
+    public function addOffer($description, $nombre, $vacancies)
     {
         $companyList = $this->companyDAO->GetAll();
         $list = $this->jobDAO->GetAll();
@@ -61,6 +61,7 @@
             }
         }
         $jobOffer = new JobOffer();
+        $jobOffer->setVacancies($vacancies);
         $jobOffer->setJobPositionId($jobPositionId);
         $jobOffer->setCareerId($careerId);
         $jobOffer->setDescription($description);
@@ -70,7 +71,7 @@
      }
      
      
-        public function addOfferCompany($description, $nombre)
+        public function addOfferCompany($description, $nombre, $vacancies)
         {
             $companyList = $this->companyDAO->GetAll();
             $list = $this->jobDAO->GetAll();
@@ -91,6 +92,7 @@
                 }
             }
             $jobOffer = new JobOffer();
+            $jobOffer->setVacancies($vacancies);
             $jobOffer->setJobPositionId($jobPositionId);
             $jobOffer->setCareerId($careerId);
             $jobOffer->setDescription($description);

@@ -62,6 +62,7 @@ foreach($compList as $company){
                 if($comp->getId() == $offer->getCompanyID())
                 {
                     $compName = $comp->getNombre();
+                    
                 }
 
             }
@@ -73,6 +74,7 @@ foreach($compList as $company){
                 <br>
                 <p class =  "table bg-light-alpha">
                 Empresa: <?php echo $compName; ?> <br>
+                Limite de Postulantes: <?php echo $limit;  ?>
                 </p>
                 <form action="<?php echo FRONT_ROOT ?>Job/deleteOfferCompany" method="post" class="btn btn-primary ml-auto d-1">
 

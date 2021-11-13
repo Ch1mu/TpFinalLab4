@@ -17,11 +17,12 @@ class jobOfferDAO implements icompanyDAO
            
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (jobPositionId, companyID, careerId, description) 
-                          VALUES (:jobPositionId, :companyID, :careerId, :description);";
+                $query = "INSERT INTO ".$this->tableName." (jobPositionId, companyID, careerId, description, vacancies) 
+                          VALUES (:jobPositionId, :companyID, :careerId, :description, :vacancies);";
              
                
                 $parameters['companyID'] = $student->getCompanyID();
+                $parameters['vacancies'] = $student->getVacancies();
                 $parameters['jobPositionId'] = $student->getJobPositionId();
                 $parameters['description'] = $student->getDescription();
                 $parameters['careerId'] = $student->getCareerId();
@@ -51,6 +52,7 @@ class jobOfferDAO implements icompanyDAO
                {
                 $student = new JobOffer();
                 
+                $student->setVacancies($valuesArray["vacancies"]);
                 $student->setOfferID($valuesArray["offerID"]);
                 $student->setJobPositionId($valuesArray["jobPositionId"]);
                 $student->setCareerId($valuesArray["careerId"]);

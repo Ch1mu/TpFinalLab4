@@ -33,6 +33,7 @@
                                              
                                    
                                    </select>
+                                   
                               </div>
                          </div>                         
                          <div class="col-lg-">
@@ -50,7 +51,8 @@
                                              
                                    
                                    </select>
-                                   
+                                   <label for="">Limite Aplicaciones </label>
+                                   <input type="number" name= "vacancies" value="" class="form-control">
                                   
                               </div>
                          </div>
