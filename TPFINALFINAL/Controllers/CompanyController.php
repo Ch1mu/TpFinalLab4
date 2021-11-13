@@ -93,15 +93,16 @@
                 
             
         }
-        public function activateForm()
+        public function inactiveList()
         {
-            require_once(VIEWS_PATH."activateForm.php");
+            $studentList = $this->companyDAO->GetAll();
+            require_once(VIEWS_PATH."company-list-inactive.php");
         }
 
         public function activate($id)
         {
             $this->companyDAO->Activate($id);
-            header("location: ListAdmin");
+            header("location: inactiveList");
         }
 
 

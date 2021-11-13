@@ -19,7 +19,7 @@
                          <?php
                               foreach($studentList as $company)
                               {
-                                   if($company->getActive() == 1)
+                                   if($company->getActive() == 0)
                                    {   
                                         ?>
                                         <details class ="btn btn-primary ml-auto d-block">
@@ -32,17 +32,12 @@
                                              Rubro: <?php echo $company->getRubro();?><br>
                                              Email: <?php echo $company->getEmail();?><br>
                                              </p>
-                                             <form action="<?php echo FRONT_ROOT ?>company/editCompany" method="post" >
-                                        <input type="number"  name = "id" value= "<?php echo $company->getId();?>" readonly hidden>
-                                        <button type="submit"  >Editar</button> 
-                                   </form>
-                                   
-                                
-                                        <form action="<?php echo FRONT_ROOT ?>company/Remove" method="post" >
+                                      
+                                        <form action="<?php echo FRONT_ROOT ?>company/activate" method="post" >
 
                                         <input type="number"  name = "id" value= "<?php echo $company->getId();?>" readonly hidden>
 
-                                        <button type="submit" >Eliminar</button> 
+                                        <button type="submit" >Reactivar</button> 
                                         
                                         </form>
                                              

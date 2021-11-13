@@ -19,7 +19,7 @@
                 <br>
                 <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Company/ListAdmin">Gestionar Empresas</a>
                <br>
-               <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Company/activateForm">Reactivar Empresas</a>
+               <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>Company/inactiveList">Empresas Inactivas</a>
                <br>
               
           
