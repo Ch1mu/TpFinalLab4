@@ -34,7 +34,7 @@
                                              </p>
                                              <form action="<?php echo FRONT_ROOT ?>company/editCompany" method="post" >
                                         <input type="number"  name = "id" value= "<?php echo $company->getId();?>" readonly hidden>
-                                        <button type="submit" >Editar</button> 
+                                        <button type="submit"  >Editar</button> 
                                    </form>
                                    
                                 
@@ -47,7 +47,8 @@
                                         </form>
                                              
                                              
-                                        </details<?php
+                                   </details>
+                                        <?php
                                        
                                    }
                               }

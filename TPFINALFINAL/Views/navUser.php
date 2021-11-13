@@ -9,13 +9,13 @@
      <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>Company/ListCompany">Listar Empresas</a>
           </li>
-          <li class="nav-item">
-               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Student/Profile">Perfil</a>
-          </li>
+         
           <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>Job/List">Aplicar a un Trabajo</a>
           </li>      
-
+          <li class="nav-item">
+               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Student/Profile">Perfil</a>
+          </li>
      <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>logout/logOut">Cerrar Sesion</a>
           </li>      

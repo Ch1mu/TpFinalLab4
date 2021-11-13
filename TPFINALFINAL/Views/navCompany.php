@@ -8,6 +8,10 @@
             <li>
                 <a class="nav-link" href="<?php echo FRONT_ROOT ?>Job/addOfferFormCompany">Añadir Oferta Laboral</a>
             </li>
+            
+            <li class="nav-item">
+               <a class="nav-link" href="<?php echo FRONT_ROOT ?>Job/OffersCompany">Gestionar Ofertas</a>
+            </li>
             <li class="nav-item">
                <a class="nav-link" href="<?php echo FRONT_ROOT ?>Job/viewAppliesCompany">Ver Postulaciones</a>
             </li>

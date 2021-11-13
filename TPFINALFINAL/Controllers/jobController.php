@@ -138,6 +138,12 @@
             $this->jobOfferDAO->deleteOffer($id);
            header("location: viewRemoveOffers");
         }
+
+        public function deleteOfferCompany($id)
+        {
+            $this->jobOfferDAO->deleteOffer($id);
+           header("location: OffersCompany");
+        }
         
 
         public function addOfferFormCompany(){
@@ -155,6 +161,11 @@
             $compList = $comp->GetAll();
             $jobL = $this->jobDAO->getAll();
             require_once(VIEWS_PATH."viewAppliesCompany.php");
+        }
+        public function OffersCompany()
+        {
+            require_once(VIEWS_PATH."viewOffersCompany.php");
+            
         }
 
     }

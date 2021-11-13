@@ -23,16 +23,19 @@
                                    {   
                                         ?>
                                         <details class ="btn btn-primary ml-auto d-block">
-                                                <summary>
-                                                     <?php echo $company->getNombre()?>
-                                                  </summary>
+
+                                               
+                                        <summary> <?php echo $company->getNombre()?> </summary>
+                                                 
+
                                              <p class = "table bg-light-alpha">
                                              Id de la compañia: <?php echo $company->getId();?><br>
                                              Localidad: <?php echo $company->getLocalidad();?><br>
                                              Rubro: <?php echo $company->getRubro();?><br>
-                         
+
                                              </p>
-                                        </details<?php
+                                   </details>
+                                        <?php
                                    }
                               }
                          ?>
