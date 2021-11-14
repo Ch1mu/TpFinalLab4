@@ -31,6 +31,7 @@
                                              Localidad: <?php echo $company->getLocalidad();?><br>
                                              Rubro: <?php echo $company->getRubro();?><br>
                                              Email: <?php echo $company->getEmail();?><br>
+                                             Email: <?php echo $company->getCuit();?><br>
                                              </p>
                                       
                                         <form action="<?php echo FRONT_ROOT ?>company/activate" method="post" >

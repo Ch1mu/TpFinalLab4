@@ -46,8 +46,12 @@
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
+                                        <label for="">CUIT</label>
+                                        <input type="text" name="cuit" value="<?php echo $company->getCuit()?>" class="form-control">
+                                    </div>
+                                <div class="col-lg-4">
+                                    <div class="form-group">
                                         <label for="">Estado</label>
-                                        <input type="text" name="active" value="<?php echo $company->getActive()?>" class="form-control">
                                     </div>
                                 </div>
                             </div>

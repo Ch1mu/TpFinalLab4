@@ -9,6 +9,7 @@
         private $rubro;
         private $active;
         private $email;
+        private $cuit;
         
       
 
@@ -132,6 +133,26 @@
         public function getEmail()
         {
                 return $this->email;
+        }
+
+        /**
+         * Get the value of cuit
+         */ 
+        public function getCuit()
+        {
+                return $this->cuit;
+        }
+
+        /**
+         * Set the value of cuit
+         *
+         * @return  self
+         */ 
+        public function setCuit($cuit)
+        {
+                $this->cuit = $cuit;
+
+                return $this;
         }
     }
 ?>

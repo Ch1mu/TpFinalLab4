@@ -17,8 +17,8 @@ class companyRepository implements icompanyDAO
            
             try{
 
-                $query = "INSERT INTO ".$this->tableName." (id, nombre, localidad, rubro, active, email) 
-                          VALUES (:id, :nombre, :localidad, :rubro, :active, :email);";
+                $query = "INSERT INTO ".$this->tableName." (id, nombre, localidad, rubro, active, email, cuit) 
+                          VALUES (:id, :nombre, :localidad, :rubro, :active, :email, :cuit);";
 
                 $parameters['active'] = 1;
                 $parameters['email'] = $student->getEmail();
@@ -26,7 +26,7 @@ class companyRepository implements icompanyDAO
                 $parameters['nombre'] = $student->getNombre();
                 $parameters['localidad'] = $student->getLocalidad();
                 $parameters['rubro'] = $student->getRubro();
-                
+                $parameters["cuit"] = $student->getCuit();
                 
                 $this->connection = Connection::GetInstance();
 
@@ -51,6 +51,7 @@ class companyRepository implements icompanyDAO
                foreach ($resultSet as $valuesArray) 
                {
                 $student = new Company();
+                $student->setCuit($valuesArray["cuit"]);
                 $student->setEmail($valuesArray["email"]);
                 $student->setActive($valuesArray["active"]);
                 $student->setId($valuesArray["id"]);
@@ -69,18 +70,18 @@ class companyRepository implements icompanyDAO
                 throw $ex;
             }
         }
-        public function Modify($id, $nombre, $localidad, $rubro, $active, $email){
+        public function Modify($id, $nombre, $localidad, $rubro, $email, $cuit){
             try{
 
-                $query = "UPDATE ".$this->tableName. " SET nombre = :nombre, localidad = :localidad, rubro = :rubro, active = :active, email = :email WHERE id = :id";
+                $query = "UPDATE ".$this->tableName. " SET nombre = :nombre, localidad = :localidad, rubro = :rubro, email = :email, cuit = :cuit WHERE id = :id";
 
                 
                $parameters['id'] = $id;
-                $parameters['active'] = $active;
                 $parameters['nombre'] = $nombre;
                 $parameters['localidad'] = $localidad;
                 $parameters['rubro'] = $rubro;
                 $parameters['email'] = $email;
+                $parameters['cuit'] = $cuit;
                    
                 $this->connection = Connection::GetInstance();
 

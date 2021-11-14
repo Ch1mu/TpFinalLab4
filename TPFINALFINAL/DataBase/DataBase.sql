@@ -69,6 +69,7 @@ CREATE TABLE companys
     localidad VARCHAR(100) NOT NULL,
     rubro VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
+    cuit int not null,
     active int
         
 );

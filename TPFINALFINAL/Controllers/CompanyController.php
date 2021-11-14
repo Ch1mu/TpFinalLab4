@@ -31,25 +31,42 @@
         }
         
         
-        public function Add($nombre, $localidad, $rubro, $email)
+        public function Add($nombre, $localidad, $rubro, $email, $cuit)
         {
             $list = new companyRepository();
             $studentList = array();
             $studentList = $list->GetAll();
+            $flag = 0;
 
-
+            foreach($studentList as $company)
+            {
+                if($company->getCuit() == $cuit)
+                {
+                $flag=1;
+                }
+            }
             
+            if($flag == 0)
+            {
+
             
                 $company = new Company();
                 $company->setEmail($email);
                 $company->setNombre($nombre);
                 $company->setLocalidad($localidad);
                 $company->setRubro($rubro);
+                $company->setCuit($cuit);
 
                 $this->companyDAO->Add($company);
 
                 $this->Companys();
-            
+                echo '<script language="javascript">alert("Empresa registrada con exito!");';
+          echo "window.location = 'ListAdmin'; </script>";
+            }
+            else {
+                echo '<script language="javascript">alert("Esta empresa ya se encuentra registrada en la base de datos, Consulta la lista de empresas inactivas!");';
+          echo "window.location = 'ListAdmin'; </script>";
+            }
             
         }
         
@@ -85,9 +102,9 @@
             require_once(VIEWS_PATH."editCompany.php");
         }
 
-        public function editCompany2($id, $nombre, $localidad, $rubro, $active, $email){
+        public function editCompany2($id, $nombre, $localidad, $rubro, $email, $cuit){
         
-            $this->companyDAO->Modify($id, $nombre, $localidad, $rubro, $active, $email);
+            $this->companyDAO->Modify($id, $nombre, $localidad, $rubro, $email, $cuit);
 
                     require_once(VIEWS_PATH."Companys.php");
                 
