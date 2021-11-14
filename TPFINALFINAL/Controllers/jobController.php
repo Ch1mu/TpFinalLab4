@@ -7,6 +7,7 @@
     use DAO\companyRepository as companyDAO;
     use DAO\careerDAO as careerDAO;
     use Models\Job as Job;
+    use Models\mail as mail;
     use Models\JobOffer as JobOffer;
     use Models\JobApply as JobApply;
     
@@ -21,9 +22,11 @@
         private $id;
         private $list;
         private $companyList;
+        private $mail;
 
         public function __construct()
         {
+            
             $this->jobDAO = new JobRepository();
             $this->jobOfferDAO = new JobOfferDAO();
             $this->jobApplyDAO = new JobApplyRepository();
@@ -151,10 +154,12 @@
                 }
                 foreach($listApplies as $applies){
                     if($applies->getCompId() == $id){
+                            $we = "From: francolucianotpfinallab4@gmail.com";
                          $email = "lusoto456@gmail.com";
                          $subject = "Oferta Finalizada";
                          $message = "La oferta laboral para $desc a la que te postulaste ha finalizado, gracias por participar!";
-                         require_once("sendMessage.php");
+                         $this->mail = new mail($email, $subject, $message);
+                         Mail::send($email, $subject, $message, $we);
                     }
                 }
              }
@@ -169,27 +174,25 @@
 
         public function deleteOfferCompany($id)
         {
-            $this->jobOfferDAO->deleteOffer($id);
-            
-            $jobApplyDAO = new jobApplyRepository();
-            $listApplies = array();
-            $listApplies = $jobApplyDAO->getAll();
+           
 
 
-            foreach($jobOfferDAO as $job){
+            /*foreach($jobOfferDAO as $job){
                if($job->getCompanyID() == $id){
                    $desc = $job->getDescription();
                }
                foreach($listApplies as $applies){
                    if($applies->getCompId() == $id){
-                        $email = "lusoto456@gmail.com";
-                        $subject = "Oferta Finalizada";
-                        $message = "La oferta laboral para $desc a la que te postulaste ha finalizado, gracias por participar!";
-                        require_once("sendMessage.php");
+                        
+                        
                    }
                }
             }
-             
+*/
+                require_once(ROOT."sendMessage.php");
+
+
+            $this->jobOfferDAO->deleteOffer($id);
             header("location: OffersCompany");
         }
         

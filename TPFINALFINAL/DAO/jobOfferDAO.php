@@ -3,12 +3,13 @@
 
 use Exception;
 use Models\JobOffer as JobOffer;
+use Models\mail as mail;
 use DAO\IjobOfferDAO as icompanyDAO;
 use DAO\Connection as Connection;
 
 class jobOfferDAO implements icompanyDAO
 {
-
+        
         private $connection;
         private $tableName = "jobOffers";
 
@@ -83,7 +84,7 @@ class jobOfferDAO implements icompanyDAO
 
                 $this->connection->ExecuteNonQuery($query,$parameters);
                 
-
+                
 
             }
             catch(Exception $ex){
