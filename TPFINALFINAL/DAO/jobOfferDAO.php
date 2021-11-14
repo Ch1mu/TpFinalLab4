@@ -111,6 +111,27 @@ class jobOfferDAO implements icompanyDAO
             
     
         }
+        public function setActive($id){
+            try{
+
+                $query = "UPDATE ". $this->tableName. " SET active = :active WHERE offerId = :offerId";
+               
+                $parameters["active"] = 1;
+                $parameters['offerId'] = $id;
+                
+                $this->connection = Connection::GetInstance();
+
+                $this->connection->ExecuteNonQuery($query,$parameters);
+                
+
+
+            }
+            catch(Exception $ex){
+                throw $ex;
+            }
+        
+
+    }
 
     
            

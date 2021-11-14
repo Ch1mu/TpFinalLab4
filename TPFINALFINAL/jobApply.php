@@ -33,6 +33,7 @@ use Models\jobApply as jobApply;
   $flag = 0;
   $flag1 = 0;
   $flag2 = 1;
+  $flag3 = 1;
   $i = 1;
   
 
@@ -52,6 +53,7 @@ foreach($jobOfferList as $jobOffer)
 
 if($jobOffer->getOfferId() == $id)
 {
+  
   $companyID = $jobOffer->getCompanyID();
   $vacancies = $jobOffer->getVacancies();
   $jobid = $jobOffer->getJobPositionId();
@@ -61,8 +63,17 @@ if($jobOffer->getOfferId() == $id)
 
 foreach($applyList as $apply)
 {
-  if($apply->getOfferId() == $id)
+  if($apply->getOfferId() == $id && $apply->getEmail() == $_SESSION["email"])
   {
+$flag3 = 0;
+  }
+}
+
+foreach($applyList as $apply)
+{
+  if($apply->getOfferId() == $id && $flag3 == 1)
+  {
+    
     $i++;
     if($i < $vacancies)
     {
@@ -80,7 +91,7 @@ if($flag2 == 0)
 }
 
 
-if($flag == 1 && $flag1 == 1 && $flag2 = 1)
+if($flag == 1 && $flag1 == 1 && $flag2 == 1 && $flag3 == 1)
 {
     
     $jobApply = new jobApply();
@@ -96,7 +107,11 @@ if($flag == 1 && $flag1 == 1 && $flag2 = 1)
     echo '<script language="javascript">alert("Usted ha aplicado correctamente al trabajo!");';
       echo "window.location = 'List'; </script>";
 }
-
+if($flag3 == 0)
+{
+  echo '<script language="javascript">alert("Usted no puede volver a aplicar al mismo trabajo!");';
+      echo "window.location = 'List'; </script>";
+}
 
   }
 ?>

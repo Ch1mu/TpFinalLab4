@@ -119,7 +119,8 @@ Autoload::Start();
                 Empresa: <?php echo $compName; ?> 
                 </p>
                 <form action="<?php echo FRONT_ROOT ?>Job/deleteApply" method="post" class="btn btn-primary ml-auto d-1">
-                  <input type="number"  name = "id" value= "<?php echo $apply->getOfferId();?>" readonly hidden>
+                  <input type="number"  name = "id" value= "<?php echo $apply->getApplyId();?>" readonly hidden>
+                  <input type="number"  name = "offer" value= "<?php echo $apply->getOfferId();?>" readonly hidden>
                   <button type="submit">Eliminar Postulacion</button> 
             
             

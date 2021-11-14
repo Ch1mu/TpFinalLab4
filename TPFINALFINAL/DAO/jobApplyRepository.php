@@ -95,10 +95,7 @@ class JobApplyRepository implements iRepositorieJob{
 
                 $this->connection->ExecuteNonQuery($query,$parameters);
                 
-                foreach($offerList as $offer)
-                {
-                    if($offer)
-                }
+               
 
             }
             catch(Exception $ex){
