@@ -40,6 +40,7 @@
                                <th>Alumno</th>
                                <th>Nombre de la posicion</th>
                                <th>Nombre de la Empresa</th>
+                               <th>Email</th>
                            </tr>
                             </thead>
 
@@ -67,6 +68,7 @@
                                    <th><?php echo $JobApplies->getNombre()."&nbsp". $JobApplies->getApellido();?></th>
                                    <th><?php echo $position; ?></th>
                                    <th><?php echo $nombre; ?></th>
+                                   <th><?php echo $JobApplies->getEmail(); ?></th>
                                 </tr>
                                     <?php    
                                         }
