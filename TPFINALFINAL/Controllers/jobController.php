@@ -139,28 +139,28 @@
             $jobList = $this->jobOfferDAO->getAll();
             require_once (VIEWS_PATH. "viewOffers.php");
         }
+
         public function deleteOffer($id)
         {
+            foreach($jobOfferDAO as $job){
+                if($job->getCompanyID() == $id){
+                    $desc = $job->getDescription();
+                }
+                foreach($listApplies as $applies){
+                    if($applies->getCompId() == $id){
+                         $email = "lusoto456@gmail.com";
+                         $subject = "Oferta Finalizada";
+                         $message = "La oferta laboral para $desc a la que te postulaste ha finalizado, gracias por participar!";
+                         require_once("sendMessage.php");
+                    }
+                }
+             }
+
             $this->jobOfferDAO->deleteOffer($id);
             $jobApplyDAO = new jobApplyRepository();
             $listApplies = array();
             $listApplies = $jobApplyDAO->getAll();
 
-
-            foreach($jobOfferDAO as $job){
-               if($job->getCompanyID() == $id){
-                   $desc = $job->getDescription();
-               }
-               foreach($listApplies as $applies){
-                   if($applies->getCompId() == $id){
-                        $email = "lusoto456@gmail.com";
-                        $subject = "Oferta Finalizada";
-                        $message = "La oferta laboral para $desc a la que te postulaste ha finalizado, gracias por participar!";
-                        require_once("sendMessage.php");
-                   }
-               }
-            }
-                
             header("location: viewRemoveOffers");
         }
 

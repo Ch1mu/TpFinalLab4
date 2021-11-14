@@ -39,7 +39,7 @@ Autoload::Start();
     <details class = "btn btn-primary ml-auto d-block">
         <summary>Datos Personales</summary>
         <p class = "table bg-light-alpha">
-        Nombre Completo: <?php echo $student->getFirstName() , $student->getLastName();?><br>
+        Nombre Completo: <?php echo $student->getFirstName()."&nbsp". $student->getLastName();?><br>
         DNI: <?php echo $student->getDNI();?><br>
         Genero: <?php echo $student->getGender();?><br>
         Fecha de Nacimiento: <?php echo $student->getBirthDate();?><br>

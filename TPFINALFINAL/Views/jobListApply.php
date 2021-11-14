@@ -50,6 +50,7 @@ $studentList = $studentDAO->GetAll();
                if($job->getCompanyID() == $company->getId())
                {
                     $companyID = $company->getNombre();
+                    $placement = $company->getLocalidad();
                     $Companyactive = $company->getActive();
                }
           }
@@ -66,6 +67,7 @@ $studentList = $studentDAO->GetAll();
                    <p class = "table bg-light-alpha">                       
                    Id del trabajo: <?php echo $job->getJobPositionId();?><br>
                    Compañia: <?php echo $companyID; ?><br>
+                   Localidad: <?php echo $placement ?>
                    <form action="<?php echo FRONT_ROOT ?>Job/Apply" method="post" class="btn btn-dark ml-auto d-1">
                   <input type="number"  name = "id" value= "<?php echo $job->getOfferId();?>" readonly hidden>
                   <button type="submit" class="btn btn-dark ml-auto d-block">Aplicar</button>   
