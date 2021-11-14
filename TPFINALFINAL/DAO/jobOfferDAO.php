@@ -129,15 +129,35 @@ class jobOfferDAO implements icompanyDAO
             catch(Exception $ex){
                 throw $ex;
             }
-        
-
     }
-
+    public function Edit($offerId, $description, $jobPositionId, $vacancies, $careerId)
+    {
     
-           
+        try{
+
+            $query = "UPDATE ".$this->tableName. " SET description = :description, vacancies = :vacancies, careerId = :careerId, jobPositionId = :jobPositionId WHERE offerID = :offerID";
+
+            $parameters['description'] = $description;
+            $parameters['offerID'] = $offerId;
+            $parameters['careerId'] = $careerId;
+            $parameters['jobPositionId'] = $jobPositionId;
+            $parameters['vacancies'] = $vacancies;
             
+               
+            $this->connection = Connection::GetInstance();
+
+            $this->connection->ExecuteNonQuery($query,$parameters);
+
+
 
         }
+        catch(Exception $ex){
+            throw $ex;
+        }
+    }
+            
+
+    }
             
 
     

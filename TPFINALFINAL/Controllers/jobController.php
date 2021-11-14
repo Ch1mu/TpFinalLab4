@@ -5,6 +5,7 @@
     use DAO\JobApplyRepository as JobApplyRepository;
     use DAO\jobOfferDAO as JobOfferDAO;
     use DAO\companyRepository as companyDAO;
+    use DAO\careerDAO as careerDAO;
     use Models\Job as Job;
     use Models\JobOffer as JobOffer;
     use Models\JobApply as JobApply;
@@ -13,6 +14,7 @@
     class jobController
     {
         private $jobDAO;
+        private $careerDAO;
         private $jobApplyDAO;
         private $companyDAO;
         private $jobOfferDAO;
@@ -26,6 +28,7 @@
             $this->jobOfferDAO = new JobOfferDAO();
             $this->jobApplyDAO = new JobApplyRepository();
             $this->companyDAO = new companyDAO();
+            $this->careerDAO = new careerDAO();
             
         }
 
@@ -211,6 +214,46 @@
         {
             require_once(VIEWS_PATH."viewOffersCompany.php");
             
+        }
+        public function filterOffers($career, $jobName)
+        {
+            $list = $this->careerDAO->GetAll();
+            $jobOfferL = $this->jobOfferDAO->GetAll();
+            $companyList = $this->companyDAO->GetAll();
+            require_once(VIEWS_PATH."filterOffers.php");
+           
+        }
+        public function filterOffersForm()
+        {
+            $jobL = $this->jobOfferDAO->GetAll();
+            $list = $this->careerDAO->GetAll();
+            require_once(VIEWS_PATH."filterFormOffer.php");
+        }
+        public function editOfferForm($id)
+        {
+            $list = $this->jobOfferDAO->GetAll();
+            $jobL = $this->jobDAO->GetAll();
+            $careerList = $this->careerDAO->GetAll();
+    
+            require_once(VIEWS_PATH."editOffer.php");
+        }
+
+        public function editOffer($offerId, $description, $vacancies)
+        {
+           
+            $jobL = $this->jobDAO->GetAll();
+            foreach($jobL as $job)
+            {
+                if($job->getDescription() == $description)
+                {
+                    $jobPositionId = $job->getJobPositionId();
+                    $careerId = $job->getCareerId();
+                }
+            } 
+            
+            $this->jobOfferDAO->Edit($offerId, $description, $jobPositionId, $vacancies, $careerId);
+    
+            header("location: viewRemoveOffers");
         }
 
     }

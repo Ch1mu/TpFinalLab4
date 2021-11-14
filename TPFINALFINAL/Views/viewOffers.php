@@ -37,6 +37,8 @@ Autoload::Start();
             
         <?php 
 
+        
+
         foreach($offerL as $offer)
         {
             $limit = $offer->getVacancies();
@@ -59,6 +61,7 @@ Autoload::Start();
 
             }
             ?>
+            <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>job/filterOffersForm">Filtrar Ofertas</a>
             
             <details class = "btn btn-primary ml-auto d-block">
              
@@ -68,11 +71,19 @@ Autoload::Start();
                 Empresa: <?php echo $compName; ?> <br>
                 Limite Postulantes: <?php echo $limit; ?> <br>
                 </p>
+                <form action="<?php echo FRONT_ROOT ?>Job/editOfferForm" method="post" class="btn btn-primary ml-auto d-1">
+
+                  <input type="number"  name = "id" value= "<?php echo $offer->getOfferId();?>"  hidden>
+
+                  <button type="submit" class="">Editar</button> 
+                  </form>
+
                 <form action="<?php echo FRONT_ROOT ?>Job/deleteOffer" method="post" class="btn btn-primary ml-auto d-1">
 
-                  <input type="number"  name = "id" value= "<?php echo $offer->getOfferId();?>" readonly hidden>
+                  <input type="number"  name = "id" value= "<?php echo $offer->getOfferId();?>"  hidden>
 
                   <button type="submit" class="">Eliminar</button> 
+        </form>
 
                 </details>
            
