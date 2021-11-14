@@ -48,7 +48,7 @@
                                                      Genero: <?php echo $student->getGender();?><br>
                                                      Fecha de Nacimiento: <?php echo $student->getBirthDate();?><br>
                                                      Telefono: <?php echo $student->getPhoneNumber();?><br>
-                                                       Numero De archivo: <?php echo $student->getFileNumber();?><br>
+                                                     Numero De archivo: <?php echo $student->getFileNumber();?><br>
                                                      Email: <?php echo $student->getEmail();?><br>
                                                      Estado: <?php echo $student->getActive();?><br>
                                                   
