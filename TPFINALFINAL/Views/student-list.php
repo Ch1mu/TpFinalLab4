@@ -2,6 +2,7 @@
     require_once('nav.php');
     require_once "logged.php";
     require_once "isAdmin.php";
+    
 ?>
 <main class="py-5">
      <section id="listado" class="mb-5">
@@ -14,8 +15,16 @@
                     
                     
                          <?php
+                        
                               foreach($studentList as $student)
                               {
+                                   foreach($careerList as $career)
+                                   {
+                                        if($career->getCareerId() == $student->getCareerId())
+                                        {
+                                             $careerName = $career->getDescription();
+                                        }
+                                   }
                                    ?>
                                        <?php if($student->getActive() == 1)
                                        {
@@ -34,6 +43,7 @@
                                                 <p class = "table bg-light-alpha">
                                                      Id del Estudiante: <?php echo $student->getStudentId();?><br>
                                                      Id de la carrera: <?php echo $student->getCareerId();?><br>
+                                                     Carrera: <?php echo $careerName;?><br>
                                                      Dni: <?php echo $student->getDni();?><br>
                                                      Genero: <?php echo $student->getGender();?><br>
                                                      Fecha de Nacimiento: <?php echo $student->getBirthDate();?><br>

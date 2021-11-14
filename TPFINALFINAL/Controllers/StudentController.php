@@ -2,45 +2,31 @@
     namespace Controllers;
 
     use DAO\StudentDAO as StudentDAO;
+    use DAO\careerDAO as CareerDAO;
     use Models\Student as Student;
+    use Models\Career as Career;
 
     class StudentController
     {
         private $studentDAO;
+        private $careerDAO;
 
         public function __construct()
         {
+            $this->careerDAO = new CareerDAO();
             $this->studentDAO = new StudentDAO();
         }
 
 
         public function ShowListView()
         {
+            $careerList = $this->careerDAO->GetAll();
             $studentList = $this->studentDAO->GetAll();
 
             require_once(VIEWS_PATH."student-list.php");
         }
 
-        public function Add($firstName, $lastName, $careerId, $dni, $gender, $birthDate, $phoneNumber, $fileNumber, $email, $active)
-        {
-            $student = new Student();
-            $student->setfirstName($firstName);
-            $student->setLastName($lastName);
-            $student->setCareerId($careerId);
-            $student->setDni($dni);
-            $student->setGender($gender);
-            $student->setBirthDate($birthDate);
-            $student->setPhoneNumber($phoneNumber);
-            $student->setFileNumber($fileNumber);
-            $student->setEmail($email);
-            $student->setActive($active);
-
-            $this->studentDAO->Add($student);
-            
-
-            $this->ShowAddView();
-        }
-
+        
         public function filterForm(){
             require_once(VIEWS_PATH."filterFormStudent.php");
         }
