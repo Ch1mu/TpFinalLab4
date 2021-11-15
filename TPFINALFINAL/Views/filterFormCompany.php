@@ -1,9 +1,7 @@
 <?php
-if($_SESSION["email"] == "admin@utn.com")
-    require_once('nav.php');
-    else {
-        require_once("navUser.php");
-    }
+
+    require_once('navSession.php');
+    
     require_once "logged.php";
 
 ?>

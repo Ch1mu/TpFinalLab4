@@ -1,7 +1,7 @@
 <?php
  require_once "navSession.php";
     require_once "logged.php";
-
+require_once "isAdmin.php";
 ?>
 <main class="py-5">
     <section id="listado" class="mb-5">
@@ -15,13 +15,15 @@
                               { 
                                    foreach($list as $careerN)
                                    {
+                                       
                                    if($careerN->getDescription() == $career)
                                    {
-                                        
+                                        $careerId = $careerN->getCareerId();
                                         $careerName = $careerN->getDescription();
+                                       
                                    }
                               }
-                         }
+                         
                                    foreach($companyList as $company)
                                    {
                                         if($offer->getCompanyID() == $company->getId())
@@ -33,7 +35,7 @@
                                   {
 
                                   
-                                  if($offer->getDescription() == $jobName  && $careerName == $career) {
+                                  if($offer->getDescription() == $jobName  && $careerId == $offer->getCareerId()) {
                                    ?>
                     <details class="btn btn-primary ml-auto d-block">
                         <summary>
@@ -45,6 +47,14 @@
 
                             Limite Aplicaciones: <?php echo $offer->getVacancies();?><br>
                         </p>
+
+                        <form action="<?php echo FRONT_ROOT ?>Job/editOfferForm" method="post"
+                            class="btn btn-primary ml-auto d-1">
+
+                            <input type="number" name="id" value="<?php echo $offer->getOfferId();?>" hidden>
+
+                            <button type="submit" class="">Editar</button>
+                        </form>
 
                         <form action="<?php echo FRONT_ROOT ?>Job/deleteOffer" method="post"
                             class="btn btn-primary ml-auto d">
@@ -59,7 +69,7 @@
                               else if($career != "" && $jobName == "")
                                   {
 
-                                  if($career == $careerName){
+                                  if($offer->getCareerId() == $careerId){
                                    ?>
                     <details class="btn btn-primary ml-auto d-block">
                         <summary>
@@ -71,6 +81,13 @@
 
                             Limite Aplicaciones: <?php echo $offer->getVacancies();?><br>
                         </p>
+                        <form action="<?php echo FRONT_ROOT ?>Job/editOfferForm" method="post"
+                            class="btn btn-primary ml-auto d-1">
+
+                            <input type="number" name="id" value="<?php echo $offer->getOfferId();?>" hidden>
+
+                            <button type="submit" class="">Editar</button>
+                        </form>
                         <form action="<?php echo FRONT_ROOT ?>Job/deleteOffer" method="post"
                             class="btn btn-primary ml-auto d-1">
 
@@ -114,7 +131,7 @@
                                   }
                               }
 
-                              
+                            }
                          
                          ?>
                     </tr>

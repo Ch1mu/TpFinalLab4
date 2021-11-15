@@ -1,6 +1,6 @@
 <?php
  	require_once "logged.php";
-
+require_once "isCompany.php";
      require_once "navSession.php";
     require_once "Config/Autoload.php";
     require_once "Config/Config.php";

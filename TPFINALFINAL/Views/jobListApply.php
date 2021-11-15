@@ -2,6 +2,7 @@
  	require_once "logged.php";
 
     require_once("navUser.php");
+    require_once "isUser.php";
     require_once("DIR/../Config/Autoload.php");
 
     use Models\Student as Student;

@@ -1,7 +1,5 @@
 <?php
  require_once "navSession.php";
-
-
     require_once "logged.php";
 
     use DAO\careerDAO as careerDAO;

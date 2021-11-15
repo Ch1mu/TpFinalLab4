@@ -1,5 +1,6 @@
 <?php require_once "navUser.php"; 
  	require_once "logged.php";
+	 require_once "isUser.php";
 	 ?>
 <!DOCTYPE html>
 <html lang="en">

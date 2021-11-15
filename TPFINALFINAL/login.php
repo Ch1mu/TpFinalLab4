@@ -60,6 +60,7 @@ require_once "Config/Config.php";
       session_start();
       $_SESSION["email"] = $email;
       $_SESSION["password"] = $password;
+      $_SESSION["role"] = "Admin";
      header("location: Home/Index");
     }
     else if ($flagUser == 1)
@@ -67,6 +68,7 @@ require_once "Config/Config.php";
       session_start();
       $_SESSION["email"] = $email;
       $_SESSION["password"] = $password;
+      $_SESSION["role"] = "Student";
       header("location: Home/mainUser");
     }
     else if($flagCompany == 1)
@@ -74,6 +76,7 @@ require_once "Config/Config.php";
       session_start();
       $_SESSION["email"] = $email;
       $_SESSION["password"] = $password;
+      $_SESSION["role"] = "Company";
       header("location: Home/mainCompany");
     }
     

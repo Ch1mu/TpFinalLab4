@@ -31,10 +31,10 @@ Autoload::Start();
      <br>
     <center><h1>Gestionar Ofertas Laborales</h1></center>
    <div class="container">
-
+  
    <br><br>
         <p class = "table bg-light-alpha">
-            
+        <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>job/filterOffersForm">Filtrar Ofertas</a>
         <?php 
 
         
@@ -61,7 +61,7 @@ Autoload::Start();
 
             }
             ?>
-            <a class="btn btn-dark ml-auto d-block" href="<?php echo FRONT_ROOT ?>job/filterOffersForm">Filtrar Ofertas</a>
+            
             
             <details class = "btn btn-primary ml-auto d-block">
              

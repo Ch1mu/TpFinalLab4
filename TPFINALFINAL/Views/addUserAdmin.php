@@ -1,6 +1,7 @@
 <?php
     require_once('nav.php');
     require_once "logged.php";
+    require_once "isAdmin.php";
     use DAO\companyRepository as companyDAO;
 
     $compDAO = new companyDAO();

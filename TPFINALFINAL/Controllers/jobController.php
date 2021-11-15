@@ -256,7 +256,10 @@
             
             $this->jobOfferDAO->Edit($offerId, $description, $jobPositionId, $vacancies, $careerId);
     
+            if($_SESSION["role"] == "Admin")
             header("location: viewRemoveOffers");
+            if($_SESSION["role"] == "Company")
+            header("location: OffersCompany");
         }
 
     }

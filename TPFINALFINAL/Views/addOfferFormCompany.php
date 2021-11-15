@@ -1,7 +1,7 @@
 <?php
     require_once('navCompany.php');
     require_once "logged.php";
-
+require_once "isCompany.php";
    
 
     foreach($companyList as $company){

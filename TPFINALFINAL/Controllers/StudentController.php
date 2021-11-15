@@ -28,9 +28,11 @@
 
         
         public function filterForm(){
+            $careerList = $this->careerDAO->GetAll();
             require_once(VIEWS_PATH."filterFormStudent.php");
         }
-        public function filterStudent($studentId){
+        public function filterStudent($studentId, $description){
+            $careerList = $this->careerDAO->GetAll();
             $studentList = $this->studentDAO->GetAll();
             require_once(VIEWS_PATH."filterStudent.php");
         }

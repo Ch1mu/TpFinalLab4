@@ -10,14 +10,14 @@ $accountList = $account->getAll();
 
 foreach($accountList as $account){
     if($account->getEmail() == $_SESSION["email"]){
-        if($account->getRole() == "Admin"){
+        if($account->getRole() == "Company"){
             Header("location: ");
         }
         else if($account->getRole() == "Student"){
           Header("location:".FRONT_ROOT."Home/mainUser");
         }
-        else if($account->getRole() == "Company"){
-          Header("location:".FRONT_ROOT."Home/mainCompany");
+        else if($account->getRole() == "Admin"){
+          Header("location:".FRONT_ROOT."Home/Index");
         }
     }
 }

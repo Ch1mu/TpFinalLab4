@@ -2,7 +2,7 @@
 require_once("navSession.php");
 require_once("__DIR__/../Config/Autoload.php");
 require_once "logged.php";
-
+require_once "isCompany.php";
 
 
 
@@ -17,7 +17,7 @@ use Config\Autoload as Autoload;
 Autoload::Start();
 ?>
 
-    <?php
+<?php
         $offerList = new jobOfferRepository();
         $offerL = array();
         $offerL = $offerList->GetAll();
@@ -27,14 +27,16 @@ Autoload::Start();
         $compDAO = new companyRepository();
         $compList = array();
         $compList = $compDAO->GetAll();
-     ?> 
-     <br>
-    <center><h1>Gestionar Ofertas Laborales</h1></center>
-   <div class="container">
+     ?>
+<br>
+<center>
+    <h1>Gestionar Ofertas Laborales</h1>
+</center>
+<div class="container">
 
-   <br><br>
-        <p class = "table bg-light-alpha">
-            
+    <br><br>
+    <p class="table bg-light-alpha">
+
         <?php 
 
 foreach($compList as $company){
@@ -68,29 +70,37 @@ foreach($compList as $company){
 
             }
             ?>
-            
-            <details class = "btn btn-primary ml-auto d-block">
-             
-            <summary><?php echo $jobName; ?></summary>
-                <br>
-                <p class =  "table bg-light-alpha">
-                Empresa: <?php echo $compName; ?> <br>
-                Limite de Postulantes: <?php echo $limit;  ?><br>
-                </p>
-                <form action="<?php echo FRONT_ROOT ?>Job/deleteOfferCompany" method="post" class="btn btn-primary ml-auto d-1">
 
-                  <input type="number"  name = "id" value= "<?php echo $offer->getOfferId();?>" readonly hidden>
+    <details class="btn btn-primary ml-auto d-block">
 
-                  <button type="submit" class="">Eliminar</button> 
+        <summary><?php echo $jobName; ?></summary>
+        <br>
+        <p class="table bg-light-alpha">
+            Empresa: <?php echo $compName; ?> <br>
+            Limite de Postulantes: <?php echo $limit;  ?><br>
+        </p>
+        <form action="<?php echo FRONT_ROOT ?>Job/editOfferForm" method="post" class="btn btn-primary ml-auto d-1">
 
-                </details>
-           
-            
-                <?php
+            <input type="number" name="id" value="<?php echo $offer->getOfferId();?>" hidden>
+
+            <button type="submit" class="">Editar</button>
+        </form>
+
+        <form action="<?php echo FRONT_ROOT ?>Job/deleteOfferCompany" method="post" class="btn btn-primary ml-auto d-1">
+
+            <input type="number" name="id" value="<?php echo $offer->getOfferId();?>" readonly hidden>
+
+            <button type="submit" class="">Eliminar</button>
+        </form>
+
+    </details>
+
+
+    <?php
                 }
         } 
    
    ?>
-      </div>
-   
-    </div>
+</div>
+
+</div>

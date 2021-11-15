@@ -69,7 +69,7 @@ CREATE TABLE companys
     localidad VARCHAR(100) NOT NULL,
     rubro VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    cuit int not null,
+    cuit VARCHAR(100) not null,
     active int
         
 );
@@ -86,6 +86,7 @@ CREATE TABLE IF NOT EXISTS careers (
 insert into account values ("admin@utn.com", "admin", "Admin");
 UPDATE account SET role = "Admin" where email = "admin@utn.com";
  
+
 select * from careers;
 select * from account;
 select * from companys;

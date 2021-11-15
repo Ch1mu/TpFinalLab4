@@ -1,7 +1,10 @@
 <?php
-    require_once(VIEWS_PATH.'nav.php');
+    require_once("navSession.php");
     require_once "logged.php";
-    require_once "isAdmin.php";
+  if($_SESSION["role"] == "Student")
+  {
+      header("location: Home/mainUser");
+  }
     
 
     foreach($list as $offer){

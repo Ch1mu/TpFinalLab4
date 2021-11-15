@@ -2,6 +2,7 @@
 require_once("navUser.php");
 require_once("__DIR__/../Config/Autoload.php");
 require_once "logged.php";
+require_once "isUser.php";
 
 
 use DAO\StudentDAO as StudentDAO;

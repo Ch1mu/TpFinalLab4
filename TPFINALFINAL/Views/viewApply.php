@@ -4,7 +4,7 @@
      require_once "navSession.php";
     require_once "Config/Autoload.php";
     require_once "Config/Config.php";
-    
+    require_once "isAdmin.php";
     use Config\Autoload as Autoload;
     
 

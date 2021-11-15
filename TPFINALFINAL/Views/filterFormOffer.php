@@ -1,10 +1,8 @@
 <?php
-if($_SESSION["email"] == "admin@utn.com")
+
     require_once('nav.php');
-    else {
-        require_once("navUser.php");
-    }
     require_once "logged.php";
+    require_once "isAdmin.php";
 use DAO\JobRepositorie as JobDAO;
 $jobDAO = new JobDAO();
 $job = array();
