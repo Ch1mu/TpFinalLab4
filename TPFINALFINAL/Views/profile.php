@@ -123,7 +123,7 @@ Autoload::Start();
                   <input type="number"  name = "id" value= "<?php echo $apply->getApplyId();?>" readonly hidden>
                   <input type="number"  name = "offer" value= "<?php echo $apply->getOfferId();?>" readonly hidden>
                   <button type="submit">Eliminar Postulacion</button> 
-            
+            </form>
             
                 </details>
             <?php
